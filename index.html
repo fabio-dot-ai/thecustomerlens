@@ -271,25 +271,64 @@
         }
 
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                margin: 2rem auto 2rem;
+                padding: 0 1.5rem;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .search-bar {
+                max-width: 100%;
             }
 
             .blog-grid {
                 grid-template-columns: 1fr;
                 padding: 0 1.5rem;
+                margin: 2rem auto;
+                gap: 2rem;
             }
 
-            nav {
-                padding: 0 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
+            .blog-card h3 {
+                font-size: 1.3rem;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 2rem;
             }
         }
     </style>
@@ -297,12 +336,12 @@
 <body>
     <header>
         <nav>
-            <a href="#" class="logo">The Customer Lens</a>
+            <a href="index.html" class="logo">The Customer Lens</a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#articles">Articles</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#impressum">Impressum</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#articles">Articles</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
             </ul>
         </nav>
     </header>
@@ -316,7 +355,7 @@
     </section>
 
     <main class="blog-grid" id="blogGrid">
-        <article class="blog-card" data-title="When Smart AI Hurts Your Brand" data-tags="ai brand customer-experience" data-url="https://medium.com/@fabio.garzotto/when-smart-ai-hurts-your-brand-91046a664052">
+        <a href="articles/when-smart-ai-hurts-your-brand.html" class="blog-card" data-title="When Smart AI Hurts Your Brand" data-tags="ai brand customer-experience">
             <div class="blog-image">
                 <img src="images/ai-brand.jpg" alt="When Smart AI Hurts Your Brand">
             </div>
@@ -324,15 +363,15 @@
                 <div class="blog-meta">
                     <span>6 min read</span>
                     <span>•</span>
-                    <span>Sep 1, 2025</span>
+                    <span>Sep 16, 2024</span>
                 </div>
                 <h3>When Smart AI Hurts Your Brand</h3>
                 <p>AI can boost efficiency — but it can also hurt your brand if it ignores your promise, personality and values.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Same Goals Same Results" data-tags="ai differentiation strategy" data-url="https://medium.com/@fabio.garzotto/same-goals-same-results-why-optimizing-can-make-you-forgettable-d0c8f8afc74d">
+        <a href="articles/same-goals-same-results.html" class="blog-card" data-title="Same Goals Same Results" data-tags="ai differentiation strategy">
             <div class="blog-image">
                 <img src="images/same-goals.jpg" alt="Same Goals Same Results">
             </div>
@@ -340,15 +379,15 @@
                 <div class="blog-meta">
                     <span>5 min read</span>
                     <span>•</span>
-                    <span>Aug 1, 2025</span>
+                    <span>Sep 14, 2024</span>
                 </div>
                 <h3>Same Goals, Same Results: Why Optimizing Can Make You Forgettable</h3>
                 <p>When everyone optimizes for the same metrics, brands become indistinguishable.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="From Unique to Uniform" data-tags="ai brand differentiation" data-url="https://medium.com/@fabio.garzotto/from-unique-to-uniform-how-ai-makes-brands-sound-the-same-12cc7e410f1e">
+        <a href="articles/from-unique-to-uniform.html" class="blog-card" data-title="From Unique to Uniform" data-tags="ai brand differentiation">
             <div class="blog-image">
                 <img src="images/unique-to-uniform.jpg" alt="From Unique to Uniform">
             </div>
@@ -356,15 +395,15 @@
                 <div class="blog-meta">
                     <span>5 min read</span>
                     <span>•</span>
-                    <span>Jun 30, 2025</span>
+                    <span>Sep 12, 2024</span>
                 </div>
                 <h3>From Unique to Uniform: How AI Makes Brands Sound the Same</h3>
                 <p>The homogenization of brand voice in the age of AI-generated content.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Generic at Scale" data-tags="ai customer-experience differentiation" data-url="https://medium.com/@fabio.garzotto/generic-at-scale-how-over-reliance-on-ai-risks-your-cx-differentiation-44af91c6fb80">
+        <a href="articles/generic-at-scale.html" class="blog-card" data-title="Generic at Scale" data-tags="ai customer-experience differentiation">
             <div class="blog-image">
                 <img src="images/generic-at-scale.jpg" alt="Generic at Scale">
             </div>
@@ -372,15 +411,15 @@
                 <div class="blog-meta">
                     <span>6 min read</span>
                     <span>•</span>
-                    <span>May 30, 2025</span>
+                    <span>Sep 10, 2024</span>
                 </div>
                 <h3>Generic at Scale: How Over-Reliance on AI Risks Your CX Differentiation</h3>
                 <p>Scaling with AI without losing what makes your customer experience unique.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Operational Complexity vs Simplicity" data-tags="operations customer-experience complexity" data-url="https://medium.com/@fabio.garzotto/growing-operational-complexity-vs-customer-desire-for-simplicity-7409c7893759">
+        <a href="articles/operational-complexity.html" class="blog-card" data-title="Operational Complexity vs Simplicity" data-tags="operations customer-experience complexity">
             <div class="blog-image">
                 <img src="images/operational-complexity.jpg" alt="Operational Complexity">
             </div>
@@ -388,15 +427,15 @@
                 <div class="blog-meta">
                     <span>5 min read</span>
                     <span>•</span>
-                    <span>Apr 29, 2025</span>
+                    <span>Sep 8, 2024</span>
                 </div>
                 <h3>Growing Operational Complexity vs. Customer Desire for Simplicity</h3>
                 <p>As your business grows more complex, customers want things simpler. Here's how to bridge the gap.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Adapting to Rapid Feedback" data-tags="customer-experience feedback real-time" data-url="https://medium.com/@fabio.garzotto/adapting-to-rapid-feedback-and-expectations-thriving-in-a-real-time-world-22a31440ddfc">
+        <a href="articles/adapting-feedback.html" class="blog-card" data-title="Adapting to Rapid Feedback" data-tags="customer-experience feedback real-time">
             <div class="blog-image">
                 <img src="images/adapting-feedback.jpg" alt="Adapting to Rapid Feedback">
             </div>
@@ -404,15 +443,15 @@
                 <div class="blog-meta">
                     <span>6 min read</span>
                     <span>•</span>
-                    <span>Mar 30, 2025</span>
+                    <span>Sep 6, 2024</span>
                 </div>
                 <h3>Adapting to Rapid Feedback and Expectations: Thriving in a Real-Time World</h3>
                 <p>How to build systems that respond to customer feedback at the speed they expect.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Balancing Automation and Human Interaction" data-tags="automation customer-experience human-touch" data-url="https://medium.com/@fabio.garzotto/balancing-automation-and-human-interaction-the-key-to-exceptional-customer-experiences-66d5c4362254">
+        <a href="articles/balancing-automation.html" class="blog-card" data-title="Balancing Automation and Human Interaction" data-tags="automation customer-experience human-touch">
             <div class="blog-image">
                 <img src="images/balancing-automation.jpg" alt="Balancing Automation">
             </div>
@@ -420,15 +459,15 @@
                 <div class="blog-meta">
                     <span>6 min read</span>
                     <span>•</span>
-                    <span>Feb 23, 2025</span>
+                    <span>Sep 4, 2024</span>
                 </div>
                 <h3>Balancing Automation and Human Interaction: The Key to Exceptional Customer Experiences</h3>
                 <p>Finding the right mix between efficiency and empathy in customer support.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Consistent Customer Support Across Channels" data-tags="omnichannel customer-experience support" data-url="https://medium.com/@fabio.garzotto/consistent-customer-support-across-channels-overcoming-common-challenges-7ada96f12535">
+        <a href="articles/consistent-support.html" class="blog-card" data-title="Consistent Customer Support Across Channels" data-tags="omnichannel customer-experience support">
             <div class="blog-image">
                 <img src="images/consistent-support.jpg" alt="Consistent Support">
             </div>
@@ -436,15 +475,15 @@
                 <div class="blog-meta">
                     <span>5 min read</span>
                     <span>•</span>
-                    <span>Jan 20, 2025</span>
+                    <span>Sep 2, 2024</span>
                 </div>
                 <h3>Consistent Customer Support Across Channels: Overcoming Common Challenges</h3>
                 <p>Delivering seamless experiences whether customers reach you by email, phone, chat, or social media.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Personalization at Scale" data-tags="personalization customer-experience scale" data-url="https://medium.com/@fabio.garzotto/personalization-at-scale-solving-needs-reducing-effort-and-smarter-customer-experiences-16d1781f70cb">
+        <a href="articles/personalization-scale.html" class="blog-card" data-title="Personalization at Scale" data-tags="personalization customer-experience scale">
             <div class="blog-image">
                 <img src="images/personalization-scale.jpg" alt="Personalization at Scale">
             </div>
@@ -452,15 +491,15 @@
                 <div class="blog-meta">
                     <span>6 min read</span>
                     <span>•</span>
-                    <span>Dec 10, 2024</span>
+                    <span>Aug 31, 2024</span>
                 </div>
                 <h3>Personalization at Scale: Solving Needs, Reducing Effort, and Smarter Customer Experiences</h3>
                 <p>How to make every customer feel understood without sacrificing operational efficiency.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
 
-        <article class="blog-card" data-title="Growing Pains" data-tags="scaling customer-experience b2c" data-url="https://medium.com/@fabio.garzotto/growing-pains-the-5-big-customer-experience-challenges-every-scaling-b2c-business-must-tackle-325521fc2c70">
+        <a href="articles/growing-pains.html" class="blog-card" data-title="Growing Pains" data-tags="scaling customer-experience b2c">
             <div class="blog-image">
                 <img src="images/growing-pains.jpg" alt="Growing Pains">
             </div>
@@ -468,219 +507,14 @@
                 <div class="blog-meta">
                     <span>7 min read</span>
                     <span>•</span>
-                    <span>Nov 24, 2024</span>
+                    <span>Aug 29, 2024</span>
                 </div>
                 <h3>Growing Pains: The 5 Big Customer Experience Challenges Every Scaling B2C Business Must Tackle</h3>
                 <p>The critical CX challenges that emerge when your business starts to scale rapidly.</p>
                 <span class="read-more">Read Article →</span>
             </div>
-        </article>
+        </a>
     </main>
-
-    <!-- About Section -->
-    <section id="about" style="display: none; max-width: 800px; margin: 4rem auto; padding: 0 3rem;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; font-weight: 300;">About</h2>
-        
-        <div style="line-height: 2; color: #6b6b6b;">
-            <p>
-                I'm Fabio Garzotto – a Customer Experience and Operations leader helping companies scale without losing what makes them human.
-            </p>
-            
-            <p>
-                Over 15+ years, I've built operations from scratch at startups and scaled teams of 100+ at companies like roadsurfer, CHECK24, PULPO WMS, and Build.One. I've learned that <strong>great CX isn't just about vision – it's about the processes, systems, and operations that deliver it consistently at scale.</strong>
-            </p>
-            
-            <p>
-                Now, as we enter the AI era, that lesson matters more than ever. AI can transform customer experience and operational efficiency – but only if we build the right foundations. Too many companies deploy AI that breaks their brand promise, automates the wrong things, or scales inefficiency instead of excellence.
-            </p>
-            
-            <p>
-                <strong>My focus:</strong> Building scalable, customer-centric operations where AI amplifies human connection rather than replaces it. Where automation serves both efficiency and loyalty. Where the invisible machinery of great operations creates effortless customer experiences.
-            </p>
-            
-            <p>
-                This means getting the fundamentals right: processes that scale, teams that execute, systems that integrate, and AI that enhances rather than commodifies. It's the intersection of strategic vision and operational reality – because ideas without execution are just expensive slides.
-            </p>
-            
-            <p>
-                <strong>Background:</strong> Director CX at roadsurfer. Former COO at PULPO WMS and Build.One. Wirtschaftsingenieur from KIT. Based in Munich/Starnberg.
-            </p>
-            
-            <p style="margin-top: 2rem;">
-                <strong>Let's connect:</strong> <a href="https://www.linkedin.com/in/fabiogarzotto" target="_blank" rel="noopener" style="color: #2c2c2c; text-decoration: underline;">LinkedIn</a> | <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener" style="color: #2c2c2c; text-decoration: underline;">Medium</a>
-            </p>
-
-            <p style="margin-top: 2rem;">
-                <a href="#home" style="color: #2c2c2c; text-decoration: underline;">Back to Articles</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Impressum Section -->
-    <section id="impressum" style="display: none; max-width: 800px; margin: 4rem auto; padding: 0 3rem;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; font-weight: 300;">Impressum</h2>
-        
-        <div style="line-height: 2; color: #6b6b6b;">
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">Angaben gemäß § 5 TMG</h3>
-            <p>
-                Fabio Garzotto<br>
-                Angerweidestr. 13c<br>
-                82319 Starnberg<br>
-                Deutschland
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">Kontakt</h3>
-            <p>
-                E-Mail: fabio (at) gmail.com<br>
-                Telefon: +49 172 66 55 416
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-            <p>
-                Fabio Garzotto<br>
-                Angerweidestr. 13c<br>
-                82319 Starnberg
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">Haftungsausschluss</h3>
-            
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Haftung für Inhalte</h4>
-            <p>
-                Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Haftung für Links</h4>
-            <p>
-                Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Urheberrecht</h4>
-            <p>
-                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-            </p>
-
-            <p style="margin-top: 2rem;">
-                <a href="#home" style="color: #2c2c2c; text-decoration: underline;">Zurück zur Startseite</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Privacy Policy / Datenschutzerklärung Section -->
-    <section id="privacy" style="display: none; max-width: 800px; margin: 4rem auto; padding: 0 3rem;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; font-weight: 300;">Datenschutzerklärung</h2>
-        
-        <div style="line-height: 2; color: #6b6b6b;">
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">1. Datenschutz auf einen Blick</h3>
-            
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Allgemeine Hinweise</h4>
-            <p>
-                Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Datenerfassung auf dieser Website</h4>
-            <p>
-                <strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br>
-                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
-            </p>
-            <p>
-                <strong>Wie erfassen wir Ihre Daten?</strong><br>
-                Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">2. Hosting</h3>
-            
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Externes Hosting</h4>
-            <p>
-                Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v.a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Webseitenzugriffe und sonstige Daten, die über eine Website generiert werden, handeln.
-            </p>
-            <p>
-                Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
-            </p>
-            <p>
-                <strong>Netlify</strong><br>
-                Wir hosten unsere Website bei Netlify. Anbieter ist Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA. Details entnehmen Sie der Datenschutzerklärung von Netlify: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener" style="color: #2c2c2c; text-decoration: underline;">https://www.netlify.com/privacy/</a>
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">3. Allgemeine Hinweise und Pflichtinformationen</h3>
-            
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Datenschutz</h4>
-            <p>
-                Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
-            </p>
-            <p>
-                Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Hinweis zur verantwortlichen Stelle</h4>
-            <p>
-                Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br><br>
-                Fabio Garzotto<br>
-                Angerweidestr. 13c<br>
-                82319 Starnberg<br>
-                Deutschland<br><br>
-                E-Mail: fabio (at) gmail.com<br>
-                Telefon: +49 172 66 55 416
-            </p>
-            <p>
-                Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z.B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Speicherdauer</h4>
-            <p>
-                Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Widerruf Ihrer Einwilligung zur Datenverarbeitung</h4>
-            <p>
-                Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
-            </p>
-
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Auskunft, Löschung und Berichtigung</h4>
-            <p>
-                Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">4. Datenerfassung auf dieser Website</h3>
-            
-            <h4 style="font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #2c2c2c; font-weight: 400;">Server-Log-Dateien</h4>
-            <p>
-                Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:
-            </p>
-            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-                <li>Browsertyp und Browserversion</li>
-                <li>verwendetes Betriebssystem</li>
-                <li>Referrer URL</li>
-                <li>Hostname des zugreifenden Rechners</li>
-                <li>Uhrzeit der Serveranfrage</li>
-                <li>IP-Adresse</li>
-            </ul>
-            <p>
-                Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website – hierzu müssen die Server-Log-Files erfasst werden.
-            </p>
-
-            <h3 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #2c2c2c; font-weight: 400;">5. Ihre Rechte</h3>
-            <p>
-                Sie haben folgende Rechte:
-            </p>
-            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-                <li>Recht auf Auskunft über Ihre bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
-                <li>Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-                <li>Recht auf Löschung Ihrer Daten (Art. 17 DSGVO)</li>
-                <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                <li>Widerspruchsrecht gegen die Verarbeitung (Art. 21 DSGVO)</li>
-                <li>Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
-            </ul>
-
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">
-                Stand: Oktober 2025
-            </p>
-
-            <p style="margin-top: 2rem;">
-                <a href="#home" style="color: #2c2c2c; text-decoration: underline;">Zurück zur Startseite</a>
-            </p>
-        </div>
-    </section>
 
     <footer>
         <div class="footer-content">
@@ -692,17 +526,17 @@
                 <div class="footer-section">
                     <h4>Navigate</h4>
                     <div class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#articles">Articles</a>
-                        <a href="#about">About</a>
+                        <a href="index.html">Home</a>
+                        <a href="index.html#articles">Articles</a>
+                        <a href="about.html">About</a>
                         <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <div class="footer-links">
-                        <a href="#impressum">Impressum</a>
-                        <a href="#privacy">Privacy Policy</a>
+                        <a href="impressum.html">Impressum</a>
+                        <a href="privacy.html">Privacy Policy</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -742,7 +576,6 @@
                 }
             });
 
-            // Show "no results" message
             const existingMessage = document.querySelector('.no-results');
             if (existingMessage) {
                 existingMessage.remove();
@@ -754,64 +587,6 @@
                 noResults.textContent = 'No articles found matching your search.';
                 blogGrid.appendChild(noResults);
             }
-        });
-
-        // Page navigation and section visibility
-        const heroSection = document.querySelector('.hero');
-        const aboutSection = document.getElementById('about');
-        const impressumSection = document.getElementById('impressum');
-        const privacySection = document.getElementById('privacy');
-
-        function showSection(sectionId) {
-            // Hide all sections
-            heroSection.style.display = 'none';
-            blogGrid.style.display = 'none';
-            aboutSection.style.display = 'none';
-            impressumSection.style.display = 'none';
-            privacySection.style.display = 'none';
-
-            if (sectionId === 'about') {
-                aboutSection.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (sectionId === 'impressum') {
-                impressumSection.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (sectionId === 'privacy') {
-                privacySection.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                // Show home page
-                heroSection.style.display = 'block';
-                blogGrid.style.display = 'grid';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        // Navigation click handlers
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const href = this.getAttribute('href');
-                const sectionId = href.substring(1);
-
-                if (sectionId === 'about' || sectionId === 'impressum' || sectionId === 'privacy') {
-                    showSection(sectionId);
-                } else if (sectionId === 'home' || sectionId === 'articles') {
-                    showSection('home');
-                } else {
-                    showSection('home');
-                }
-            });
-        });
-
-        // Article card click handlers - open Medium links
-        blogCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                const url = card.getAttribute('data-url');
-                if (url) {
-                    window.open(url, '_blank');
-                }
-            });
         });
     </script>
 </body>
