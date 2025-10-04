@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic at Scale: How Over-Reliance on AI Risks Your CX Differentiation - The Customer Lens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
+            color: #2c2c2c;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #2c2c2c;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6b6b6b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .nav-links a:hover {
+            color: #2c2c2c;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: #2c2c2c;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 3rem;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #2c2c2c;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+        }
+
+        .article-content em {
+            font-style: italic;
+            color: #6b6b6b;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: #ffffff;
+            padding: 4rem 3rem 3rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li:last-child {
+                display: none;
+            }
+
+            article {
+                margin: 2rem auto;
+                padding: 0 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">The Customer Lens</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../impressum.html">Imprint</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span>6 min read</span>
+                <span>•</span>
+                <span>May 30, 2025</span>
+            </div>
+            <h1>Generic at Scale: How Over-Reliance on AI Risks Your CX Differentiation</h1>
+        </div>
+
+        <img src="../images/generic-at-scale.jpg" alt="Generic at Scale" class="article-image">
+
+        <div class="article-content">
+            <h2>When Everything Starts to Feel the Same</h2>
+
+            <p>
+                Many companies are rushing to use AI to make things faster and more efficient. AI tools help answer customer questions, predict what people want, and automate tasks. These tools work well and save time. But there's a hidden danger: when everyone uses the same AI tools in the same way, all customer experiences start to feel the same.
+            </p>
+
+            <p>
+                Even if your company is special, AI can make it sound just like everyone else. This article explores how over-relying on AI affects customer experience (CX) — especially how much it risks making your brand less unique, less human, and less memorable.
+            </p>
+
+            <p>
+                AI is here to stay. But how we use it — and how consciously we design the experience around it — can make all the difference between building loyalty or just delivering transactions.
+            </p>
+
+            <h2>1. From Unique to Uniform: How AI Makes Brands Sound the Same</h2>
+
+            <p>
+                AI is great at spotting patterns and copying what works. That makes it useful, but it also means it can make things feel very similar across companies.
+            </p>
+
+            <p>
+                <strong>Example:</strong> Whether you're booking a flight or a hotel, the chatbot experience often feels the same: a short welcome, a menu of options, answers from a help page. You could ask the same question at different companies and get almost the same reply.
+            </p>
+
+            <p>
+                <strong>What This Means:</strong> When every company sounds the same, customers pick based on price. That's bad for brands trying to stand out.
+            </p>
+
+            <p>
+                <strong>Dig Deeper:</strong> Customers form emotional connections with brands through tone, creativity, and surprise. AI systems trained on the same large datasets lose that nuance. The challenge is creating technology that reflects your distinct brand character, not a generic model of efficiency.
+            </p>
+
+            <h2>2. Same Goals, Same Results: Why Optimizing Can Make You Forgettable</h2>
+
+            <p>
+                Companies use AI to improve the same things: faster answers, fewer support tickets, better satisfaction scores. But if everyone is aiming for the same results, they may all build similar systems.
+            </p>
+
+            <p>
+                <strong>Example:</strong> In online shopping, AI often suggests the most popular product. It's a safe bet — but if every store does it, customers see the same items everywhere. Shopping feels boring.
+            </p>
+
+            <p>
+                <strong>What This Means:</strong> By always picking the most "efficient" option, companies miss chances to surprise or delight customers.
+            </p>
+
+            <p>
+                <strong>Dig Deeper:</strong> Optimization is important — but when every decision is driven by the same goals, creativity gets squeezed out. Consider building in moments of intentional randomness, aesthetic difference, or human judgment that challenge pure efficiency.
+            </p>
+
+            <h2>3. When Smart AI Hurts Your Brand</h2>
+
+            <p>
+                AI makes decisions based on logic and data. But sometimes, those decisions don't match what your brand stands for.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A company focused on sustainability might use AI to recommend popular products to boost sales. But that could encourage overconsumption — going against the brand's values.
+            </p>
+
+            <p>
+                <strong>What This Means:</strong> AI might be efficient, but that doesn't mean it's right for your brand. You have to make sure your tech supports your values.
+            </p>
+
+            <p>
+                <strong>Dig Deeper:</strong> This is where CX strategy and AI implementation must intersect. AI systems need value-based tuning. It's not enough for outputs to be correct — they must feel right. CX leaders should regularly test how well AI behaviors align with brand intent.
+            </p>
+
+            <h2>4. When AI Blocks the Path to Great Human Service</h2>
+
+            <p>
+                Customer Experience (CX) leaders must guide how AI is used. They help make sure that AI tools fit the brand and don't make it feel generic.
+            </p>
+
+            <p>
+                <strong>Example:</strong> Some companies use AI for simple tasks, but still let humans take over when it matters. These teams give agents the freedom to go the extra mile, keeping the service warm and memorable.
+            </p>
+
+            <p>
+                <strong>What This Means:</strong> With the right leadership, AI can make your CX better — without losing your special touch.
+            </p>
+
+            <p>
+                <strong>Dig Deeper:</strong> The danger is when AI systems are so optimized for deflection or routing that they hide your best asset: your human team. Ask yourself — can customers easily reach a real person? Do your agents have visibility into what the AI has already said? If not, you're creating friction, not flow.
+            </p>
+
+            <h2>5. The Black Box Problem: Do You Know What Your AI Is Saying?</h2>
+
+            <p>
+                <strong>Example:</strong> A company might handle thousands of AI-powered interactions daily — support questions, product recommendations, even policy explanations. If no one is regularly reviewing what the AI is saying, it's easy for mistakes, confusing advice, or even off-brand tone to slip through unnoticed.
+            </p>
+
+            <p>
+                <strong>What This Means:</strong> If you don't monitor AI outputs closely, you risk creating customer experiences you didn't intend — and might not even know about. To protect your brand, you need visibility and control over what your AI says at scale.
+            </p>
+
+            <p>
+                <strong>Dig Deeper:</strong> Most companies log AI activity, but few systematically audit tone, intent, or consistency. This creates a risk of drift — where the AI slowly moves away from brand norms. Build routines for AI content sampling, red-teaming, or user feedback tagging to stay in control.
+            </p>
+
+            <h2>Don't Let AI Flatten Your Brand</h2>
+
+            <p>
+                AI is a powerful tool. But if everyone uses it the same way, customer experiences become dull and generic. The companies that win will use AI in ways that feel true to their brand. They'll protect what makes them special — even as they grow.
+            </p>
+
+            <p>
+                Being "generic at scale" doesn't have to happen. You can choose to be different. Use AI to help your brand shine — not disappear.
+            </p>
+
+            <p>
+                <strong>Final Thought:</strong> The future of CX isn't just faster — it's more thoughtful, more human, and more intentional. Let AI do the heavy lifting, but don't let it take over your voice. In a world of sameness, your edge is in what only you can say — and how you say it.
+            </p>
+        </div>
+
+        <a href="../index.html" class="back-link">← Back to all articles</a>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>The Customer Lens</h4>
+                    <p style="color: #b0b0b0; line-height: 1.7;">Insights on customer experience, business strategy, and design thinking.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="../index.html#articles">Articles</a>
+                        <a href="../about.html">About</a>
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="../impressum.html">Imprint</a>
+                        <a href="../privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 The Customer Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
