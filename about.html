@@ -75,10 +75,58 @@
             padding: 0 3rem;
         }
 
-        h1 {
+        .profile-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .profile-title {
+            font-size: 1.2rem;
+            color: #6b6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .profile-location {
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .profile-links a {
+            color: #0073b1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .profile-links a:hover {
+            text-decoration: underline;
         }
 
         .content p {
@@ -89,11 +137,6 @@
 
         .content strong {
             color: #2c2c2c;
-        }
-
-        .content a {
-            color: #2c2c2c;
-            text-decoration: underline;
         }
 
         .back-link {
@@ -180,16 +223,24 @@
                 justify-content: center;
             }
 
-            .nav-links li:last-child {
-                display: none;
-            }
-
             .content {
                 margin: 2rem auto;
                 padding: 0 1.5rem;
             }
 
-            h1 {
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .profile-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-info h1 {
                 font-size: 2rem;
             }
 
@@ -217,13 +268,23 @@
     </header>
 
     <div class="content">
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <img src="images/fabio-profile.jpg" alt="Fabio Garzotto" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #e0e0e0;">
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="images/fabio-profile.jpg" alt="Fabio Garzotto">
+            </div>
+            <div class="profile-info">
+                <h1>Fabio Garzotto</h1>
+                <div class="profile-title">Customer Experience & Operations Leader</div>
+                <div class="profile-location">Munich, Germany</div>
+                <div class="profile-links">
+                    <a href="https://www.linkedin.com/in/fabiogarzotto" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                </div>
+            </div>
         </div>
-        <h1>About</h1>
         
         <p>
-            I'm Fabio Garzotto – a Customer Experience and Operations leader focused on helping organizations scale without losing their human touch.
+            I'm a Customer Experience and Operations leader focused on helping organizations scale without losing their human touch.
         </p>
         
         <p>
@@ -243,11 +304,7 @@
         </p>
         
         <p>
-            <strong>Background:</strong> 15+ years in customer experience and operations leadership, with an academic foundation in industrial engineering (Wirtschaftsingenieur, KIT). Based in Munich.
-        </p>
-
-        <p style="margin-top: 2rem;">
-            <strong>Let's connect:</strong> <a href="https://www.linkedin.com/in/fabiogarzotto" target="_blank" rel="noopener">LinkedIn</a> | <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+            <strong>Background:</strong> 15+ years in customer experience and operations leadership, with an academic foundation in industrial engineering (Wirtschaftsingenieur, KIT).
         </p>
 
         <a href="index.html" class="back-link">Back to Articles</a>
@@ -258,7 +315,7 @@
             <div class="footer-grid">
                 <div class="footer-section">
                     <h4>The Customer Lens</h4>
-                    <p style="color: #b0b0b0; line-height: 1.7;">Insights on customer experience, business strategy, and design thinking.</p>
+                    <p style="color: #b0b0b0; line-height: 1.7;">Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Navigate</h4>
