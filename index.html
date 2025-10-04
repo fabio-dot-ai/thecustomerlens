@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalization at Scale: Solving Needs, Reducing Effort, and Smarter Customer Experiences - The Customer Lens</title>
+    <title>The Customer Lens</title>
     <style>
         * {
             margin: 0;
@@ -69,20 +69,107 @@
             color: #2c2c2c;
         }
 
-        article {
-            max-width: 800px;
+        .hero {
+            max-width: 1400px;
+            margin: 5rem auto 3rem;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            color: #2c2c2c;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b6b6b;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.9rem 1.5rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+            background: #ffffff;
+            font-family: Georgia, serif;
+        }
+
+        .search-bar input:focus {
+            border-color: #2c2c2c;
+        }
+
+        .search-bar input::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .blog-grid {
+            max-width: 1400px;
             margin: 4rem auto;
             padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 3rem;
         }
 
-        .article-header {
-            margin-bottom: 3rem;
+        .blog-card {
+            background: #ffffff;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
-        .article-meta {
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 2rem 2rem 2.5rem;
+        }
+
+        .blog-meta {
             display: flex;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-size: 0.75rem;
             color: #999;
             text-transform: uppercase;
@@ -90,80 +177,37 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            color: #2c2c2c;
-        }
-
-        .article-image {
-            width: 100%;
-            height: auto;
-            margin-bottom: 3rem;
-        }
-
-        .article-content {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: #2c2c2c;
-        }
-
-        .article-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-content h2 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            color: #2c2c2c;
-        }
-
-        .article-content h3 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-top: 2rem;
+        .blog-card h3 {
+            font-size: 1.6rem;
             margin-bottom: 1rem;
             color: #2c2c2c;
+            font-weight: 400;
+            line-height: 1.4;
         }
 
-        .article-content ul,
-        .article-content ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .article-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .article-content strong {
-            font-weight: 600;
-        }
-
-        .article-content em {
-            font-style: italic;
+        .blog-card p {
             color: #6b6b6b;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e0e0e0;
+        .read-more {
             color: #2c2c2c;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        .back-link:hover {
-            text-decoration: underline;
+        .read-more:hover {
+            gap: 0.85rem;
         }
 
         footer {
@@ -219,6 +263,13 @@
             font-size: 0.85rem;
         }
 
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #999;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 1rem 0;
@@ -239,33 +290,36 @@
             .nav-links {
                 gap: 1rem;
                 font-size: 0.85rem;
-                flex-wrap: wrap;
-                justify-content: center;
             }
 
-            .nav-links li:last-child {
-                display: none;
-            }
-
-            article {
-                margin: 2rem auto;
+            .hero {
+                margin: 2rem auto 2rem;
                 padding: 0 1.5rem;
             }
 
-            h1 {
+            .hero h1 {
                 font-size: 2rem;
+                margin-bottom: 1rem;
             }
 
-            .article-content {
+            .hero p {
                 font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
 
-            .article-content h2 {
-                font-size: 1.5rem;
+            .search-bar {
+                max-width: 100%;
             }
 
-            .article-content h3 {
-                font-size: 1.2rem;
+            .blog-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem;
+                margin: 2rem auto;
+                gap: 2rem;
+            }
+
+            .blog-card h3 {
+                font-size: 1.3rem;
             }
 
             .footer-grid {
@@ -282,143 +336,185 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html" class="logo">The Customer Lens</a>
+            <a href="index.html" class="logo">The Customer Lens</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#articles">Articles</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="impressum.html">Imprint</a></li>
             </ul>
         </nav>
     </header>
 
-    <article>
-        <div class="article-header">
-            <div class="article-meta">
-                <span>6 min read</span>
-                <span>•</span>
-                <span>Aug 31, 2024</span>
+    <section class="hero">
+        <h1>Insights Through the Customer Lens</h1>
+        <p>Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure</p>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search articles...">
+        </div>
+    </section>
+
+    <main class="blog-grid" id="blogGrid">
+        <a href="articles/when-smart-ai-hurts-your-brand.html" class="blog-card" data-title="When Smart AI Hurts Your Brand" data-tags="ai brand customer-experience">
+            <div class="blog-image">
+                <img src="images/ai-brand.jpg" alt="When Smart AI Hurts Your Brand">
             </div>
-            <h1>Personalization at Scale: Solving Needs, Reducing Effort, and Smarter Customer Experiences</h1>
-        </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>6 min read</span>
+                    <span>•</span>
+                    <span>Sep 4, 2025</span>
+                </div>
+                <h3>When Smart AI Hurts Your Brand</h3>
+                <p>AI can boost efficiency — but it can also hurt your brand if it ignores your promise, personality and values.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-        <img src="../images/personalization-scale.jpg" alt="Personalization at Scale" class="article-image">
+        <a href="articles/same-goals.html" class="blog-card" data-title="Same Goals Same Results" data-tags="ai differentiation strategy">
+            <div class="blog-image">
+                <img src="images/same-goals.jpg" alt="Same Goals Same Results">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>5 min read</span>
+                    <span>•</span>
+                    <span>Aug 1, 2025</span>
+                </div>
+                <h3>Same Goals, Same Results: Why Optimizing Can Make You Forgettable</h3>
+                <p>When everyone optimizes for the same metrics, brands become indistinguishable.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-        <div class="article-content">
-            <p>
-                As businesses grow, it becomes harder to keep things personal with customers. Yet personalization is more important than ever — it's not just a way to make customers feel valued, but a way to create better customer experiences and reduce service effort. Done right, personalization ensures customers get exactly the solutions and answers they need without additional hassle, strengthening trust and making interactions more efficient.
-            </p>
+        <a href="articles/unique-to-uniform.html" class="blog-card" data-title="From Unique to Uniform" data-tags="ai brand differentiation">
+            <div class="blog-image">
+                <img src="images/unique-to-uniform.jpg" alt="From Unique to Uniform">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>5 min read</span>
+                    <span>•</span>
+                    <span>Jun 30, 2025</span>
+                </div>
+                <h3>From Unique to Uniform: How AI Makes Brands Sound the Same</h3>
+                <p>The homogenization of brand voice in the age of AI-generated content.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <h2>Why Personalization Matters</h2>
+        <a href="articles/generic-at-scale.html" class="blog-card" data-title="Generic at Scale" data-tags="ai customer-experience differentiation">
+            <div class="blog-image">
+                <img src="images/generic-at-scale.jpg" alt="Generic at Scale">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>6 min read</span>
+                    <span>•</span>
+                    <span>May 30, 2025</span>
+                </div>
+                <h3>Generic at Scale: How Over-Reliance on AI Risks Your CX Differentiation</h3>
+                <p>Scaling with AI without losing what makes your customer experience unique.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <p>
-                Personalization transforms one-size-fits-all approaches into something targeted and relevant. It boosts customer trust by showing you understand their unique needs, and it reduces service effort by preemptively addressing customer questions and needs.
-            </p>
+        <a href="articles/operational-complexity.html" class="blog-card" data-title="Operational Complexity vs Simplicity" data-tags="operations customer-experience complexity">
+            <div class="blog-image">
+                <img src="images/operational-complexity.jpg" alt="Operational Complexity">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>5 min read</span>
+                    <span>•</span>
+                    <span>Apr 29, 2025</span>
+                </div>
+                <h3>Growing Operational Complexity vs. Customer Desire for Simplicity</h3>
+                <p>As your business grows more complex, customers want things simpler. Here's how to bridge the gap.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <p>
-                But as businesses scale, personalization gets tricky. Growing audiences, diverse preferences, and mountains of data can overwhelm even the best teams. Let's explore the challenges and how to tackle them.
-            </p>
+        <a href="articles/adapting-feedback.html" class="blog-card" data-title="Adapting to Rapid Feedback" data-tags="customer-experience feedback real-time">
+            <div class="blog-image">
+                <img src="images/adapting-feedback.jpg" alt="Adapting to Rapid Feedback">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>6 min read</span>
+                    <span>•</span>
+                    <span>Mar 30, 2025</span>
+                </div>
+                <h3>Adapting to Rapid Feedback and Expectations: Thriving in a Real-Time World</h3>
+                <p>How to build systems that respond to customer feedback at the speed they expect.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <h2>The Challenges of Scaling Personalization</h2>
+        <a href="articles/balancing-automation.html" class="blog-card" data-title="Balancing Automation and Human Interaction" data-tags="automation customer-experience human-touch">
+            <div class="blog-image">
+                <img src="images/balancing-automation.jpg" alt="Balancing Automation">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>6 min read</span>
+                    <span>•</span>
+                    <span>Feb 23, 2025</span>
+                </div>
+                <h3>Balancing Automation and Human Interaction: The Key to Exceptional Customer Experiences</h3>
+                <p>Finding the right mix between efficiency and empathy in customer support.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <h3>1. Outdated Technology</h3>
+        <a href="articles/consistent-support.html" class="blog-card" data-title="Consistent Customer Support Across Channels" data-tags="omnichannel customer-experience support">
+            <div class="blog-image">
+                <img src="images/consistent-support.jpg" alt="Consistent Support">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>5 min read</span>
+                    <span>•</span>
+                    <span>Jan 20, 2025</span>
+                </div>
+                <h3>Consistent Customer Support Across Channels: Overcoming Common Challenges</h3>
+                <p>Delivering seamless experiences whether customers reach you by email, phone, chat, or social media.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <p>
-                Many businesses start with simple tools that work fine when the customer base is small. But as the audience grows, these systems struggle to keep up, leading to inconsistent experiences.
-            </p>
+        <a href="articles/personalization-scale.html" class="blog-card" data-title="Personalization at Scale" data-tags="personalization customer-experience scale">
+            <div class="blog-image">
+                <img src="images/personalization-scale.jpg" alt="Personalization at Scale">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>6 min read</span>
+                    <span>•</span>
+                    <span>Dec 10, 2024</span>
+                </div>
+                <h3>Personalization at Scale: Solving Needs, Reducing Effort, and Smarter Customer Experiences</h3>
+                <p>How to make every customer feel understood without sacrificing operational efficiency.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
 
-            <p>
-                <strong>Example:</strong> A fitness app that initially offers customized workout plans falters as its user base expands. Data syncing issues across devices result in irrelevant suggestions, frustrating users who expect seamless, personalized answers to their fitness needs.
-            </p>
-
-            <p>
-                <strong>Solution:</strong> Upgrade to robust, scalable technology that can handle real-time updates and maintain consistency across all platforms.
-            </p>
-
-            <h3>2. Diverse Customer Preferences</h3>
-
-            <p>
-                What works for one group might completely miss the mark for another. A skincare brand expanding into new regions might recommend products without considering local climates. Heavy moisturizers for humid areas? Customers won't just ignore those suggestions — they might start doubting the brand altogether.
-            </p>
-
-            <p>
-                <strong>Solution:</strong> Adapt strategies to fit the unique needs of different customer segments, using data to tailor offerings and provide solutions that are relevant and practical.
-            </p>
-
-            <h3>3. Data Overload</h3>
-
-            <p>
-                Growth brings an avalanche of customer information, from browsing behavior to purchase history. Too much data without proper analysis can overwhelm your systems.
-            </p>
-
-            <p>
-                <strong>Example:</strong> An online bookstore recommends cookbooks to a mystery fan because it can't effectively process and prioritize relevant data.
-            </p>
-
-            <p>
-                <strong>Solution:</strong> Invest in smarter analytics tools to process data efficiently, delivering insights that make it easier to answer customer needs quickly and accurately.
-            </p>
-
-            <h2>How Personalization Reduces Effort and Improves Experiences</h2>
-
-            <p>
-                Personalization goes beyond creating a great customer experience — it can significantly reduce the effort required from both your customers and your service teams. By offering tailored answers and preemptive solutions, you can:
-            </p>
-
-            <ul>
-                <li><strong>Minimize Customer Service Inquiries:</strong> When customers receive exactly what they need, whether it's a product recommendation, troubleshooting help, or personalized advice, they're less likely to need further assistance.</li>
-                <li><strong>Streamline Customer Interactions:</strong> Personalized responses save customers time and frustration by cutting out irrelevant information.</li>
-                <li><strong>Ease the Load on Service Teams:</strong> With fewer generic questions and clearer customer expectations, support teams can focus on more complex issues.</li>
-            </ul>
-
-            <p>
-                For example, a well-personalized FAQ or chatbot can anticipate the most likely questions a customer might ask and offer the right solution without human intervention. This improves efficiency for everyone involved.
-            </p>
-
-            <h2>Strategies to Keep Personalization Strong</h2>
-
-            <p>
-                Keeping personalization effective as your business grows requires a thoughtful approach. These strategies will help ensure that personalization remains a cornerstone of your customer experience.
-            </p>
-
-            <h3>1. Upgrade Your Technology</h3>
-
-            <p>
-                Invest in systems that are built to scale. AI-powered tools, real-time data platforms, and advanced CRM systems can help you analyze customer behavior quickly and deliver timely, personalized responses. Make sure your technology stack is integrated, enabling seamless data flow across departments like marketing, sales, and support. This prevents the disconnects that frustrate customers and ensures service requests are resolved faster.
-            </p>
-
-            <h3>2. Focus on Data Quality</h3>
-
-            <p>
-                Collecting data is easy, but ensuring it's accurate and usable is a bigger challenge. Regularly audit and clean your customer data to remove duplicates, outdated information, or irrelevant details. High-quality data allows you to preemptively address customer needs, reducing the likelihood they'll need to ask for help.
-            </p>
-
-            <h3>3. Understand and Segment Your Audience</h3>
-
-            <p>
-                Go deeper than surface-level demographics. Behavioral data — like browsing habits, purchase history, and engagement patterns — offers powerful insights into customer needs and preferences. Use this information to create detailed customer segments and craft solutions that resonate with specific groups. For example, segment your audience by climate, lifestyle, or past interactions to deliver solutions that solve their unique problems.
-            </p>
-
-            <h3>4. Automate for Efficiency</h3>
-
-            <p>
-                Personalization at scale isn't possible without automation. Automated systems can send tailored messages, update recommendations, and handle repetitive tasks like customer follow-ups. These tools allow you to maintain the personal touch across a large audience without requiring constant manual effort. For instance, an automated chatbot can answer common customer questions based on their profile or recent activity, reducing the need for live support.
-            </p>
-
-            <h3>5. Use Feedback to Adapt</h3>
-
-            <p>
-                Personalization is not a one-and-done process. As your customer base grows and evolves, so should your personalization efforts. Actively seek feedback through surveys, reviews, and social media interactions to understand how well your strategies are working. Analyze what's resonating, what's falling flat, and where you can improve. Use this information to refine your messaging, improve recommendations, and ensure your solutions remain relevant to customer needs.
-            </p>
-
-            <h2>Making Personalization Work</h2>
-
-            <p>
-                By investing in the right tools, focusing on your audience, and adapting to their needs, personalization becomes more than a strategy — it's a powerful way to create seamless, efficient, and meaningful customer experiences. When done right, personalization transforms your brand into a trusted partner that customers rely on, time and time again.
-            </p>
-        </div>
-
-        <a href="../index.html" class="back-link">← Back to all articles</a>
-    </article>
+        <a href="articles/growing-pains.html" class="blog-card" data-title="Growing Pains" data-tags="scaling customer-experience b2c">
+            <div class="blog-image">
+                <img src="images/growing-pains.jpg" alt="Growing Pains">
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span>7 min read</span>
+                    <span>•</span>
+                    <span>Nov 24, 2024</span>
+                </div>
+                <h3>Growing Pains: The 5 Big Customer Experience Challenges Every Scaling B2C Business Must Tackle</h3>
+                <p>The critical CX challenges that emerge when your business starts to scale rapidly.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -430,17 +526,17 @@
                 <div class="footer-section">
                     <h4>Navigate</h4>
                     <div class="footer-links">
-                        <a href="../index.html">Home</a>
-                        <a href="../index.html#articles">Articles</a>
-                        <a href="../about.html">About</a>
+                        <a href="index.html">Home</a>
+                        <a href="index.html#articles">Articles</a>
+                        <a href="about.html">About</a>
                         <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <div class="footer-links">
-                        <a href="../impressum.html">Imprint</a>
-                        <a href="../privacy.html">Privacy Policy</a>
+                        <a href="impressum.html">Impressum</a>
+                        <a href="privacy.html">Privacy Policy</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -456,5 +552,42 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const blogGrid = document.getElementById('blogGrid');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            let visibleCount = 0;
+
+            blogCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const tags = card.getAttribute('data-tags').toLowerCase();
+                const text = card.textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || tags.includes(searchTerm) || text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const existingMessage = document.querySelector('.no-results');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            if (visibleCount === 0 && searchTerm !== '') {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'No articles found matching your search.';
+                blogGrid.appendChild(noResults);
+            }
+        });
+    </script>
 </body>
 </html>
