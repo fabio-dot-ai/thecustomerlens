@@ -553,40 +553,55 @@
     </footer>
 
     <script>
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const blogGrid = document.getElementById('blogGrid');
-        const blogCards = document.querySelectorAll('.blog-card');
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const blogGrid = document.getElementById('blogGrid');
+    const blogCards = Array.from(document.querySelectorAll('.blog-card'));
 
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            let visibleCount = 0;
+    // Sort articles by date on page load
+    function sortArticlesByDate() {
+        blogCards.sort((a, b) => {
+            const dateA = new Date(a.querySelector('.blog-meta span:last-child').textContent);
+            const dateB = new Date(b.querySelector('.blog-meta span:last-child').textContent);
+            return dateB - dateA; // Newest first
+        });
+        
+        // Re-append in sorted order
+        blogCards.forEach(card => blogGrid.appendChild(card));
+    }
 
-            blogCards.forEach(card => {
-                const title = card.getAttribute('data-title').toLowerCase();
-                const tags = card.getAttribute('data-tags').toLowerCase();
-                const text = card.textContent.toLowerCase();
+    // Sort on page load
+    sortArticlesByDate();
 
-                if (title.includes(searchTerm) || tags.includes(searchTerm) || text.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        let visibleCount = 0;
 
-            const existingMessage = document.querySelector('.no-results');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
+        blogCards.forEach(card => {
+            const title = card.getAttribute('data-title').toLowerCase();
+            const tags = card.getAttribute('data-tags').toLowerCase();
+            const text = card.textContent.toLowerCase();
 
-            if (visibleCount === 0 && searchTerm !== '') {
-                const noResults = document.createElement('div');
-                noResults.className = 'no-results';
-                noResults.textContent = 'No articles found matching your search.';
-                blogGrid.appendChild(noResults);
+            if (title.includes(searchTerm) || tags.includes(searchTerm) || text.includes(searchTerm)) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
             }
         });
-    </script>
+
+        const existingMessage = document.querySelector('.no-results');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        if (visibleCount === 0 && searchTerm !== '') {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.textContent = 'No articles found matching your search.';
+            blogGrid.appendChild(noResults);
+        }
+    });
+</script>
 </body>
 </html>
