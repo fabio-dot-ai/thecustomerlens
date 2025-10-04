@@ -130,7 +130,8 @@
             color: #2c2c2c;
         }
 
-        .article-content ul {
+        .article-content ul,
+        .article-content ol {
             margin-left: 2rem;
             margin-bottom: 1.5rem;
         }
@@ -141,6 +142,11 @@
 
         .article-content strong {
             font-weight: 600;
+        }
+
+        .article-content em {
+            font-style: italic;
+            color: #6b6b6b;
         }
 
         .back-link {
@@ -233,6 +239,12 @@
             .nav-links {
                 gap: 1rem;
                 font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li:last-child {
+                display: none;
             }
 
             article {
@@ -275,7 +287,7 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../index.html#articles">Articles</a></li>
                 <li><a href="../about.html">About</a></li>
-                <li><a href="../impressum.html">Impressum</a></li>
+                <li><a href="../impressum.html">Imprint</a></li>
             </ul>
         </nav>
     </header>
@@ -297,15 +309,11 @@
                 As businesses grow, it becomes harder to keep things personal with customers. Yet personalization is more important than ever — it's not just a way to make customers feel valued, but a way to create better customer experiences and reduce service effort. Done right, personalization ensures customers get exactly the solutions and answers they need without additional hassle, strengthening trust and making interactions more efficient.
             </p>
 
-            <p>
-                <strong>Why is personalization so powerful?</strong>
-            </p>
+            <h2>Why Personalization Matters</h2>
 
-            <ul>
-                <li>It turns one-size-fits-all approaches into something targeted and relevant.</li>
-                <li>It boosts customer trust by showing you understand their unique needs.</li>
-                <li>It reduces service effort by preemptively addressing customer questions and needs.</li>
-            </ul>
+            <p>
+                Personalization transforms one-size-fits-all approaches into something targeted and relevant. It boosts customer trust by showing you understand their unique needs, and it reduces service effort by preemptively addressing customer questions and needs.
+            </p>
 
             <p>
                 But as businesses scale, personalization gets tricky. Growing audiences, diverse preferences, and mountains of data can overwhelm even the best teams. Let's explore the challenges and how to tackle them.
@@ -313,14 +321,14 @@
 
             <h2>The Challenges of Scaling Personalization</h2>
 
-            <h3>Outdated Technology</h3>
+            <h3>1. Outdated Technology</h3>
 
             <p>
                 Many businesses start with simple tools that work fine when the customer base is small. But as the audience grows, these systems struggle to keep up, leading to inconsistent experiences.
             </p>
 
             <p>
-                <strong>Example:</strong> Imagine a fitness app that initially offers customized workout plans but falters as its user base expands. Data syncing issues across devices result in irrelevant suggestions, frustrating users who expect seamless, personalized answers to their fitness needs.
+                <strong>Example:</strong> A fitness app that initially offers customized workout plans falters as its user base expands. Data syncing issues across devices result in irrelevant suggestions, frustrating users who expect seamless, personalized answers to their fitness needs.
             </p>
 
             <p>
@@ -330,11 +338,7 @@
             <h3>2. Diverse Customer Preferences</h3>
 
             <p>
-                What works for one group might completely miss the mark for another. For instance, a skincare brand expanding into new regions might recommend products without considering local climates.
-            </p>
-
-            <p>
-                <strong>Example:</strong> Heavy moisturizers for humid areas? Customers won't just ignore those suggestions — they might start doubting the brand altogether.
+                What works for one group might completely miss the mark for another. A skincare brand expanding into new regions might recommend products without considering local climates. Heavy moisturizers for humid areas? Customers won't just ignore those suggestions — they might start doubting the brand altogether.
             </p>
 
             <p>
@@ -374,7 +378,7 @@
             <h2>Strategies to Keep Personalization Strong</h2>
 
             <p>
-                Keeping personalization effective as your business grows requires a thoughtful approach. These strategies will help ensure that personalization remains a cornerstone of your customer experience:
+                Keeping personalization effective as your business grows requires a thoughtful approach. These strategies will help ensure that personalization remains a cornerstone of your customer experience.
             </p>
 
             <h3>1. Upgrade Your Technology</h3>
@@ -407,6 +411,8 @@
                 Personalization is not a one-and-done process. As your customer base grows and evolves, so should your personalization efforts. Actively seek feedback through surveys, reviews, and social media interactions to understand how well your strategies are working. Analyze what's resonating, what's falling flat, and where you can improve. Use this information to refine your messaging, improve recommendations, and ensure your solutions remain relevant to customer needs.
             </p>
 
+            <h2>Making Personalization Work</h2>
+
             <p>
                 By investing in the right tools, focusing on your audience, and adapting to their needs, personalization becomes more than a strategy — it's a powerful way to create seamless, efficient, and meaningful customer experiences. When done right, personalization transforms your brand into a trusted partner that customers rely on, time and time again.
             </p>
@@ -434,7 +440,7 @@
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <div class="footer-links">
-                        <a href="../impressum.html">Impressum</a>
+                        <a href="../impressum.html">Imprint</a>
                         <a href="../privacy.html">Privacy Policy</a>
                     </div>
                 </div>
