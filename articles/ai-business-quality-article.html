@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Measuring Transactions. Start Measuring Execution: The AI Business Quality Framework - The Customer Lens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
+            color: #2c2c2c;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #2c2c2c;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6b6b6b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .nav-links a:hover {
+            color: #2c2c2c;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: #2c2c2c;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 3rem;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #2c2c2c;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+        }
+
+        .article-content em {
+            font-style: italic;
+            color: #6b6b6b;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: #ffffff;
+            padding: 4rem 3rem 3rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li:last-child {
+                display: none;
+            }
+
+            article {
+                margin: 2rem auto;
+                padding: 0 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">The Customer Lens</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span>5 min read</span>
+                <span>•</span>
+                <span>Nov 22, 2025</span>
+            </div>
+            <h1>Stop Measuring Transactions. Start Measuring Execution: The AI Business Quality Framework</h1>
+        </div>
+
+        <img src="../images/ai-business-quality.jpg" alt="AI Business Quality Framework" class="article-image">
+
+        <div class="article-content">
+            <p>
+                For decades, business performance has relied on the same familiar playbook. We tracked how long a task took, how many actions were completed, how quickly a customer received a reply, how efficiently a workflow moved from one step to the next. These metrics made perfect sense in a world where humans performed the work.
+            </p>
+
+            <p>
+                Humans take time. Humans have limits. Humans vary in quality, mood, capacity, and expertise. So businesses built entire operating systems around optimizing the transaction. Shave seconds. Add throughput. Squeeze efficiency.
+            </p>
+
+            <p>
+                AI breaks this logic entirely.
+            </p>
+
+            <p>
+                When work can be executed instantly, at near-zero marginal cost, in parallel, without fatigue, and without waiting for someone to pay attention, the old KPIs lose their meaning. The transaction becomes irrelevant.
+            </p>
+
+            <p>
+                Most leaders have not yet fully internalized what this means.
+            </p>
+
+            <p>
+                <strong>AI eliminates the constraints that made transactional metrics useful. When speed is instant and cost is marginal, the only meaningful measurement becomes execution quality.</strong>
+            </p>
+
+            <p>
+                This is not a minor tweak. It is a change in the physics of how work gets done.
+            </p>
+
+            <h2>1. The Unit of Work Has Changed</h2>
+
+            <p>
+                For the past 20 years, business performance has been driven by transactional KPIs such as response time, handle time, cycle time, backlog size, throughput, tasks per hour, and SLA adherence. These metrics existed for one reason. The human performing the task was the bottleneck.
+            </p>
+
+            <p>
+                When a customer service agent takes three minutes to craft a message, response time matters. When a financial analyst spends forty minutes categorizing a complex invoice, cycle time matters. When a marketer spends half a day rewriting product copy, throughput matters.
+            </p>
+
+            <p>
+                AI changes the physics.
+            </p>
+
+            <p>
+                The time dimension collapses. The capacity ceiling disappears. Task volume stops being a real constraint. The marginal cost of another task approaches zero. The variability is no longer human. It is systemic.
+            </p>
+
+            <p>
+                A task that takes a machine a fraction of a second cannot be measured with tools built for tasks that took humans minutes or hours.
+            </p>
+
+            <p>
+                Once the transaction costs nothing, you cannot measure its cost. Once the transaction takes no time, you cannot measure its duration.
+            </p>
+
+            <p>
+                The question shifts away from "How quickly did the system respond?" to a much more important one: <strong>"Did the system perform the right action?"</strong>
+            </p>
+
+            <p>
+                This is where companies are currently blind.
+            </p>
+
+            <h2>2. What Actually Matters Is Whether the System Does the Right Work</h2>
+
+            <p>
+                Speed is now guaranteed. Volume is now cheap. Capacity is now infinite. Performance becomes about something else entirely.
+            </p>
+
+            <p>
+                <strong>Did the AI execute the intended business logic correctly from start to finish?</strong>
+            </p>
+
+            <p>
+                Consider a mid-sized consumer brand selling smart home equipment. Their service organization handles issues that mix technical troubleshooting, warranty decisions, compensation guidelines, refund logic, and replacement rules.
+            </p>
+
+            <p>
+                They introduce an AI assistant to help front-line agents respond faster and more consistently. Within 48 hours, the dashboards look incredible. Reply times fall from minutes to under a second. Case volume processed doubles. The backlog nearly disappears. Leadership celebrates what appears to be a massive efficiency gain.
+            </p>
+
+            <p>
+                Over the next weeks, deeper problems surface.
+            </p>
+
+            <p>
+                The assistant misunderstands subtle customer issues and chooses the wrong resolution path. Warranty logic is applied inconsistently. Troubleshooting steps drift out of order. Some critical actions are skipped entirely. Customers escalate days later because the initial answer, while instant, did not actually solve their problem.
+            </p>
+
+            <p>
+                The team improved the transaction. They neglected the execution.
+            </p>
+
+            <p>
+                This pattern repeats across every function where AI is introduced.
+            </p>
+
+            <h2>3. Why Speed and Volume Lose Their Meaning</h2>
+
+            <p>
+                When a machine performs the task, reply time becomes meaningless. Output volume becomes trivial. Throughput becomes limitless. Cycle time stops being a signal of quality. Average handling time becomes an irrelevant constant.
+            </p>
+
+            <p>
+                These metrics flatten into constants. And a constant cannot guide your decisions.
+            </p>
+
+            <p>
+                What matters now is whether the AI applied the correct rule, interpreted the situation accurately, triggered the right workflow, avoided unnecessary rework, and guided the user to the right resolution.
+            </p>
+
+            <p>
+                The same logic applies in other areas of the business.
+            </p>
+
+            <p>
+                Marketing does not need more content. It needs content that converts. Sales does not need more outreach. It needs accurate qualification. Finance does not need faster categorization. It needs error-free books. HR does not need quicker drafts. It needs compliance and fairness. Operations does not need faster checks. It needs predictable workflows.
+            </p>
+
+            <p>
+                AI solves speed. It does not automatically solve execution.
+            </p>
+
+            <p>
+                Execution is where value is created or destroyed.
+            </p>
+
+            <h2>4. The AI Business Quality Framework</h2>
+
+            <p>
+                If transactional KPIs collapse, what replaces them?
+            </p>
+
+            <p>
+                Companies need a new class of metrics that measure AI systems, not human behavior. Metrics that evaluate execution quality, not task speed.
+            </p>
+
+            <p>
+                The AI Business Quality Framework has three parts.
+            </p>
+
+            <h3>1. Business Outcome Execution (BOE)</h3>
+
+            <p>
+                <em>Did the system deliver the intended business result?</em>
+            </p>
+
+            <p>
+                In our example, this means asking whether the warranty rule was applied correctly, whether customer intent was interpreted accurately, whether the right resolution sequence was followed, and whether an agent had to clean up the output.
+            </p>
+
+            <p>
+                If the outcome is wrong, the performance is poor, no matter how fast the system is.
+            </p>
+
+            <h3>2. System Reliability and Stability (SRS)</h3>
+
+            <p>
+                <em>Does the system behave predictably across time, volume, and context?</em>
+            </p>
+
+            <p>
+                AI can be inconsistent. Minor changes in phrasing or input can lead to different results. Updates can alter behavior in ways nobody expected.
+            </p>
+
+            <p>
+                Companies must track whether the AI performs consistently, stays stable as volume increases, avoids unexplained drift, and produces reproducible results.
+            </p>
+
+            <p>
+                Reliability is now a quality indicator, not speed.
+            </p>
+
+            <h3>3. Risk and Alignment Boundaries (RAB)</h3>
+
+            <p>
+                <em>Does the AI stay within acceptable business, legal, and brand limits?</em>
+            </p>
+
+            <p>
+                Machines can violate rules in seconds that take humans hours to correct. Compensation rules, refund policies, product claims, legal language, tone and voice, safety-sensitive topics. All must be respected.
+            </p>
+
+            <p>
+                Execution is only valuable when it stays inside safe boundaries.
+            </p>
+
+            <h2>5. Why This Shift Matters</h2>
+
+            <p>
+                Right now, companies are adopting AI rapidly while still measuring it with KPIs designed for humans. They celebrate faster responses, more output, larger volumes, and shorter cycles.
+            </p>
+
+            <p>
+                None of these metrics prove that business value was created.
+            </p>
+
+            <p>
+                If a system produces work instantly, speed is no longer a differentiator. Execution quality is.
+            </p>
+
+            <p>
+                Leaders who understand this will scale AI safely and effectively. Those who do not will create hidden risk, rework, and customer frustration at machine speed.
+            </p>
+
+            <h2>What Comes Next</h2>
+
+            <p>
+                This series will break each part of the framework down in detail. We will look at how to measure business outcomes, how to monitor reliability, how to define boundaries, and how to run simple review cycles that keep AI aligned with real business value.
+            </p>
+
+            <p>
+                AI changes how work gets done. To use it well, we must change how work is measured.
+            </p>
+
+            <p>
+                The transaction used to be the unit of performance. Now the system is. And execution, not speed, determines whether AI creates value.
+            </p>
+        </div>
+
+        <a href="../index.html" class="back-link">← Back to all articles</a>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>The Customer Lens</h4>
+                    <p style="color: #b0b0b0; line-height: 1.7;">
+                        Insights on customer experience, business strategy, and how technology reshapes both.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="../index.html#articles">Articles</a>
+                        <a href="../about.html">About</a>
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="../impressum.html">Imprint</a>
+                        <a href="../privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 The Customer Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
