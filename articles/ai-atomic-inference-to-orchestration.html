@@ -98,18 +98,18 @@
             color: #2c2c2c;
         }
 
+        /* Fixed: Removed placeholder styles to allow full image display */
         .article-image {
             width: 100%;
             height: auto;
             margin-bottom: 3rem;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            padding: 4rem 0;
-            font-family: sans-serif;
-            border: 1px solid #e0e0e0;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px; /* Optional: Slight rounding */
         }
 
         .article-content {
@@ -310,7 +310,7 @@
         </div>
 
         <div class="article-image">
-            [Diagram: Atomic Inference vs. Agentic Orchestration]
+            <img src="../images/atomic-inference-to-orchestration.jpg" alt="Visual representation of atomic inference points converging into an agentic orchestration layer">
         </div>
 
         <div class="article-content">
