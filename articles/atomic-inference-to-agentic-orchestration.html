@@ -98,18 +98,10 @@
             color: #2c2c2c;
         }
 
-        /* Fixed: Removed placeholder styles to allow full image display */
         .article-image {
             width: 100%;
             height: auto;
             margin-bottom: 3rem;
-        }
-        
-        .article-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px; /* Optional: Slight rounding */
         }
 
         .article-content {
@@ -228,62 +220,18 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 1rem 0;
-            }
-
-            nav {
-                padding: 0 1.5rem;
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-                letter-spacing: 1px;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-links li:last-child {
-                display: none;
-            }
-
-            article {
-                margin: 2rem auto;
-                padding: 0 1.5rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .article-content {
-                font-size: 1rem;
-            }
-
-            .article-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .article-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            footer {
-                padding: 3rem 1.5rem 2rem;
-            }
+            header { padding: 1rem 0; }
+            nav { padding: 0 1.5rem; flex-direction: column; gap: 1rem; align-items: center; }
+            .logo { font-size: 1.2rem; letter-spacing: 1px; }
+            .nav-links { gap: 1rem; font-size: 0.85rem; flex-wrap: wrap; justify-content: center; }
+            .nav-links li:last-child { display: none; }
+            article { margin: 2rem auto; padding: 0 1.5rem; }
+            h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .article-content h2 { font-size: 1.5rem; }
+            .article-content h3 { font-size: 1.2rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            footer { padding: 3rem 1.5rem 2rem; }
         }
     </style>
 </head>
@@ -309,9 +257,7 @@
             <h1>From Atomic Inference Points to Agentic Orchestration Layers</h1>
         </div>
 
-        <div class="article-image">
-            <img src="../images/atomic-inference-to-orchestration.jpg" alt="Visual representation of atomic inference points converging into an agentic orchestration layer">
-        </div>
+        <img src="../images/atomic-inference-to-orchestration.jpg" alt="Visual representation of atomic inference points converging into an agentic orchestration layer" class="article-image">
 
         <div class="article-content">
             <p>
@@ -326,7 +272,7 @@
                 This series starts from a technical reality that is often obscured by product language: most organizations are deploying <strong>Atomic Inference Points</strong>, not <strong>Agentic Orchestration Layers</strong>. That distinction determines whether intelligence compounds or decays.
             </p>
 
-            <h2>Part 1: Why AI “Wins” Stall Without System Thinking</h2>
+            <h2>Part 1: Why AI "Wins" Stall Without System Thinking</h2>
 
             <p>
                 AI adoption usually begins with a small number of inference calls embedded into existing workflows. A support assistant generates draft responses using ticket history. A sales copilot summarizes accounts from CRM fields. A marketing model produces copy based on campaign metadata.
