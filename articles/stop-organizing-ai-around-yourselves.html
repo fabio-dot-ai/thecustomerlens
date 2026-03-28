@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2: Stop Organizing AI Around Yourselves - The Customer Lens</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
+            color: #2c2c2c;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+        }
+
+        header {
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #2c2c2c;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+
+        .nav-links a {
+            color: #6b6b6b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .nav-links a:hover { color: #2c2c2c; }
+
+        article {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .article-header { margin-bottom: 3rem; }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: #2c2c2c;
+        }
+
+        .article-image { width: 100%; height: auto; margin-bottom: 3rem; }
+
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: #2c2c2c; }
+        .article-content p { margin-bottom: 1.5rem; }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li { margin-bottom: 0.6rem; }
+        .article-content strong { font-weight: 600; }
+        .article-content em { font-style: italic; color: #6b6b6b; }
+
+        /* Legend bullets */
+        .legend-list {
+            list-style: none;
+            margin-left: 0 !important;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .legend-pill {
+            display: inline-block;
+            min-width: 80px;
+            padding: 0.15rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .pill-ai       { background: #c8e6c9; color: #1b5e20; }
+        .pill-guided   { background: #fff3cd; color: #856404; }
+        .pill-supported{ background: #dbeafe; color: #1e3a5f; }
+        .pill-human    { background: #fce4ec; color: #880e4f; }
+
+        /* Callout */
+        .callout {
+            border-left: 3px solid #2c2c2c;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+            background: #f4f4f4;
+        }
+
+        .callout-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #888;
+            margin-bottom: 0.6rem;
+        }
+
+        .callout p { margin-bottom: 0; font-size: 1rem; line-height: 1.7; }
+
+        /* Matrix */
+        .matrix-wrap {
+            overflow-x: auto;
+            margin: 2.5rem -3rem;
+            padding: 0 3rem;
+        }
+
+        .matrix-table {
+            border-collapse: collapse;
+            min-width: 1060px;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.72rem;
+        }
+
+        .matrix-table th {
+            background: #2c2c2c;
+            color: #fff;
+            padding: 0.65rem 0.5rem;
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            border: 1px solid #444;
+            white-space: nowrap;
+        }
+
+        .matrix-table th.col-fn   { text-align: left; min-width: 150px; white-space: normal; }
+
+        tr.owner-row td {
+            background: #3d3d3d;
+            color: #e0e0e0;
+            font-size: 0.68rem;
+            font-style: italic;
+            text-align: center;
+            padding: 0.45rem 0.45rem;
+            border: 1px solid #555;
+            line-height: 1.35;
+            vertical-align: middle;
+        }
+
+        tr.owner-row td.fn-label-owner {
+            background: #2c2c2c;
+            color: #aaa;
+            font-size: 0.68rem;
+            font-style: normal;
+            font-weight: 500;
+            text-align: left;
+            padding-left: 0.7rem;
+            border-right: 2px solid #555;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .matrix-table td {
+            padding: 0.5rem 0.45rem;
+            border: 1px solid #ddd;
+            vertical-align: top;
+            line-height: 1.35;
+        }
+
+        .matrix-table td.fn-label {
+            text-align: left;
+            background: #f4f4f4;
+            font-weight: 600;
+            color: #2c2c2c;
+            padding-left: 0.7rem;
+            border-right: 2px solid #ccc;
+            vertical-align: middle;
+        }
+
+        .matrix-table td.dept-label {
+            text-align: left;
+            background: #efefef;
+            color: #555;
+            font-size: 0.68rem;
+            padding-left: 0.6rem;
+            border-right: 2px solid #ccc;
+            vertical-align: middle;
+            font-style: italic;
+        }
+
+        .matrix-table tr:hover td { filter: brightness(0.96); }
+
+        /* Cell content */
+        .cell { display: flex; flex-direction: column; gap: 0.25rem; min-height: 52px; justify-content: flex-start; }
+
+        .cell-label {
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            border-radius: 2px;
+            font-weight: 700;
+            font-size: 0.65rem;
+            letter-spacing: 0.4px;
+            align-self: flex-start;
+        }
+
+        .cell-example {
+            font-size: 0.65rem;
+            color: #555;
+            line-height: 1.3;
+            font-style: italic;
+        }
+
+        .lbl-ai        { background: #c8e6c9; color: #1b5e20; }
+        .lbl-guided    { background: #fff3cd; color: #856404; }
+        .lbl-supported { background: #dbeafe; color: #1e3a5f; }
+        .lbl-human     { background: #fce4ec; color: #880e4f; }
+
+        td.bg-ai        { background: #f1faf1; }
+        td.bg-guided    { background: #fffdf0; }
+        td.bg-supported { background: #f5f9ff; }
+        td.bg-human     { background: #fff5f7; }
+
+        .matrix-note {
+            font-size: 0.78rem;
+            color: #999;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        .series-note {
+            font-size: 0.9rem;
+            color: #888;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .series-note a { color: #2c2c2c; }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+
+        footer {
+            background: #2c2c2c;
+            color: #fff;
+            padding: 4rem 3rem 3rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content { max-width: 1400px; margin: 0 auto; }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .footer-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover { color: #fff; }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 0; }
+            nav { padding: 0 1.5rem; flex-direction: column; gap: 1rem; align-items: center; }
+            .logo { font-size: 1.2rem; }
+            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            article { margin: 2rem auto; padding: 0 1.5rem; }
+            h1 { font-size: 2rem; }
+            .article-content { font-size: 1rem; }
+            .matrix-wrap { margin: 2rem -1.5rem; padding: 0 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            footer { padding: 3rem 1.5rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">The Customer Lens</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#articles">Articles</a></li>
+            <li><a href="../about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<article>
+    <div class="article-header">
+        <div class="article-meta">
+            <span>13 min read</span>
+            <span>•</span>
+            <span>Part 2 of 3</span>
+            <span>•</span>
+            <span>Mar 28, 2026</span>
+        </div>
+        <h1>Stop Organizing AI Around Yourselves</h1>
+    </div>
+
+    <img src="../images/stop-organizing-ai-around-yourselves.jpg" alt="Stop Organizing AI Around Yourselves" class="article-image">
+
+    <div class="article-content">
+
+        <p>
+            Every department has two kinds of work. The work that makes it irreplaceable - the judgment, the domain authority, the decisions only that function can make with credibility. And the execution work around it: writing the email, running the eligibility check, filing the handoff note, sending the update. The second category exists to support the first. It does not define it.
+        </p>
+
+        <p>
+            Most organizations have never separated those two categories explicitly. They did not need to. Both types of work required people, so both types of work landed inside headcount.
+        </p>
+
+        <p>
+            AI changes that. And <strong>the organizations still organizing their AI deployments around org chart boundaries are missing the actual question - which is not who owns this task, but whether the task is core work or overhead in disguise.</strong>
+        </p>
+
+        <h2>Two Axes, One Diagnostic</h2>
+
+        <p>
+            In Part 1, the problem was fragmentation: inference points multiplying without shared architecture above them. The fix starts by changing the question you ask before deploying AI anywhere.
+        </p>
+
+        <p>
+            The wrong question: <em>which team owns this task?</em><br>
+            The right question: <em>where does this task sit in the customer journey, and what does the department uniquely contribute to it?</em>
+        </p>
+
+        <p>
+            That gives you two axes. <strong>Horizontal: the customer journey</strong> - the sequence of stages a customer moves through from first contact to retention. <strong>Vertical: the business functions</strong> that touch those stages. Plot them against each other and you get a clear picture of where AI absorbs the overhead without touching what the department actually exists to deliver - and where handing something to AI means giving away the thing that makes the function worth having.
+        </p>
+
+        <h2>The Business Functions on the Vertical Axis</h2>
+
+        <p>These are the nine layers assessed in the matrix below. Each is present, to some degree, at every stage of the customer journey:</p>
+
+        <ul>
+            <li><strong>Customer Communication</strong> - any outbound message to the customer: confirmations, updates, responses, proactive outreach, retention messages.</li>
+            <li><strong>SOP / Procedure Execution</strong> - rule-based operational tasks that follow a defined logic: validations, eligibility checks, routing, calculations, status updates.</li>
+            <li><strong>Personalization &amp; Recommendations</strong> - adapting content, offers, or next steps to the individual customer based on behavioral or transactional data.</li>
+            <li><strong>Pricing &amp; Eligibility</strong> - applying pricing rules, discount logic, and access conditions to a specific customer or transaction.</li>
+            <li><strong>Escalation &amp; Complaint Handling</strong> - identifying when a situation exceeds standard handling and routing or resolving it appropriately.</li>
+            <li><strong>Cross-department Coordination</strong> - moving context, decisions, or data between functions so the customer experience stays coherent across handoffs.</li>
+            <li><strong>Process Improvement</strong> - identifying friction, surfacing patterns, and proposing or testing changes to how work gets done.</li>
+            <li><strong>Department Authority Layer</strong> - the decisions that define what each department fundamentally exists to do: pricing strategy, claims judgment, commercial terms, risk assessment. The work that cannot be delegated without the function losing its reason to exist.</li>
+            <li><strong>AI Oversight &amp; Control</strong> - setting decision rules, reviewing supervisor flags, authorizing prompt changes, owning accountability when automated systems produce consequential outputs.</li>
+        </ul>
+
+        <h2>How to Read the Matrix</h2>
+
+        <p>Each cell combines a classification with a concrete example of what that looks like at that journey stage. The four classifications:</p>
+
+        <ul class="legend-list">
+            <li>
+                <span class="legend-pill pill-ai">AI</span>
+                <span>Fully handled by AI. The task is execution - consistent, rule-followable, language-dependent work where human involvement adds process time but not judgment. AI handles this without meaningful loss of value.</span>
+            </li>
+            <li>
+                <span class="legend-pill pill-guided">Guided</span>
+                <span>AI does the analytical work and drafts the output. A human reviews and approves before it reaches the customer or triggers a consequential action. The risk of a wrong output exceeds what unsupervised automation should own.</span>
+            </li>
+            <li>
+                <span class="legend-pill pill-supported">Supported</span>
+                <span>A human owns the decision and the outcome. AI provides relevant context, drafts, or signals to make that human faster and more consistent - but does not drive the conclusion.</span>
+            </li>
+            <li>
+                <span class="legend-pill pill-human">Human</span>
+                <span>Core domain authority. This is what the department uniquely exists to contribute: judgment, accountability, strategic discretion. Delegating it to AI means the organization loses something real - not just a process step, but the source of value.</span>
+            </li>
+        </ul>
+
+        <p>
+            One distinction worth making explicit before reading the table. <strong>Customer Service</strong> refers to the operational team handling tickets, complaints, refunds and direct interactions - the people in the queue. <strong>CX</strong> refers to the broader Customer Experience discipline: the function that owns journey design, loyalty strategy, quality standards and the end-to-end customer relationship. In many organizations these sit inside the same department. Strategically, they are doing different work - and the matrix treats them differently.
+        </p>
+
+        <div class="matrix-wrap">
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th class="col-fn">Business Function</th>
+                        <th>Awareness</th>
+                        <th>Consideration</th>
+                        <th>Purchase</th>
+                        <th>Post-purchase</th>
+                        <th>Support</th>
+                        <th>Return / Refund</th>
+                        <th>Loyalty</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Journey stage owners -->
+                    <tr class="owner-row">
+                        <td class="fn-label-owner">Stage Owner</td>
+                        <td>Marketing<br>+ Product</td>
+                        <td>Product<br>+ Marketing</td>
+                        <td>Product<br>+ Revenue</td>
+                        <td>Ops<br>+ Product</td>
+                        <td>Customer Service<br>+ Product</td>
+                        <td>Customer Service<br>+ Finance</td>
+                        <td>CX<br>+ Marketing</td>
+                    </tr>
+
+                    <!-- Customer Communication -->
+                    <tr>
+                        <td class="fn-label">Customer Communication</td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Campaign reply handling</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Product Q&amp;A chat responses</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Order confirmation &amp; receipt</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Shipping updates &amp; delays</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Draft reply, agent reviews &amp; sends</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Empathetic message, reviewed before send</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Re-engagement sequences</span></div></td>
+                    </tr>
+
+                    <!-- SOP Execution -->
+                    <tr>
+                        <td class="fn-label">SOP / Procedure Execution</td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">GDPR consent &amp; cookie logic</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Inventory availability check</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Address validation, payment retry</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Tracking dispatch &amp; status sync</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Ticket classification &amp; routing</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Refund eligibility check</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Points balance calculation</span></div></td>
+                    </tr>
+
+                    <!-- Personalization -->
+                    <tr>
+                        <td class="fn-label">Personalization &amp; Recommendations</td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Lookalike audience targeting</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Browse-based product recommendations</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Upsell &amp; cross-sell at checkout</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Next purchase suggestions</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Retention offer based on history, reviewed</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Recovery offer, agent approves before send</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Tier-based reward messaging</span></div></td>
+                    </tr>
+
+                    <!-- Pricing & Eligibility -->
+                    <tr>
+                        <td class="fn-label">Pricing &amp; Eligibility</td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Promo rules applied, Revenue reviews</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Dynamic pricing display, approved</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Discount eligibility, human confirms</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Price adjustment claim, agent decides</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Goodwill credit amount, human approves</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Refund amount calculated, reviewed</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Reward tier threshold applied</span></div></td>
+                    </tr>
+
+                    <!-- Escalation -->
+                    <tr>
+                        <td class="fn-label">Escalation &amp; Complaint Handling</td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">Spam / abuse auto-filter</span></div></td>
+                        <td class="bg-ai"><div class="cell"><span class="cell-label lbl-ai">AI</span><span class="cell-example">FAQ deflection before agent queue</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Payment failure escalation path</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Delay complaint routed, agent reviews</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Complex case summary, agent owns outcome</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Dispute context compiled, human leads</span></div></td>
+                        <td class="bg-guided"><div class="cell"><span class="cell-label lbl-guided">Guided</span><span class="cell-example">Churn risk flagged, retention team reviews</span></div></td>
+                    </tr>
+
+                    <!-- Cross-dept Coordination -->
+                    <tr>
+                        <td class="fn-label">Cross-department Coordination</td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Campaign brief shared across teams</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Product &amp; marketing handoff summary</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Order exception alert to Ops</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Fulfillment delay flagged to Customer Service</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Case context passed to Finance</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Return status synced across systems</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Segment data shared with Product</span></div></td>
+                    </tr>
+
+                    <!-- Process Improvement -->
+                    <tr>
+                        <td class="fn-label">Process Improvement</td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Drop-off pattern surfaced</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Conversion gap flagged</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Checkout friction identified</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Delay root cause report generated</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Resolution time analysis produced</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Return reason clustering</span></div></td>
+                        <td class="bg-supported"><div class="cell"><span class="cell-label lbl-supported">Supported</span><span class="cell-example">Churn predictor model output</span></div></td>
+                    </tr>
+
+                    <!-- Department Authority Layer -->
+                    <tr>
+                        <td class="fn-label">Department Authority Layer</td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Brand positioning decisions</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Assortment &amp; merchandising strategy</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Commercial terms &amp; pricing strategy</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Carrier &amp; SLA commitments</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Policy exceptions &amp; claims judgment</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Dispute resolution authority</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Loyalty program design &amp; rules</span></div></td>
+                    </tr>
+
+                    <!-- AI Oversight -->
+                    <tr>
+                        <td class="fn-label">AI Oversight &amp; Control</td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Campaign AI prompt governance</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Recommendation model review</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Checkout logic accountability</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Fulfillment AI audit ownership</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Supervisor flag review &amp; response</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Refund logic sign-off</span></div></td>
+                        <td class="bg-human"><div class="cell"><span class="cell-label lbl-human">Human</span><span class="cell-example">Retention AI decision rules</span></div></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <p class="matrix-note">Classifications are indicative. Exact placement depends on industry, regulatory context, and risk appetite.</p>
+        </div>
+
+        <h2>Why the Top Rows Are So Green</h2>
+
+        <p>
+            Customer Communication and SOP Execution are AI across almost the entire journey. It is worth being precise about why - because it is not simply that AI is "good at" these tasks in some general sense. It is that the skills these roles have historically required are exactly what large language models are architecturally built around.
+        </p>
+
+        <p>
+            Think about what a strong customer communication role historically needed:
+        </p>
+
+        <ul>
+            <li><strong>Multilingual fluency</strong> - the ability to write clearly and correctly across multiple languages, adapting tone per market</li>
+            <li><strong>Consistency at scale</strong> - applying the same standards across hundreds of daily interactions without drift</li>
+            <li><strong>Procedural recall</strong> - knowing which policy applies to which situation and translating it into a customer-friendly message</li>
+            <li><strong>24/7 availability</strong> - being present at the moment the customer needs a response, not the next business day</li>
+            <li><strong>Tone calibration</strong> - adjusting warmth, urgency, and formality based on context</li>
+        </ul>
+
+        <p>
+            These are not human strengths. They are human constraints that organizations built processes around. AI does not just replicate them - it removes the constraints entirely. A model does not get tired at message 400. It does not lose consistency across languages. It does not miss a procedure because it was on holiday last week when the policy changed.
+        </p>
+
+        <p>
+            The green cells are green not because the work is unimportant but because <strong>the characteristics that made humans necessary for this work are no longer the binding constraint.</strong> Keeping people in those roles is not a quality decision - it is a habit carried over from a different set of technical conditions.
+        </p>
+
+        <h2>The Columns That Should Make You Uncomfortable</h2>
+
+        <p>
+            Look at the Support and Return columns. They carry more Guided and Supported cells than any other stage. That is not coincidental. These are the moments where a customer has already had something go wrong - where the emotional stakes are higher, the liability exposure is more direct, and the consequences of an AI error are not an inconvenience but a relationship damage or a legal exposure.
+        </p>
+
+        <p>
+            The journey does not just tell you what functions AI can handle. <strong>It tells you where the risk profile changes, and therefore where unsupervised automation needs to give way to human judgment.</strong> The org chart never showed you that. It showed you who owned the function - not what the function cost when it went wrong at a specific point in the customer experience.
+        </p>
+
+        <h2>The Bottom Two Rows Do Not Move</h2>
+
+        <p>
+            Department Authority Layer and AI Oversight are Human across the entire journey. This is not caution. It is the logical end of the same reasoning that makes the top rows green.
+        </p>
+
+        <p>
+            If AI absorbs all execution work from a Revenue team - eligibility checks, discount logic, pricing display - what remains is the work that defines what a Revenue function is for: deciding where to hold margin, where to sacrifice it, how to respond to competitive pressure. <strong>That judgment cannot be delegated to an inference point without the organization losing its ability to make deliberate commercial decisions.</strong> The function no longer exists as a strategic asset - it becomes a governance wrapper around machine outputs.
+        </p>
+
+        <p>
+            The same logic applies to AI Oversight. As the green area grows, so does the need for humans whose job is not to execute within the AI layer, but to own its behavior - setting decision rules, reviewing supervisor flags, absorbing accountability when automated systems produce consequential outputs at scale. That role does not disappear as AI matures. It becomes more important.
+        </p>
+
+        <div class="callout">
+            <div class="callout-label">Where This Gets Tricky</div>
+            <p>The Consistency Supervisor sits at the handoff points the matrix makes visible - specifically the transitions between AI and Guided cells, and between Guided and Supported ones. Each of those transitions is a potential context collapse: a point where one inference point hands off to another and semantic state either carries forward or restarts from scratch. Part 3 goes into how to build and operate the supervisor at those exact points. For now the important observation is this: <strong>the journey map tells you precisely where to deploy it. You do not need to monitor everything - you need to monitor the transitions.</strong></p>
+        </div>
+
+        <h2>What the Framework Is Actually Asking</h2>
+
+        <p>
+            Every department has a version of the same question to answer: of all the work we currently do, what is the work that makes us irreplaceable? What would be lost - not in headcount terms, but in value terms - if everything else were handled by AI?
+        </p>
+
+        <p>
+            The matrix is a tool for making that question concrete rather than philosophical. When you plot your functions against the journey and start classifying cells, you will find that the Human area is smaller than most departments expect, and the AI area is larger than most leaders are comfortable admitting. That discomfort is worth sitting with. <strong>It is pointing at the gap between the structure the organization has and the structure the technology now makes possible.</strong>
+        </p>
+
+        <p>
+            What sits in the Human cells - Department Authority Layer and AI Oversight - is not overhead. It is the core. Everything above it, in the green and yellow cells, is the overhead that has historically been inseparable from it. AI is separating them. The organizations that recognize that early are the ones that will redesign around their actual value rather than defend the structure that used to contain it.
+        </p>
+
+        <h2>What Part 3 Covers</h2>
+
+        <p>
+            The matrix answers where AI should operate and where it should not. Part 3 addresses what happens once it is running across all those cells simultaneously - how the Consistency Supervisor threads through the transition points, how to govern the Guided cells without creating a human bottleneck that defeats the purpose of automation, and how to detect when the architecture is quietly degrading before the damage reaches the customer.
+        </p>
+
+        <p class="series-note">
+            <em>Part 2 of a three-part series. <a href="why-ai-wins-stall-without-system-thinking.html">Read Part 1 here</a> or <a href="atomic-inference-to-agentic-orchestration.html">the full series overview here.</a></em>
+        </p>
+
+    </div>
+
+    <a href="../index.html" class="back-link">← Back to all articles</a>
+</article>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>The Customer Lens</h4>
+                <p style="color: #b0b0b0; line-height: 1.7;">Insights on customer experience, business strategy, and design thinking.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigate</h4>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#articles">Articles</a>
+                    <a href="../about.html">About</a>
+                    <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <div class="footer-links">
+                    <a href="../impressum.html">Imprint</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Customer Lens. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
