@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             background: #fafafa;
@@ -18,7 +17,6 @@
             line-height: 1.8;
             letter-spacing: 0.3px;
         }
-
         header {
             background: #ffffff;
             border-bottom: 1px solid #e0e0e0;
@@ -29,7 +27,6 @@
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.98);
         }
-
         nav {
             max-width: 1400px;
             margin: 0 auto;
@@ -38,7 +35,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-size: 1.75rem;
             font-weight: 400;
@@ -48,13 +44,11 @@
             text-transform: uppercase;
             font-family: 'Georgia', serif;
         }
-
         .nav-links {
             display: flex;
             gap: 3rem;
             list-style: none;
         }
-
         .nav-links a {
             color: #6b6b6b;
             text-decoration: none;
@@ -64,18 +58,15 @@
             text-transform: uppercase;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
-
         .nav-links a:hover {
             color: #2c2c2c;
         }
-
         .hero {
             max-width: 1400px;
             margin: 5rem auto 3rem;
             padding: 0 3rem;
             text-align: center;
         }
-
         .hero h1 {
             font-size: 4rem;
             font-weight: 300;
@@ -84,20 +75,17 @@
             line-height: 1.2;
             color: #2c2c2c;
         }
-
         .hero p {
             font-size: 1.1rem;
             color: #6b6b6b;
             margin-bottom: 2.5rem;
             font-weight: 300;
         }
-
         .search-bar {
             max-width: 600px;
             margin: 0 auto;
             position: relative;
         }
-
         .search-bar input {
             width: 100%;
             padding: 0.9rem 1.5rem;
@@ -109,16 +97,13 @@
             background: #ffffff;
             font-family: Georgia, serif;
         }
-
         .search-bar input:focus {
             border-color: #2c2c2c;
         }
-
         .search-bar input::placeholder {
             color: #999;
             font-style: italic;
         }
-
         .blog-grid {
             max-width: 1400px;
             margin: 4rem auto;
@@ -127,7 +112,6 @@
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 3rem;
         }
-
         .blog-card {
             background: #ffffff;
             overflow: hidden;
@@ -138,12 +122,10 @@
             color: inherit;
             display: block;
         }
-
         .blog-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         }
-
         .blog-image {
             width: 100%;
             height: 300px;
@@ -155,17 +137,14 @@
             overflow: hidden;
             position: relative;
         }
-
         .blog-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .blog-content {
             padding: 2rem 2rem 2.5rem;
         }
-
         .blog-meta {
             display: flex;
             gap: 1rem;
@@ -176,7 +155,6 @@
             letter-spacing: 1px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
-
         .blog-card h3 {
             font-size: 1.6rem;
             margin-bottom: 1rem;
@@ -184,14 +162,12 @@
             font-weight: 400;
             line-height: 1.4;
         }
-
         .blog-card p {
             color: #6b6b6b;
             line-height: 1.7;
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
         }
-
         .read-more {
             color: #2c2c2c;
             text-decoration: none;
@@ -205,30 +181,25 @@
             letter-spacing: 1px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
-
         .read-more:hover {
             gap: 0.85rem;
         }
-
         footer {
             background: #2c2c2c;
             color: #ffffff;
             padding: 4rem 3rem 3rem;
             margin-top: 6rem;
         }
-
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
         }
-
         .footer-section h4 {
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -237,24 +208,20 @@
             font-weight: 400;
             color: #ffffff;
         }
-
         .footer-links {
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
         }
-
         .footer-links a {
             color: #b0b0b0;
             text-decoration: none;
             transition: color 0.3s ease;
             font-size: 0.9rem;
         }
-
         .footer-links a:hover {
             color: #ffffff;
         }
-
         .footer-bottom {
             border-top: 1px solid #444;
             padding-top: 2rem;
@@ -262,71 +229,58 @@
             color: #888;
             font-size: 0.85rem;
         }
-
         .no-results {
             text-align: center;
             padding: 4rem 2rem;
             color: #999;
             font-style: italic;
         }
-
         @media (max-width: 768px) {
             header {
                 padding: 1rem 0;
             }
-
             nav {
                 padding: 0 1.5rem;
                 flex-direction: column;
                 gap: 1rem;
                 align-items: center;
             }
-
             .logo {
                 font-size: 1.2rem;
                 letter-spacing: 1px;
             }
-
             .nav-links {
                 gap: 1rem;
                 font-size: 0.85rem;
             }
-
             .hero {
                 margin: 2rem auto 2rem;
                 padding: 0 1.5rem;
             }
-
             .hero h1 {
                 font-size: 2rem;
                 margin-bottom: 1rem;
             }
-
             .hero p {
                 font-size: 1rem;
                 margin-bottom: 1.5rem;
             }
-
             .search-bar {
                 max-width: 100%;
             }
-
             .blog-grid {
                 grid-template-columns: 1fr;
                 padding: 0 1.5rem;
                 margin: 2rem auto;
                 gap: 2rem;
             }
-
             .blog-card h3 {
                 font-size: 1.3rem;
             }
-
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
             footer {
                 padding: 3rem 1.5rem 2rem;
             }
@@ -344,7 +298,6 @@
             </ul>
         </nav>
     </header>
-
     <section class="hero">
         <h1>Insights Through the Customer Lens</h1>
         <p>Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure</p>
@@ -352,8 +305,22 @@
             <input type="text" id="searchInput" placeholder="Search articles...">
         </div>
     </section>
-
     <main class="blog-grid" id="blogGrid">
+<a href="articles/agentic-ai-common-sense.html" class="blog-card" data-title="Agentic AI: Common Sense Will Be Applied" data-tags="ai agentic accountability customer experience automation">
+    <div class="blog-image">
+        <img src="images/agentic-ai-common-sense.jpg" alt="Agentic AI: Common Sense Will Be Applied">
+    </div>
+    <div class="blog-content">
+        <div class="blog-meta">
+            <span>7 min read</span>
+            <span>&bull;</span>
+            <span>Jun 13, 2026</span>
+        </div>
+        <h3>Agentic AI: Common Sense Will Be Applied</h3>
+        <p>The sentence every leader says when they greenlight an agent. It has no subject. The real question is not whether an agent can decide, but who is accountable when it does.</p>
+        <span class="read-more">Read Article &rarr;</span>
+    </div>
+</a>
 <a href="articles/the-consistency-supervisor.html" class="blog-card" data-title="The Consistency Supervisor" data-tags="ai systems governance customer experience operations">
     <div class="blog-image">
         <img src="images/the-consistency-supervisor.jpg" alt="The Consistency Supervisor">
@@ -361,15 +328,14 @@
     <div class="blog-content">
         <div class="blog-meta">
             <span>14 min read</span>
-            <span>•</span>
+            <span>&bull;</span>
             <span>Apr 18, 2026</span>
         </div>
         <h3>The Consistency Supervisor</h3>
         <p>As AI spreads across the journey, the real risk is not isolated bad outputs but systemic drift. Without a consistency layer, channels, teams, and workflows start behaving like different companies.</p>
-        <span class="read-more">Read Article →</span>
+        <span class="read-more">Read Article &rarr;</span>
     </div>
 </a>
-
 <a href="articles/stop-organizing-ai-around-yourselves.html" class="blog-card" data-title="Stop Organizing AI Around Yourselves" data-tags="ai architecture technical engineering">
     <div class="blog-image">
         <img src="images/stop-organizing-ai-around-yourselves.jpg" alt="Stop Organizing AI Around Yourselves">
@@ -377,12 +343,12 @@
     <div class="blog-content">
         <div class="blog-meta">
             <span>13 min read</span>
-            <span>•</span>
+            <span>&bull;</span>
             <span>Mar 28, 2026</span>
         </div>
         <h3>Stop Organizing AI Around Yourselves</h3>
         <p>Most organizations deploy AI inside org chart boundaries. The customer journey is the right architecture - and the difference determines what AI can actually own.</p>
-        <span class="read-more">Read Article →</span>
+        <span class="read-more">Read Article &rarr;</span>
     </div>
 </a>
         <a href="articles/why-ai-wins-stall-without-system-thinking.html" class="blog-card" data-title="Why AI &quot;Wins&quot; Stall Without System Thinking" data-tags="ai architecture technical engineering">
@@ -392,12 +358,12 @@
     <div class="blog-content">
         <div class="blog-meta">
             <span>14 min read</span>
-            <span>•</span>
+            <span>&bull;</span>
             <span>Mar 14, 2026</span>
         </div>
         <h3>Why AI "Wins" Stall Without System Thinking</h3>
-        <p>Atomic inference points generate local wins. But without prompt governance, consistency supervision, and clear accountability, those wins don't compound — they fragment.</p>
-        <span class="read-more">Read Article →</span>
+        <p>Atomic inference points generate local wins. But without prompt governance, consistency supervision, and clear accountability, those wins don't compound - they fragment.</p>
+        <span class="read-more">Read Article &rarr;</span>
     </div>
 </a>
         <a href="articles/atomic-inference-to-agentic-orchestration.html" class="blog-card" data-title="From Atomic Inference Points to Agentic Orchestration Layers" data-tags="ai architecture technical engineering">
@@ -407,15 +373,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>8 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Jan 27, 2026</span>
                 </div>
                 <h3>From Atomic Inference Points to Agentic Orchestration Layers</h3>
                 <p>Most organizations are deploying atomic inference points, not agentic orchestration layers. That distinction determines whether intelligence compounds or decays.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/ai-risk-boundaries.html" class="blog-card" data-title="Risk and Alignment Boundaries (RAB): Engineering Negative Constraints" data-tags="ai risk engineering">
         <div class="blog-image">
             <img src="images/ai-risk-architecture.jpg" alt="Risk and Alignment Boundaries (RAB)">
@@ -423,15 +388,15 @@
         <div class="blog-content">
             <div class="blog-meta">
                 <span>9 min read</span>
-                <span>•</span>
+                <span>&bull;</span>
                 <span>Jan 12, 2026</span>
             </div>
             <h3>Risk and Alignment Boundaries (RAB): Engineering Negative Constraints</h3>
-            <p>The feature that creates value in AI—probabilistic generation—is also what creates risk. Learn how to implement a 3-layer defense architecture to impose deterministic constraints on your models.</p>
-            <span class="read-more">Read Article →</span>
+            <p>The feature that creates value in AI - probabilistic generation - is also what creates risk. Learn how to implement a 3-layer defense architecture to impose deterministic constraints on your models.</p>
+            <span class="read-more">Read Article &rarr;</span>
         </div>
     </a>
-       
+
         <a href="articles/ai-reliability.html" class="blog-card" data-title="System Reliability and Stability (SRS): How to Scale AI Without Scaling Chaos" data-tags="ai reliability engineering">
     <div class="blog-image">
         <img src="images/ai-reliability.jpg" alt="System Reliability and Stability (SRS)">
@@ -439,12 +404,12 @@
     <div class="blog-content">
         <div class="blog-meta">
             <span>5 min read</span>
-            <span>•</span>
+            <span>&bull;</span>
             <span>Dec 29, 2025</span>
         </div>
         <h3>System Reliability and Stability (SRS): How to Scale AI Without Scaling Chaos</h3>
         <p>Generative AI breaks the promise of deterministic software. Learn why "uptime" is no longer enough and how to implement a Reliability Layer to stop your AI from drifting and hallucinating in production.</p>
-        <span class="read-more">Read Article →</span>
+        <span class="read-more">Read Article &rarr;</span>
     </div>
 </a>
          <a href="articles/business-outcome-execution.html" class="blog-card" data-title="Business Outcome Execution: Why AI Performance Is About Results, Not Activity" data-tags="ai strategy measurement">
@@ -454,12 +419,12 @@
     <div class="blog-content">
         <div class="blog-meta">
             <span>6 min read</span>
-            <span>•</span>
+            <span>&bull;</span>
             <span>Dec 15, 2025</span>
         </div>
         <h3>Business Outcome Execution: Why AI Performance Is About Results, Not Activity</h3>
         <p>Once teams accept that speed, volume, and throughput no longer say much about AI performance, an uncomfortable silence follows. If we cannot rely on reply times or activity counts anymore, what exactly should we be looking at?</p>
-        <span class="read-more">Read Article →</span>
+        <span class="read-more">Read Article &rarr;</span>
     </div>
 </a>
         <a href="articles/ai-business-quality.html" class="blog-card" data-title="Stop Measuring Transactions. Start Measuring Execution: The AI Business Quality Framework" data-tags="ai strategy measurement">
@@ -469,12 +434,12 @@
     <div class="blog-content">
         <div class="blog-meta">
             <span>5 min read</span>
-            <span>•</span>
+            <span>&bull;</span>
             <span>Nov 22, 2025</span>
         </div>
         <h3>Stop Measuring Transactions. Start Measuring Execution: The AI Business Quality Framework</h3>
         <p>AI eliminates the constraints that made transactional metrics useful. When speed is instant and cost is marginal, the only meaningful measurement becomes execution quality.</p>
-        <span class="read-more">Read Article →</span>
+        <span class="read-more">Read Article &rarr;</span>
     </div>
     </a>
         <a href="articles/human-service.html" class="blog-card" data-title="When AI Blocks the Path to Great Human Service" data-tags="ai customer-experience strategy">
@@ -484,15 +449,15 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>8 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Oct 5, 2025</span>
                 </div>
                 <h3>When AI Blocks the Path to Great Human Service</h3>
                 <p>AI is rewriting customer service, but many brands find something quietly eroding: the warmth and trust that make service feel human. Learn how to use AI without losing your human edge.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-       
+
         <a href="articles/when-smart-ai-hurts-your-brand.html" class="blog-card" data-title="When Smart AI Hurts Your Brand" data-tags="ai brand customer-experience">
             <div class="blog-image">
                 <img src="images/ai-brand.jpg" alt="When Smart AI Hurts Your Brand">
@@ -500,15 +465,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>6 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Sep 4, 2025</span>
                 </div>
                 <h3>When Smart AI Hurts Your Brand</h3>
-                <p>AI can boost efficiency — but it can also hurt your brand if it ignores your promise, personality and values.</p>
-                <span class="read-more">Read Article →</span>
+                <p>AI can boost efficiency - but it can also hurt your brand if it ignores your promise, personality and values.</p>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/same-goals.html" class="blog-card" data-title="Same Goals Same Results" data-tags="ai differentiation strategy">
             <div class="blog-image">
                 <img src="images/same-goals.jpg" alt="Same Goals Same Results">
@@ -516,15 +480,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>5 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Aug 1, 2025</span>
                 </div>
                 <h3>Same Goals, Same Results: Why Optimizing Can Make You Forgettable</h3>
                 <p>When everyone optimizes for the same metrics, brands become indistinguishable.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/unique-to-uniform.html" class="blog-card" data-title="From Unique to Uniform" data-tags="ai brand differentiation">
             <div class="blog-image">
                 <img src="images/unique-to-uniform.jpg" alt="From Unique to Uniform">
@@ -532,15 +495,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>5 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Jun 30, 2025</span>
                 </div>
                 <h3>From Unique to Uniform: How AI Makes Brands Sound the Same</h3>
                 <p>The homogenization of brand voice in the age of AI-generated content.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/generic-at-scale.html" class="blog-card" data-title="Generic at Scale" data-tags="ai customer-experience differentiation">
             <div class="blog-image">
                 <img src="images/generic-at-scale.jpg" alt="Generic at Scale">
@@ -548,15 +510,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>6 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>May 30, 2025</span>
                 </div>
                 <h3>Generic at Scale: How Over-Reliance on AI Risks Your CX Differentiation</h3>
                 <p>Scaling with AI without losing what makes your customer experience unique.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/operational-complexity.html" class="blog-card" data-title="Operational Complexity vs Simplicity" data-tags="operations customer-experience complexity">
             <div class="blog-image">
                 <img src="images/operational-complexity.jpg" alt="Operational Complexity">
@@ -564,15 +525,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>5 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Apr 29, 2025</span>
                 </div>
                 <h3>Growing Operational Complexity vs. Customer Desire for Simplicity</h3>
                 <p>As your business grows more complex, customers want things simpler. Here's how to bridge the gap.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/black-box-problem.html" class="blog-card" data-title="The Black Box Problem: Do You Know What Your AI Is Saying?" data-tags="ai customer-experience quality-assurance governance">
             <div class="blog-image">
                 <img src="images/black-box-problem.jpg" alt="The Black Box Problem">
@@ -580,15 +540,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>12 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Oct 26, 2025</span>
                 </div>
                 <h3>The Black Box Problem: Do You Know What Your AI Is Saying?</h3>
                 <p>Your AI speaks for your brand every day. But do you really know what it's saying? Learn how to build visibility, control, and accountability into your AI-powered customer experience.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/adapting-feedback.html" class="blog-card" data-title="Adapting to Rapid Feedback" data-tags="customer-experience feedback real-time">
             <div class="blog-image">
                 <img src="images/adapting-feedback.jpg" alt="Adapting to Rapid Feedback">
@@ -596,15 +555,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>6 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Mar 30, 2025</span>
                 </div>
                 <h3>Adapting to Rapid Feedback and Expectations: Thriving in a Real-Time World</h3>
                 <p>How to build systems that respond to customer feedback at the speed they expect.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/balancing-automation.html" class="blog-card" data-title="Balancing Automation and Human Interaction" data-tags="automation customer-experience human-touch">
             <div class="blog-image">
                 <img src="images/balancing-automation.jpg" alt="Balancing Automation">
@@ -612,15 +570,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>6 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Feb 23, 2025</span>
                 </div>
                 <h3>Balancing Automation and Human Interaction: The Key to Exceptional Customer Experiences</h3>
                 <p>Finding the right mix between efficiency and empathy in customer support.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/consistent-support.html" class="blog-card" data-title="Consistent Customer Support Across Channels" data-tags="omnichannel customer-experience support">
             <div class="blog-image">
                 <img src="images/consistent-support.jpg" alt="Consistent Support">
@@ -628,15 +585,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>5 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Jan 20, 2025</span>
                 </div>
                 <h3>Consistent Customer Support Across Channels: Overcoming Common Challenges</h3>
                 <p>Delivering seamless experiences whether customers reach you by email, phone, chat, or social media.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/personalization-scale.html" class="blog-card" data-title="Personalization at Scale" data-tags="personalization customer-experience scale">
             <div class="blog-image">
                 <img src="images/personalization-scale.jpg" alt="Personalization at Scale">
@@ -644,15 +600,14 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>6 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Dec 10, 2024</span>
                 </div>
                 <h3>Personalization at Scale: Solving Needs, Reducing Effort, and Smarter Customer Experiences</h3>
                 <p>How to make every customer feel understood without sacrificing operational efficiency.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
-
         <a href="articles/growing-pains.html" class="blog-card" data-title="Growing Pains" data-tags="scaling customer-experience b2c">
             <div class="blog-image">
                 <img src="images/growing-pains.jpg" alt="Growing Pains">
@@ -660,16 +615,15 @@
             <div class="blog-content">
                 <div class="blog-meta">
                     <span>7 min read</span>
-                    <span>•</span>
+                    <span>&bull;</span>
                     <span>Nov 24, 2024</span>
                 </div>
                 <h3>Growing Pains: The 5 Big Customer Experience Challenges Every Scaling B2C Business Must Tackle</h3>
                 <p>The critical CX challenges that emerge when your business starts to scale rapidly.</p>
-                <span class="read-more">Read Article →</span>
+                <span class="read-more">Read Article &rarr;</span>
             </div>
         </a>
     </main>
-
     <footer>
         <div class="footer-content">
             <div class="footer-grid">
@@ -702,41 +656,30 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 The Customer Lens. All rights reserved.</p>
+                <p>&copy; 2026 The Customer Lens. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
     <script>
-    // Search functionality
     const searchInput = document.getElementById('searchInput');
     const blogGrid = document.getElementById('blogGrid');
     const blogCards = Array.from(document.querySelectorAll('.blog-card'));
-
-    // Sort articles by date on page load
     function sortArticlesByDate() {
         blogCards.sort((a, b) => {
             const dateA = new Date(a.querySelector('.blog-meta span:last-child').textContent);
             const dateB = new Date(b.querySelector('.blog-meta span:last-child').textContent);
-            return dateB - dateA; // Newest first
+            return dateB - dateA;
         });
-        
-        // Re-append in sorted order
         blogCards.forEach(card => blogGrid.appendChild(card));
     }
-
-    // Sort on page load
     sortArticlesByDate();
-
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         let visibleCount = 0;
-
         blogCards.forEach(card => {
             const title = card.getAttribute('data-title').toLowerCase();
             const tags = card.getAttribute('data-tags').toLowerCase();
             const text = card.textContent.toLowerCase();
-
             if (title.includes(searchTerm) || tags.includes(searchTerm) || text.includes(searchTerm)) {
                 card.style.display = 'block';
                 visibleCount++;
@@ -744,12 +687,10 @@
                 card.style.display = 'none';
             }
         });
-
         const existingMessage = document.querySelector('.no-results');
         if (existingMessage) {
             existingMessage.remove();
         }
-
         if (visibleCount === 0 && searchTerm !== '') {
             const noResults = document.createElement('div');
             noResults.className = 'no-results';
