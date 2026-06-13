@@ -6,187 +6,149 @@
     <title>Agentic AI: Common Sense Will Be Applied - The Customer Lens</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root{
+            --paper:#fafafa; --ink:#2c2c2c; --soft:#6b6b6b; --mut:#999;
+            --line:#e0e0e0; --line2:#f0f0f0;
+            --gold:#C28A1E; --gold-soft:#F6EDD6; --gold-bright:#E8B23A;
+        }
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background: #fafafa;
-            color: #2c2c2c;
-            line-height: 1.8;
-            letter-spacing: 0.3px;
+            background: var(--paper); color: var(--ink); line-height: 1.8; letter-spacing: 0.3px;
         }
         header {
-            border-bottom: 1px solid #e0e0e0;
-            padding: 2rem 0;
-            position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--line); padding: 2rem 0; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.98);
         }
-        nav {
-            max-width: 1400px; margin: 0 auto; padding: 0 3rem;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo {
-            font-size: 1.75rem; font-weight: 400; color: #2c2c2c; text-decoration: none;
-            letter-spacing: 2px; text-transform: uppercase; font-family: 'Georgia', serif;
-        }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; font-family: 'Georgia', serif; }
         .nav-links { display: flex; gap: 3rem; list-style: none; }
-        .nav-links a {
-            color: #6b6b6b; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;
-            letter-spacing: 1px; text-transform: uppercase;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        .nav-links a:hover { color: #2c2c2c; }
+        .nav-links a { color: var(--soft); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; letter-spacing: 1px; text-transform: uppercase; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .nav-links a:hover { color: var(--ink); }
 
         article { max-width: 800px; margin: 4rem auto; padding: 0 3rem; }
         .article-header { margin-bottom: 3rem; }
-        .article-meta {
-            display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem;
-            color: #999; text-transform: uppercase; letter-spacing: 1px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: #2c2c2c; }
-        .subtitle { font-size: 1.35rem; font-style: italic; color: #6b6b6b; line-height: 1.5; }
-
-        .article-content { font-size: 1.1rem; line-height: 1.9; color: #2c2c2c; }
-        .article-content p { margin-bottom: 1.5rem; }
-        .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: #2c2c2c; }
-        .article-content strong { font-weight: 600; }
-        .article-content em { font-style: italic; color: #6b6b6b; }
-
-        .pull {
-            font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: #2c2c2c;
-            border-left: 3px solid #2c2c2c; padding-left: 1.5rem; margin: 3rem 0;
-        }
-        .said {
-            font-size: 1.4rem; font-style: italic; color: #2c2c2c;
-            background: #ffffff; border: 1px solid #e0e0e0; border-left: 3px solid #2c2c2c;
-            padding: 1.4rem 1.6rem; margin-bottom: 1.5rem;
-        }
-
-        /* labels reused by visuals */
-        .lbl {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: #999;
-        }
+        .article-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: var(--mut); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
+        .subtitle { font-size: 1.35rem; font-style: italic; color: var(--soft); line-height: 1.5; }
         .article-image { width: 100%; height: auto; margin-bottom: 3rem; display: block; }
+
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--ink); }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--ink); }
+        .article-content strong { font-weight: 600; }
+        .article-content em { font-style: italic; color: var(--soft); }
+
+        .pull { font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: var(--ink); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 3rem 0; }
+        .said { font-size: 1.4rem; font-style: italic; color: var(--ink); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; }
+
+        .lbl { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: var(--gold); }
         figure { margin: 3rem 0; }
-        figcaption {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 0.78rem; color: #999; margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px;
-        }
+        figcaption { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--mut); margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px; }
 
-        /* VISUAL A: blank hook */
-        .blank { background: #fff; border: 1px solid #e0e0e0; padding: 3rem 2rem; text-align: center; }
-        .blank .line { font-size: 1.7rem; line-height: 1.6; color: #2c2c2c; }
-        .blank .slot { display:inline-block; min-width: 150px; border-bottom: 2px dashed #2c2c2c; color: transparent; }
-        .blank .tag {
-            display:inline-block; margin-top: 1.4rem; font-family: -apple-system, sans-serif;
-            text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.7rem; color: #2c2c2c;
-            background: #f0f0f0; padding: 0.45rem 0.9rem;
-        }
-        .blank .chair { margin-top: 1.4rem; font-family: -apple-system, sans-serif; font-size: 0.75rem; color: #999; letter-spacing: 1px; }
-        .blank .chair b { display:block; font-size: 2rem; color: #cfcfcf; line-height: 1; margin-bottom: 0.4rem; }
+        /* A: blank hook */
+        .blank { background:#fff; border:1px solid var(--line); padding:3rem 2rem; text-align:center; }
+        .blank .line { font-size:1.7rem; line-height:1.6; color:var(--ink); }
+        .blank .slot { display:inline-block; min-width:150px; border-bottom:2px dashed var(--gold); color:transparent; }
+        .blank .tag { display:inline-block; margin-top:1.4rem; font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); padding:0.45rem 0.9rem; }
+        .blank .chair { margin-top:1.4rem; font-family:-apple-system,sans-serif; font-size:0.75rem; color:var(--mut); letter-spacing:1px; }
+        .blank .chair b { display:block; font-size:2rem; color:#cfcfcf; line-height:1; margin-bottom:0.4rem; }
 
-        /* VISUAL B: reframe */
-        .qcard { padding: 1.4rem 1.6rem; border: 1px solid #e0e0e0; background: #fff; }
-        .qcard .q { font-size: 1.45rem; line-height: 1.3; margin-top: 0.4rem; }
-        .qcard.weak .q { color: #999; text-decoration: line-through; text-decoration-thickness: 1px; }
-        .qcard.strong { background: #2c2c2c; border-color: #2c2c2c; }
-        .qcard.strong .lbl { color: #b0b0b0; }
-        .qcard.strong .q { color: #ffffff; }
-        .qarrow { text-align: center; color: #999; font-size: 1.5rem; margin: 0.6rem 0; }
+        /* B: reframe */
+        .qcard { padding:1.4rem 1.6rem; border:1px solid var(--line); background:#fff; }
+        .qcard .q { font-size:1.45rem; line-height:1.3; margin-top:0.4rem; }
+        .qcard.weak .lbl { color: var(--mut); }
+        .qcard.weak .q { color:var(--mut); text-decoration:line-through; text-decoration-thickness:1px; }
+        .qcard.strong { background:var(--ink); border-color:var(--ink); border-left:3px solid var(--gold-bright); }
+        .qcard.strong .lbl { color:var(--gold-bright); }
+        .qcard.strong .q { color:#fff; }
+        .qarrow { text-align:center; color:var(--gold); font-size:1.5rem; margin:0.6rem 0; }
 
-        /* VISUAL C: dot grid */
-        .dotwrap { background:#fff; border:1px solid #e0e0e0; padding: 2rem; display:flex; gap:2rem; align-items:center; flex-wrap:wrap; }
-        .grid100 { display:grid; grid-template-columns: repeat(10, 1fr); gap: 6px; flex: 1 1 280px; min-width: 240px; }
-        .dot { aspect-ratio: 1/1; border-radius: 50%; background: #e2e2e2; }
-        .dot.bad { background: #2c2c2c; box-shadow: 0 0 0 3px #e0e0e0; }
-        .dotnote { flex: 1 1 220px; min-width: 200px; }
-        .dotnote .big { font-size: 2.8rem; font-weight: 400; color: #2c2c2c; line-height: 1; }
-        .dotnote .sub { font-size: 0.95rem; color: #6b6b6b; margin-top: 0.8rem; line-height: 1.6; }
+        /* C: dot grid */
+        .dotwrap { background:#fff; border:1px solid var(--line); padding:2rem; display:flex; gap:2rem; align-items:center; flex-wrap:wrap; }
+        .grid100 { display:grid; grid-template-columns:repeat(10,1fr); gap:6px; flex:1 1 280px; min-width:240px; }
+        .dot { aspect-ratio:1/1; border-radius:50%; background:#e2e2e2; }
+        .dot.bad { background:var(--gold-bright); box-shadow:0 0 0 3px var(--gold-soft); }
+        .dotnote { flex:1 1 220px; min-width:200px; }
+        .dotnote .big { font-size:2.8rem; font-weight:400; color:var(--gold); line-height:1; }
+        .dotnote .sub { font-size:0.95rem; color:var(--soft); margin-top:0.8rem; line-height:1.6; }
 
-        /* VISUAL D: relocate */
-        .relo { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .panel { border: 1px solid #e0e0e0; background: #fff; padding: 1.4rem; }
-        .panel .cap { font-size: 1.1rem; font-weight: 400; margin: 0.3rem 0 1rem; color: #2c2c2c; }
-        .humans { display:flex; flex-wrap:wrap; gap: 5px; }
-        .hh { width: 15px; height: 15px; background: #dcdcdc; }
-        .hh.on { background: #2c2c2c; }
-        .panel .role {
-            font-family: -apple-system, sans-serif; font-size: 0.82rem; color: #6b6b6b;
-            margin-top: 0.7rem; padding-left: 0.9rem; position: relative; line-height: 1.5;
-        }
-        .panel .role:before { content:""; position:absolute; left:0; top:0.55rem; width:5px; height:5px; background:#2c2c2c; }
+        /* NEW: paired cases */
+        .pair-banner { font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); display:inline-block; padding:0.4rem 0.9rem; margin-bottom:0.8rem; }
+        .pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .pcard { background:#fff; border:1px solid var(--line); border-top:3px solid var(--gold); padding:1.3rem 1.4rem; }
+        .pcard .ph { font-family:-apple-system,sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+        .pcard .pb { font-size:0.98rem; line-height:1.55; }
+        .pcard .verdict { margin-top:0.9rem; font-family:-apple-system,sans-serif; font-size:0.8rem; font-weight:700; color:var(--ink); border-top:1px solid var(--line2); padding-top:0.7rem; }
 
-        /* VISUAL E: series map */
-        .map { display:flex; flex-direction: column; gap: 8px; }
-        .row { display:flex; gap: 1rem; align-items:flex-start; background:#fff; border:1px solid #e0e0e0; border-left: 3px solid #2c2c2c; padding: 0.9rem 1.2rem; }
-        .row.now { background: #f0f0f0; }
-        .num {
-            font-family: -apple-system, sans-serif; font-weight: 700; font-size: 0.72rem;
-            letter-spacing: 1px; color: #2c2c2c; min-width: 58px; text-transform: uppercase; padding-top: 3px;
-        }
-        .rtxt { font-size: 0.95rem; line-height: 1.5; }
-        .rtxt b { display:block; font-size: 1.02rem; font-weight: 600; margin-bottom: 2px; color: #2c2c2c; }
-        .rtxt span { color: #6b6b6b; }
+        /* D: relocate */
+        .relo { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .panel { border:1px solid var(--line); background:#fff; padding:1.4rem; }
+        .panel.aft { border-top:3px solid var(--gold); }
+        .panel .cap { font-size:1.1rem; font-weight:400; margin:0.3rem 0 1rem; color:var(--ink); }
+        .humans { display:flex; flex-wrap:wrap; gap:5px; }
+        .hh { width:15px; height:15px; background:#dcdcdc; }
+        .hh.on { background:var(--ink); }
+        .hh.gold { background:var(--gold-bright); }
+        .panel .role { font-family:-apple-system,sans-serif; font-size:0.82rem; color:var(--soft); margin-top:0.7rem; padding-left:0.9rem; position:relative; line-height:1.5; }
+        .panel .role:before { content:""; position:absolute; left:0; top:0.55rem; width:5px; height:5px; background:var(--gold); }
 
-        /* VISUAL F: converge */
-        .converge { background:#fff; border:1px solid #e0e0e0; padding: 2rem; }
-        .disguises { display:grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
-        .chip {
-            background:#f0f0f0; padding: 0.8rem 0.4rem; text-align:center;
-            font-family: -apple-system, sans-serif; font-size: 0.8rem; color: #6b6b6b;
-        }
-        .funnel { text-align:center; color:#bbb; font-size: 1.3rem; letter-spacing: 0.5em; margin: 0.7rem 0; }
-        .onenum { background:#2c2c2c; color:#fff; padding: 1.3rem; text-align:center; }
-        .onenum .t { font-family: -apple-system, sans-serif; font-size: 0.7rem; letter-spacing: 1.4px; color:#b0b0b0; text-transform: uppercase; }
-        .onenum .v { font-size: 1.4rem; margin-top: 0.4rem; }
+        /* E: series map */
+        .map { display:flex; flex-direction:column; gap:8px; }
+        .row { display:flex; gap:1rem; align-items:flex-start; background:#fff; border:1px solid var(--line); border-left:3px solid var(--line); padding:0.9rem 1.2rem; }
+        .row.now { background:var(--gold-soft); border-left-color:var(--gold); }
+        .num { font-family:-apple-system,sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:1px; color:var(--gold); min-width:58px; text-transform:uppercase; padding-top:3px; }
+        .rtxt { font-size:0.95rem; line-height:1.5; }
+        .rtxt b { display:block; font-size:1.02rem; font-weight:600; margin-bottom:2px; color:var(--ink); }
+        .rtxt span { color:var(--soft); }
+
+        /* F: converge */
+        .converge { background:#fff; border:1px solid var(--line); padding:2rem; }
+        .disguises { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; }
+        .chip { background:#f4f1ea; border:1px solid var(--line); padding:0.8rem 0.4rem; text-align:center; font-family:-apple-system,sans-serif; font-size:0.8rem; color:var(--soft); }
+        .funnel { text-align:center; color:var(--gold); font-size:1.3rem; letter-spacing:0.5em; margin:0.7rem 0; }
+        .onenum { background:var(--ink); color:#fff; padding:1.3rem; text-align:center; border-bottom:3px solid var(--gold-bright); }
+        .onenum .t { font-family:-apple-system,sans-serif; font-size:0.7rem; letter-spacing:1.4px; color:#b0b0b0; text-transform:uppercase; }
+        .onenum .v { font-size:1.4rem; margin-top:0.4rem; color:var(--gold-bright); }
 
         /* scenario */
-        .scn { background:#fff; border:1px solid #e0e0e0; padding: 0.4rem 1.6rem; margin: 2.5rem 0; }
-        .scn .step { display:flex; gap: 1.2rem; padding: 1.1rem 0; border-bottom: 1px solid #e0e0e0; }
-        .scn .step:last-child { border-bottom: 0; }
-        .scn .k {
-            min-width: 110px; font-family: -apple-system, sans-serif; font-size: 0.7rem; font-weight: 700;
-            letter-spacing: 1px; text-transform: uppercase; color: #2c2c2c; padding-top: 4px;
-        }
-        .scn .v { font-size: 1rem; line-height: 1.6; }
+        .scn { background:#fff; border:1px solid var(--line); padding:0.4rem 1.6rem; margin:2.5rem 0; }
+        .scn .step { display:flex; gap:1.2rem; padding:1.1rem 0; border-bottom:1px solid var(--line2); }
+        .scn .step:last-child { border-bottom:0; }
+        .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
+        .scn .v { font-size:1rem; line-height:1.6; }
 
-        /* named law */
-        .law { border: 2px solid #2c2c2c; background:#fff; padding: 1.6rem 1.8rem; margin: 2.5rem 0; }
-        .law .b { font-size: 1.25rem; line-height: 1.5; margin-top: 0.5rem; }
+        /* law */
+        .law { border:1px solid var(--line); border-top:3px solid var(--gold); background:#fff; padding:1.6rem 1.8rem; margin:2.5rem 0; }
+        .law .b { font-size:1.25rem; line-height:1.5; margin-top:0.5rem; }
 
-        .back-link {
-            display:inline-block; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e0e0e0;
-            color:#2c2c2c; text-decoration:none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-        .back-link:hover { text-decoration: underline; }
+        .back-link { display:inline-block; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .back-link:hover { text-decoration:underline; }
 
-        footer { background:#2c2c2c; color:#fff; padding: 4rem 3rem 3rem; margin-top: 6rem; }
-        .footer-content { max-width: 1400px; margin: 0 auto; }
-        .footer-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .footer-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.5rem; font-weight: 400; }
-        .footer-links { display:flex; flex-direction: column; gap: 0.8rem; }
-        .footer-links a { color:#b0b0b0; text-decoration:none; transition: color .3s; font-size: 0.9rem; }
+        footer { background:var(--ink); color:#fff; padding:4rem 3rem 3rem; margin-top:6rem; }
+        .footer-content { max-width:1400px; margin:0 auto; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
+        .footer-section h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:1.5rem; font-weight:400; }
+        .footer-links { display:flex; flex-direction:column; gap:0.8rem; }
+        .footer-links a { color:#b0b0b0; text-decoration:none; transition:color .3s; font-size:0.9rem; }
         .footer-links a:hover { color:#fff; }
-        .footer-bottom { border-top: 1px solid #444; padding-top: 2rem; text-align:center; color:#888; font-size: 0.85rem; }
+        .footer-bottom { border-top:1px solid #444; padding-top:2rem; text-align:center; color:#888; font-size:0.85rem; }
 
-        @media (max-width: 768px) {
-            nav { padding: 0 1.5rem; flex-direction: column; gap: 1rem; }
-            .logo { font-size: 1.2rem; letter-spacing: 1px; }
-            .nav-links { gap: 1rem; font-size: 0.85rem; flex-wrap: wrap; justify-content: center; }
-            article { margin: 2rem auto; padding: 0 1.5rem; }
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1.1rem; }
-            .article-content { font-size: 1rem; }
-            .article-content h2 { font-size: 1.5rem; }
-            .pull { font-size: 1.4rem; }
-            .relo { grid-template-columns: 1fr; }
-            .disguises { grid-template-columns: repeat(2, 1fr); }
-            .blank .line { font-size: 1.25rem; }
-            .scn .step { flex-direction: column; gap: 0.3rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            footer { padding: 3rem 1.5rem 2rem; }
+        @media (max-width:768px){
+            nav { padding:0 1.5rem; flex-direction:column; gap:1rem; }
+            .logo { font-size:1.2rem; letter-spacing:1px; }
+            .nav-links { gap:1rem; font-size:0.85rem; flex-wrap:wrap; justify-content:center; }
+            article { margin:2rem auto; padding:0 1.5rem; }
+            h1 { font-size:2rem; }
+            .subtitle { font-size:1.1rem; }
+            .article-content { font-size:1rem; }
+            .article-content h2 { font-size:1.5rem; }
+            .pull { font-size:1.4rem; }
+            .relo, .pair { grid-template-columns:1fr; }
+            .disguises { grid-template-columns:repeat(2,1fr); }
+            .blank .line { font-size:1.25rem; }
+            .scn .step { flex-direction:column; gap:0.3rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
+            footer { padding:3rem 1.5rem 2rem; }
         }
     </style>
 </head>
@@ -205,7 +167,7 @@
     <article>
         <div class="article-header">
             <div class="article-meta">
-                <span>7 min read</span><span>•</span><span>Jun 13, 2026</span><span>•</span><span>Agentic AI — Part 0</span>
+                <span>7 min read</span><span>&bull;</span><span>Jun 13, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 0</span>
             </div>
             <h1>Agentic AI: Common Sense Will Be Applied</h1>
             <p class="subtitle">The sentence every leader says when they greenlight an agent. It has no subject. This series is about the empty chair it leaves behind.</p>
@@ -232,7 +194,9 @@
                 <figcaption>A passive sentence covering an empty chair. The judgment is assumed. The owner is missing.</figcaption>
             </figure>
 
-            <p>This series is about that empty chair. Over six parts I will argue one thing. The real question of agentic AI in customer experience is not whether an agent <em>can</em> make a decision. Often it can, and often better than we admit. <strong>The real question is who is accountable when it does.</strong> And every honest answer leads to one uncomfortable number almost no leadership team is willing to write down.</p>
+            <p>This matters now because agents have crossed a line. For two years they suggested, and a human clicked. Now they act: they issue the refund, send the email, close the ticket, move the money. The safety net of a human between the model and the customer is quietly being removed, one workflow at a time, and "common sense will be applied" is the phrase that waves it through.</p>
+
+            <p>So over six parts I will argue one thing. The real question of agentic AI in customer experience is not whether an agent <em>can</em> make a decision. Often it can, and often better than we admit. <strong>The real question is who is accountable when it does.</strong> And every honest answer leads to one uncomfortable number almost no leadership team is willing to write down.</p>
 
             <p>I will get to that number. First, why "common sense" is the wrong word.</p>
 
@@ -240,7 +204,7 @@
 
             <p>When a leader says an agent will use common sense, they mean something specific even if they cannot name it. They mean the agent will <strong>know when a case is weird</strong>. It will notice that a refund larger than the original order is suspicious. It will sense that a loyal customer of eight years asking for one small exception deserves a different answer than a brand-new account does. It will feel the difference between a routine request and a trap being set.</p>
 
-            <p>That capacity has a name in humans. It is <strong>judgment built from experience</strong>, and it runs quietly underneath every decision a good service agent makes. We never had to specify it, because a person was always there to supply it for free.</p>
+            <p>Watch a good service agent for an afternoon and you see this constantly. They read a one-line message and infer the customer is anxious, not angry. They notice the order history and waive a fee no policy told them to waive. They escalate a case that looks fine on paper because something about it does not add up. None of that is written down anywhere. It is <strong>judgment built from experience</strong>, and it runs quietly underneath every decision they make. We never had to specify it, because a person was always there to supply it for free.</p>
 
             <p>Agentic AI removes the person. So the judgment that used to be free now has to be built, bought, or done without. "Common sense will be applied" is the sound of a team choosing the third option without noticing they made a choice at all.</p>
 
@@ -262,19 +226,38 @@
                     <div class="grid100" id="grid"></div>
                     <div class="dotnote">
                         <div class="big">1%</div>
-                        <div class="sub">At <strong>50,000 cases a week</strong>, a 99%-correct agent is confidently wrong about <strong>500 times</strong>. The dashboard still reads 99% green. Each dark dot is a person.</div>
+                        <div class="sub">At <strong>50,000 cases a week</strong>, a 99%-correct agent is confidently wrong about <strong>500 times</strong>. The dashboard still reads 99% green. Each gold dot is a person.</div>
                     </div>
                 </div>
                 <figcaption>The volume that justified automation is the same volume that scales the mistakes.</figcaption>
             </figure>
 
-            <p>Look at a single one of those dark dots. Take an ordinary billing dispute.</p>
+            <p>Look at a single one of those gold dots. Take an ordinary billing dispute.</p>
 
             <div class="scn">
                 <div class="step"><div class="k">The case</div><div class="v">A long-time customer's free trial auto-converted to a $180 annual plan. They emailed to cancel two hours after the charge, having forgotten the trial was ending.</div></div>
                 <div class="step"><div class="k">The rule</div><div class="v">Policy says annual plans are <strong>non-refundable once billed</strong>. The charge is valid. The agent applies the rule and declines the refund.</div></div>
                 <div class="step"><div class="k">The result</div><div class="v"><strong>Correct by policy. Wrong by every human measure.</strong> A human rep would refund the $180 in seconds to keep a customer worth far more over time. The agent could not see the lifetime value, the goodwill, or the one-star review forming. It felt no doubt, because it had none to feel.</div></div>
             </div>
+
+            <p>Now the part that makes this genuinely hard. The two cases below arrive at the agent looking <strong>identical</strong>: same product, same policy, same words. A human would treat them completely differently. The agent cannot tell them apart, and decides both with the same flat confidence.</p>
+
+            <figure>
+                <span class="pair-banner">Identical to the agent &middot; opposite right answers</span>
+                <div class="pair">
+                    <div class="pcard">
+                        <div class="ph">Case A</div>
+                        <div class="pb">First-time customer. One charge, one polite request, no history. Genuinely forgot to cancel.</div>
+                        <div class="verdict">A human refunds it. Goodwill, tiny cost.</div>
+                    </div>
+                    <div class="pcard">
+                        <div class="ph">Case B</div>
+                        <div class="pb">Sixth "forgotten" trial this year across three accounts. Same wording every time. Working the policy.</div>
+                        <div class="verdict">A human declines it. This is a pattern, not an accident.</div>
+                    </div>
+                </div>
+                <figcaption>Common sense is mostly the ability to tell these two apart. The rule cannot. The agent will not.</figcaption>
+            </figure>
 
             <p>The question that decides whether you can live with that is not about the 99 percent. It is about the one percent. <strong>Who owns it, who sees it, who answers for it</strong>, and what it costs when it fails in a way no dashboard caught. That is an accountability question, not a capability question. Capability you can buy. Accountability has to sit on a named human by design, or it sits nowhere, which in practice means it sits on your brand.</p>
 
@@ -294,20 +277,20 @@
             <figure>
                 <div class="relo">
                     <div class="panel">
-                        <div class="lbl">Before</div>
+                        <div class="lbl" style="color:var(--mut)">Before</div>
                         <div class="cap">Human in every decision</div>
                         <div class="humans">
                             <span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span>
                             <span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span><span class="hh on"></span>
                         </div>
-                        <p class="role" style="color:#6b6b6b;">High volume, low leverage. Every case touched, including the easy ones.</p>
+                        <p class="role" style="color:var(--soft)">High volume, low leverage. Every case touched, including the easy ones.</p>
                     </div>
-                    <div class="panel">
+                    <div class="panel aft">
                         <div class="lbl">After</div>
                         <div class="cap">Human at the edges and the parameters</div>
                         <div class="humans">
-                            <span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh on"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span>
-                            <span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh on"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span>
+                            <span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh gold"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span>
+                            <span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span><span class="hh gold"></span><span class="hh"></span><span class="hh"></span><span class="hh"></span>
                         </div>
                         <p class="role">The agent at the edges: the hard, novel, irreversible cases.</p>
                         <p class="role">The manager at the parameters: the rules the whole system runs under.</p>
@@ -316,7 +299,7 @@
                 <figcaption>Less volume, far more consequential work. The chair moved. It did not vanish.</figcaption>
             </figure>
 
-            <p>The skill in agentic CX is not removing humans. <strong>It is deciding precisely where the remaining humans should stand.</strong></p>
+            <p>Picture the senior rep who used to approve two hundred refunds a day. In the new design she approves almost none, because the system resolves the easy ones without her. Instead she owns the dozen genuine exceptions the machine flagged, she watches the drift dashboard for the day the refund rate jumps three points overnight, and she audits a random sample to catch the cases that looked normal and were not. Same person. Far fewer cases. Far more leverage. The skill in agentic CX is not removing humans. <strong>It is deciding precisely where the remaining humans should stand.</strong></p>
 
             <h2>What this series will do</h2>
 
@@ -357,7 +340,9 @@
                 <figcaption>Four mechanisms. One decision underneath, wearing four costumes.</figcaption>
             </figure>
 
-            <p>That number is the strategy. It is not a technical decision, it is a leadership one. And the most uncomfortable feature of agentic AI is that <strong>it forces you to write the number down</strong>, because an agent cannot act on a figure that lives only in a manager's gut.</p>
+            <p>And here is the quiet truth. You have already set that number. Your refund policy encodes it: a thirty-day limit that declines a loyal customer on day thirty-one is a statement that their goodwill is worth less than the refund. Your escalation rules encode it. Your staffing encodes it. The price of an unhappy customer is already priced into a dozen decisions across your business. You simply have never had to say it in one sentence.</p>
+
+            <p>Agentic AI changes that. The most uncomfortable feature of handing decisions to an agent is that <strong>it forces you to write the number down</strong>, because an agent cannot act on a figure that lives only in a manager's gut. It needs the threshold, the budget, the rule. Implicit judgment has to become explicit instruction.</p>
 
             <p>Most organizations will not write it down. It is politically ugly to put on paper. So they say "common sense will be applied" instead, ship the agent anyway, and hope the empty chair holds.</p>
 
@@ -365,7 +350,7 @@
 
         </div>
 
-        <a href="../index.html#articles" class="back-link">Next — Part 1: The four bands of safe autonomy</a>
+        <a href="../index.html#articles" class="back-link">Next &mdash; Part 1: The four bands of safe autonomy</a>
     </article>
 
     <footer>
