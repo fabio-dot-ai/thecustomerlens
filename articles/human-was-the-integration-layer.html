@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Human Was the Integration Layer - The Customer Lens</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root{
+            --paper:#fafafa; --ink:#2c2c2c; --soft:#6b6b6b; --mut:#999;
+            --line:#e0e0e0; --line2:#f0f0f0;
+            --gold:#C28A1E; --gold-soft:#F6EDD6; --gold-bright:#E8B23A;
+        }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--paper); color: var(--ink); line-height: 1.8; letter-spacing: 0.3px;
+        }
+        header {
+            border-bottom: 1px solid var(--line); padding: 2rem 0; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.98);
+        }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; font-family: 'Georgia', serif; }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { color: var(--soft); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; letter-spacing: 1px; text-transform: uppercase; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .nav-links a:hover { color: var(--ink); }
+        article { max-width: 800px; margin: 4rem auto; padding: 0 3rem; }
+        .article-header { margin-bottom: 3rem; }
+        .article-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: var(--mut); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
+        .subtitle { font-size: 1.35rem; font-style: italic; color: var(--soft); line-height: 1.5; }
+        .article-image { width: 100%; height: auto; margin-bottom: 3rem; display: block; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--ink); }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--ink); }
+        .article-content strong { font-weight: 600; }
+        .article-content em { font-style: italic; color: var(--soft); }
+        .pull { font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: var(--ink); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 3rem 0; }
+        .said { font-size: 1.4rem; font-style: italic; color: var(--ink); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; }
+        .lbl { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: var(--gold); }
+        figure { margin: 3rem 0; }
+        figcaption { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--mut); margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px; }
+        /* paired cases */
+        .pair-banner { font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); display:inline-block; padding:0.4rem 0.9rem; margin-bottom:0.8rem; }
+        .pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .pcard { background:#fff; border:1px solid var(--line); border-top:3px solid var(--gold); padding:1.3rem 1.4rem; }
+        .pcard.mut { border-top-color:var(--mut); }
+        .pcard .ph { font-family:-apple-system,sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+        .pcard.mut .ph { color:var(--mut); }
+        .pcard .pb { font-size:0.98rem; line-height:1.55; }
+        .pcard .verdict { margin-top:0.9rem; font-family:-apple-system,sans-serif; font-size:0.8rem; font-weight:700; color:var(--ink); border-top:1px solid var(--line2); padding-top:0.7rem; }
+        /* law */
+        .law { border:1px solid var(--line); border-top:3px solid var(--gold); background:#fff; padding:1.6rem 1.8rem; margin:2.5rem 0; }
+        .law .b { font-size:1.25rem; line-height:1.5; margin-top:0.5rem; }
+        /* scenario */
+        .scn { background:#fff; border:1px solid var(--line); padding:0.4rem 1.6rem; margin:2.5rem 0; }
+        .scn .step { display:flex; gap:1.2rem; padding:1.1rem 0; border-bottom:1px solid var(--line2); }
+        .scn .step:last-child { border-bottom:0; }
+        .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
+        .scn .v { font-size:1rem; line-height:1.6; }
+        /* diagram */
+        .diagram { background:#fff; border:1px solid var(--line); padding:1.5rem; overflow-x:auto; }
+        .diagram svg { width:100%; height:auto; min-width:520px; display:block; }
+        .back-link { display:inline-block; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .back-link:hover { text-decoration:underline; }
+        footer { background:var(--ink); color:#fff; padding:4rem 3rem 3rem; margin-top:6rem; }
+        .footer-content { max-width:1400px; margin:0 auto; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
+        .footer-section h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:1.5rem; font-weight:400; }
+        .footer-links { display:flex; flex-direction:column; gap:0.8rem; }
+        .footer-links a { color:#b0b0b0; text-decoration:none; transition:color .3s; font-size:0.9rem; }
+        .footer-links a:hover { color:#fff; }
+        .footer-bottom { border-top:1px solid #444; padding-top:2rem; text-align:center; color:#888; font-size:0.85rem; }
+        @media (max-width:768px){
+            nav { padding:0 1.5rem; flex-direction:column; gap:1rem; }
+            .logo { font-size:1.2rem; letter-spacing:1px; }
+            .nav-links { gap:1rem; font-size:0.85rem; flex-wrap:wrap; justify-content:center; }
+            article { margin:2rem auto; padding:0 1.5rem; }
+            h1 { font-size:2rem; }
+            .subtitle { font-size:1.1rem; }
+            .article-content { font-size:1rem; }
+            .article-content h2 { font-size:1.5rem; }
+            .pull { font-size:1.4rem; }
+            .pair { grid-template-columns:1fr; }
+            .scn .step { flex-direction:column; gap:0.3rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
+            footer { padding:3rem 1.5rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">The Customer Lens</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span>7 min read</span><span>&bull;</span><span>Jul 11, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 1</span>
+            </div>
+            <h1>The Human Was the Integration Layer</h1>
+            <p class="subtitle">An agent's first job isn't deciding. It's the plumbing your best people do by hand, plus applying the rule you already wrote. The only real decision is the one to break the rule, and that stays human.</p>
+        </div>
+        <div class="article-content">
+            <p>Watch your best operator for an hour. Not the one who takes the hard escalations. The ordinary one, clearing the queue. She opens a ticket, reads it, switches screens to check the booking, copies a figure out of a spreadsheet a colleague maintains by hand, pastes it into the form the billing system understands, writes two lines back to the customer, and closes the case. Then she does it again. Four hundred times a day.</p>
+            <p>Almost none of that was a decision. It was moving information between systems that do not talk to each other. <strong>She is the wire between them.</strong></p>
+            <p>We call that "her job," and then we say "the agent will do her job." Both halves of that sentence are wrong in the same way. Most of her day is not judgment. It is integration. And integration is exactly what an agent is good at, and exactly what your existing tools never managed to automate.</p>
+            <h2>Automation couldn't touch this, and that's the tell</h2>
+            <p>For twenty years we automated the clean parts. APIs talking to APIs. Scripts. Robotic process automation clicking through fixed screens. The reason a person is still copying a number out of a spreadsheet by hand in 2026 is not that nobody tried to automate it. It is that the interfaces resisted.</p>
+            <p>A spreadsheet a human edits by hand has no schema you can trust. A legacy screen has no API behind it. A free-text email has no fields. Deterministic tooling needs clean seams, and these seams are semi-human. So the work stayed with a person, because a person was the only thing flexible enough to sit on top of the mess.</p>
+            <p>That is the tell for where agents actually earn their place. Not the decisions. <strong>The seams.</strong> An agent can read the messy email, reconcile the hand-kept sheet, and type into the screen that has no API, because it tolerates ambiguity the way a person does. The near-term job of an agent is adapter, not oracle. It is the connective tissue your best people have been supplying by hand, because no software could.</p>
+            <h2>What the agent actually does is compute, not decide</h2>
+            <p>Here is the distinction that dissolves most of the anxiety about "letting AI decide." Take the work the agent absorbs and split it in two.</p>
+            <p>The <strong>plumbing</strong>: move and translate data across the messy interfaces. The <strong>rule</strong>: take the inputs, check the SOP, produce the output the SOP dictates. Input A plus input B, the policy says C, so C.</p>
+            <p>That second thing looks like a decision. It is not. It is a lookup.</p>
+            <figure>
+                <span class="pair-banner">Two things we both call "deciding"</span>
+                <div class="pair">
+                    <div class="pcard mut">
+                        <div class="ph">Compute &mdash; the agent</div>
+                        <div class="pb">A + B, the SOP says C, so C. The inputs point at one answer and the agent returns it.</div>
+                        <div class="verdict">Not a decision. A lookup.</div>
+                    </div>
+                    <div class="pcard">
+                        <div class="ph">Decide &mdash; the human</div>
+                        <div class="pb">A + B, the SOP says C, and the human does something else anyway, because C is right on paper and wrong for this customer.</div>
+                        <div class="verdict">The only real decision. The override.</div>
+                    </div>
+                </div>
+                <figcaption>The word "decision" was hiding two different acts. The agent does the first. Only the second is judgment.</figcaption>
+            </figure>
+            <p>A real decision is the moment someone looks at A and B, sees that the SOP says C, and does something else. "I am not following the process here, because it is the wrong answer for this person." That is the override.</p>
+            <p>Notice what is true of the override: <strong>you cannot write it down in advance.</strong> If you could, it would just be another rule, another A plus B equals C, and the agent would do it. The override lives precisely in the space the rules do not cover. That is the same thing the intro called common sense. It is not a better lookup. It is the decision to break the lookup.</p>
+            <p class="pull">The agent computes. The human decides. And "deciding" turns out to be a smaller, sharper act than the word suggested.</p>
+            <h2>So the human doesn't leave. They move up.</h2>
+            <p>This is Conservation of Judgment from the intro, made concrete. The judgment never lived in the plumbing, and it never lived in the rule. It lived in the thin slice on top: the exceptions, the overrides, the cases the SOP gets wrong. When the agent takes the plumbing and the rule, that slice does not disappear.</p>
+            <div class="law">
+                <div class="lbl">What actually happens to the operator</div>
+                <div class="b">Her work does not vanish. It <strong>concentrates</strong>. She stops clearing four hundred routine cases and starts owning the dozen the agent flags, the ones where breaking the rule might be right. Fewer cases. Heavier ones. More leverage, not less.</div>
+            </div>
+            <p>And a second human appears above her: the one who owns the rules the agent applies, and decides where the agent's authority stops. Hold that thought. It matters more than it looks.</p>
+            <h2>The anatomy</h2>
+            <p>Every human-plus-agent process has the same shape. Once you see it, you see it everywhere.</p>
+            <figure>
+                <img src="../images/theline.png" alt="The human didn't disappear. They moved up. Above a dashed line, the exception owner judges the rare hard case and the parameter owner owns the rules and how much the machine is trusted. Below the line, the machine reads messy spreadsheets and emails, follows the rules, writes the answers back, and hands anything unusual up. On the right, Escalate sends hard cases up and Audit looks down." style="width:100%;height:auto;display:block;border:1px solid #e0e0e0;">
+                <figcaption>The human did not disappear. They moved up: to the rare hard case, and to the rules the machine runs under.</figcaption>
+            </figure>
+            <p>At the bottom, the agent <strong>integrates</strong>: it moves data across the messy tools. Above that, it <strong>applies the rule</strong>: A plus B equals C. Then there is a line. Below the line the agent acts on its own. Above it, a human decides. The line does not separate easy from hard. It separates computing from judging.</p>
+            <p>Above the line sit two people, never zero. The <strong>exception owner</strong> stands right at the line. She takes the case the moment it stops being a lookup and becomes an override. She is the only one making a real decision. The <strong>parameter owner</strong> sits above her. She does not work cases at all. She owns the SOP the agent applies, the thresholds it runs on, and where the line itself is drawn. Move the line down and the agent does more while risk rises. Move it up and humans do more while cost rises. That placement is not a technical setting. It is a business choice, and it is the number this series keeps circling.</p>
+            <p>Four wires connect the pieces, and they, not the model, are the actual build. <strong>Ingest</strong>: the agent reads the messy input. <strong>Write-back</strong>: it commits the action into a system never designed to receive it. <strong>Escalate</strong>: when a case crosses the line, the agent hands it up and gets an answer back without stalling the queue. <strong>Audit</strong>: the parameter owner sees what the agent did and moves the line. The model is the cheap part. These four wires are where the work is.</p>
+            <p>If the anatomy feels familiar, it should. It is the vertical cross-section of a single cell in the matrix from <em>Stop Organizing AI Around Yourselves</em>. That piece put two functions as human across the entire customer journey, never moving: the department's authority layer, and AI oversight. Those are the two people above the line. The exception owner is the authority layer, the judgment only that function can make with credibility. The parameter owner is AI oversight, the person who sets the decision rules and answers for the system when it produces consequential outputs at scale. The map told you those rows never move. The anatomy tells you what they do.</p>
+            <h2>The catch: the plumbing hides judgment too</h2>
+            <p>Here is where the tidy version breaks, and it is worth being honest about it.</p>
+            <p>I said the plumbing is pure mechanics. Watch the operator again and that is not quite true. When she copies the figure out of the hand-kept spreadsheet, she sometimes notices it looks wrong and quietly fixes it. When she reads the messy email, she catches that the tone is off and flags the account. Those are micro-judgments buried inside what looks like plumbing. Nobody wrote them down, because nobody knew they were there.</p>
+            <p><strong>Absorb the plumbing blindly and you absorb those silent saves without knowing they existed.</strong> The agent will copy the wrong figure without a flicker of doubt, because it never knew a person was catching it. The line between plumbing and judgment is not as clean as the diagram draws it. Some judgment hides below the line, disguised as routine.</p>
+            <p>That is not a reason to keep humans doing the plumbing. It is a reason to find those buried saves before you automate over them, and to build the escalate wire to catch them.</p>
+            <h2>What comes next</h2>
+            <p>Which raises the question the whole architecture now depends on. If the agent's job is to act below the line and hand up everything above it, how does it know where the line is? How does it know a case has stopped being a lookup and become an override, especially when the dangerous cases are the ones that look most routine?</p>
+            <p>The obvious answer is "the agent will escalate when it is unsure." That answer is wrong, and the way it is wrong is the most expensive mistake in agentic design.</p>
+            <p><strong>That is Part 2.</strong></p>
+        </div>
+        <a href="../index.html#articles" class="back-link">Next &mdash; Part 2: Stop if unclear, and the supervisor trap</a>
+    </article>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>The Customer Lens</h4>
+                    <p style="color:#b0b0b0; line-height:1.7;">Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="../index.html#articles">Articles</a>
+                        <a href="../about.html">About</a>
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="../impressum.html">Impressum</a>
+                        <a href="../privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Customer Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
