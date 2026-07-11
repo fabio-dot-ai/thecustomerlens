@@ -24,27 +24,22 @@
         .nav-links { display: flex; gap: 3rem; list-style: none; }
         .nav-links a { color: var(--soft); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; letter-spacing: 1px; text-transform: uppercase; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
         .nav-links a:hover { color: var(--ink); }
-
         article { max-width: 800px; margin: 4rem auto; padding: 0 3rem; }
         .article-header { margin-bottom: 3rem; }
         .article-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: var(--mut); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
         h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
         .subtitle { font-size: 1.35rem; font-style: italic; color: var(--soft); line-height: 1.5; }
         .article-image { width: 100%; height: auto; margin-bottom: 3rem; display: block; }
-
         .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--ink); }
         .article-content p { margin-bottom: 1.5rem; }
         .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--ink); }
         .article-content strong { font-weight: 600; }
         .article-content em { font-style: italic; color: var(--soft); }
-
         .pull { font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: var(--ink); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 3rem 0; }
         .said { font-size: 1.4rem; font-style: italic; color: var(--ink); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; }
-
         .lbl { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: var(--gold); }
         figure { margin: 3rem 0; }
         figcaption { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--mut); margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px; }
-
         /* A: blank hook */
         .blank { background:#fff; border:1px solid var(--line); padding:3rem 2rem; text-align:center; }
         .blank .line { font-size:1.7rem; line-height:1.6; color:var(--ink); }
@@ -52,7 +47,6 @@
         .blank .tag { display:inline-block; margin-top:1.4rem; font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); padding:0.45rem 0.9rem; }
         .blank .chair { margin-top:1.4rem; font-family:-apple-system,sans-serif; font-size:0.75rem; color:var(--mut); letter-spacing:1px; }
         .blank .chair b { display:block; font-size:2rem; color:#cfcfcf; line-height:1; margin-bottom:0.4rem; }
-
         /* B: reframe */
         .qcard { padding:1.4rem 1.6rem; border:1px solid var(--line); background:#fff; }
         .qcard .q { font-size:1.45rem; line-height:1.3; margin-top:0.4rem; }
@@ -62,7 +56,6 @@
         .qcard.strong .lbl { color:var(--gold-bright); }
         .qcard.strong .q { color:#fff; }
         .qarrow { text-align:center; color:var(--gold); font-size:1.5rem; margin:0.6rem 0; }
-
         /* C: dot grid */
         .dotwrap { background:#fff; border:1px solid var(--line); padding:2rem; display:flex; gap:2rem; align-items:center; flex-wrap:wrap; }
         .grid100 { display:grid; grid-template-columns:repeat(10,1fr); gap:6px; flex:1 1 280px; min-width:240px; }
@@ -71,7 +64,6 @@
         .dotnote { flex:1 1 220px; min-width:200px; }
         .dotnote .big { font-size:2.8rem; font-weight:400; color:var(--gold); line-height:1; }
         .dotnote .sub { font-size:0.95rem; color:var(--soft); margin-top:0.8rem; line-height:1.6; }
-
         /* NEW: paired cases */
         .pair-banner { font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); display:inline-block; padding:0.4rem 0.9rem; margin-bottom:0.8rem; }
         .pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
@@ -79,7 +71,6 @@
         .pcard .ph { font-family:-apple-system,sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
         .pcard .pb { font-size:0.98rem; line-height:1.55; }
         .pcard .verdict { margin-top:0.9rem; font-family:-apple-system,sans-serif; font-size:0.8rem; font-weight:700; color:var(--ink); border-top:1px solid var(--line2); padding-top:0.7rem; }
-
         /* D: relocate */
         .relo { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
         .panel { border:1px solid var(--line); background:#fff; padding:1.4rem; }
@@ -91,7 +82,6 @@
         .hh.gold { background:var(--gold-bright); }
         .panel .role { font-family:-apple-system,sans-serif; font-size:0.82rem; color:var(--soft); margin-top:0.7rem; padding-left:0.9rem; position:relative; line-height:1.5; }
         .panel .role:before { content:""; position:absolute; left:0; top:0.55rem; width:5px; height:5px; background:var(--gold); }
-
         /* E: series map */
         .map { display:flex; flex-direction:column; gap:8px; }
         .row { display:flex; gap:1rem; align-items:flex-start; background:#fff; border:1px solid var(--line); border-left:3px solid var(--line); padding:0.9rem 1.2rem; }
@@ -100,7 +90,6 @@
         .rtxt { font-size:0.95rem; line-height:1.5; }
         .rtxt b { display:block; font-size:1.02rem; font-weight:600; margin-bottom:2px; color:var(--ink); }
         .rtxt span { color:var(--soft); }
-
         /* F: converge */
         .converge { background:#fff; border:1px solid var(--line); padding:2rem; }
         .disguises { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; }
@@ -109,21 +98,17 @@
         .onenum { background:var(--ink); color:#fff; padding:1.3rem; text-align:center; border-bottom:3px solid var(--gold-bright); }
         .onenum .t { font-family:-apple-system,sans-serif; font-size:0.7rem; letter-spacing:1.4px; color:#b0b0b0; text-transform:uppercase; }
         .onenum .v { font-size:1.4rem; margin-top:0.4rem; color:var(--gold-bright); }
-
         /* scenario */
         .scn { background:#fff; border:1px solid var(--line); padding:0.4rem 1.6rem; margin:2.5rem 0; }
         .scn .step { display:flex; gap:1.2rem; padding:1.1rem 0; border-bottom:1px solid var(--line2); }
         .scn .step:last-child { border-bottom:0; }
         .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
         .scn .v { font-size:1rem; line-height:1.6; }
-
         /* law */
         .law { border:1px solid var(--line); border-top:3px solid var(--gold); background:#fff; padding:1.6rem 1.8rem; margin:2.5rem 0; }
         .law .b { font-size:1.25rem; line-height:1.5; margin-top:0.5rem; }
-
         .back-link { display:inline-block; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
         .back-link:hover { text-decoration:underline; }
-
         footer { background:var(--ink); color:#fff; padding:4rem 3rem 3rem; margin-top:6rem; }
         .footer-content { max-width:1400px; margin:0 auto; }
         .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
@@ -132,7 +117,6 @@
         .footer-links a { color:#b0b0b0; text-decoration:none; transition:color .3s; font-size:0.9rem; }
         .footer-links a:hover { color:#fff; }
         .footer-bottom { border-top:1px solid #444; padding-top:2rem; text-align:center; color:#888; font-size:0.85rem; }
-
         @media (max-width:768px){
             nav { padding:0 1.5rem; flex-direction:column; gap:1rem; }
             .logo { font-size:1.2rem; letter-spacing:1px; }
@@ -163,7 +147,6 @@
             </ul>
         </nav>
     </header>
-
     <article>
         <div class="article-header">
             <div class="article-meta">
@@ -172,19 +155,12 @@
             <h1>Agentic AI: Common Sense Will Be Applied</h1>
             <p class="subtitle">The sentence every leader says when they greenlight an agent. It has no subject. This series is about the empty chair it leaves behind.</p>
         </div>
-
         <img src="../images/agentic-ai-common-sense.jpg" alt="Agentic AI: Common Sense Will Be Applied" class="article-image">
-
         <div class="article-content">
-
             <p>Somewhere in your company a meeting is happening right now. Someone is proposing to hand a decision to an AI agent. A refund. A subscription cancellation. A disputed charge. The room is nervous, so the proposer reaches for the sentence that ends every one of these meetings:</p>
-
             <p class="said">"Don't worry. Common sense will be applied."</p>
-
             <p>Everyone nods. The decision gets signed off. The agent ships.</p>
-
             <p>Here is the problem with that sentence. <strong>It has no subject.</strong> Read it again. Common sense will be applied <em>by whom?</em> The agent does not have common sense. The proposer has left the room. And the human who used to make this call is being removed, because removing them is the entire point of the project. "Common sense will be applied" is a passive sentence draped over an empty chair.</p>
-
             <figure>
                 <div class="blank">
                     <div class="line"><span class="slot">who?</span> will apply common sense.</div>
@@ -193,34 +169,22 @@
                 </div>
                 <figcaption>A passive sentence covering an empty chair. The judgment is assumed. The owner is missing.</figcaption>
             </figure>
-
             <p>This matters now because agents have crossed a line. For two years they suggested, and a human clicked. Now they act: they issue the refund, send the email, close the ticket, move the money. The safety net of a human between the model and the customer is quietly being removed, one workflow at a time, and "common sense will be applied" is the phrase that waves it through.</p>
-
             <p>So over six parts I will argue one thing. The real question of agentic AI in customer experience is not whether an agent <em>can</em> make a decision. Often it can, and often better than we admit. <strong>The real question is who is accountable when it does.</strong> And every honest answer leads to one uncomfortable number almost no leadership team is willing to write down.</p>
-
             <p>I will get to that number. First, why "common sense" is the wrong word.</p>
-
             <h2>What we actually mean by common sense</h2>
-
             <p>When a leader says an agent will use common sense, they mean something specific even if they cannot name it. They mean the agent will <strong>know when a case is weird</strong>. It will notice that a refund larger than the original order is suspicious. It will sense that a loyal customer of eight years asking for one small exception deserves a different answer than a brand-new account does. It will feel the difference between a routine request and a trap being set.</p>
-
             <p>Watch a good service agent for an afternoon and you see this constantly. They read a one-line message and infer the customer is anxious, not angry. They notice the order history and waive a fee no policy told them to waive. They escalate a case that looks fine on paper because something about it does not add up. None of that is written down anywhere. It is <strong>judgment built from experience</strong>, and it runs quietly underneath every decision they make. We never had to specify it, because a person was always there to supply it for free.</p>
-
             <p>Agentic AI removes the person. So the judgment that used to be free now has to be built, bought, or done without. "Common sense will be applied" is the sound of a team choosing the third option without noticing they made a choice at all.</p>
-
             <h2>The question everyone asks, and the one that matters</h2>
-
             <p>The debate about agents almost always starts in the wrong place. It starts with <em>"can the agent decide correctly?"</em> That question feels important, and it is mostly a distraction, because the answer is "yes, most of the time." And <strong>"most of the time" is exactly the trap.</strong></p>
-
             <figure>
                 <div class="qcard weak"><div class="lbl">The capability question</div><div class="q">Can the agent decide correctly?</div></div>
                 <div class="qarrow">&#8595;</div>
                 <div class="qcard strong"><div class="lbl">The accountability question</div><div class="q">Who is accountable when it does?</div></div>
                 <figcaption>Capability you can buy from a model provider. Accountability you cannot.</figcaption>
             </figure>
-
             <p>An agent that is right 99 percent of the time, run across a high volume of cases, is still wrong hundreds of times a week. Each of those wrong cases lands on a real customer.</p>
-
             <figure>
                 <div class="dotwrap">
                     <div class="grid100" id="grid"></div>
@@ -231,17 +195,13 @@
                 </div>
                 <figcaption>The volume that justified automation is the same volume that scales the mistakes.</figcaption>
             </figure>
-
             <p>Look at a single one of those gold dots. Take an ordinary billing dispute.</p>
-
             <div class="scn">
                 <div class="step"><div class="k">The case</div><div class="v">A long-time customer's free trial auto-converted to a $180 annual plan. They emailed to cancel two hours after the charge, having forgotten the trial was ending.</div></div>
                 <div class="step"><div class="k">The rule</div><div class="v">Policy says annual plans are <strong>non-refundable once billed</strong>. The charge is valid. The agent applies the rule and declines the refund.</div></div>
                 <div class="step"><div class="k">The result</div><div class="v"><strong>Correct by policy. Wrong by every human measure.</strong> A human rep would refund the $180 in seconds to keep a customer worth far more over time. The agent could not see the lifetime value, the goodwill, or the one-star review forming. It felt no doubt, because it had none to feel.</div></div>
             </div>
-
             <p>Now the part that makes this genuinely hard. The two cases below arrive at the agent looking <strong>identical</strong>: same product, same policy, same words. A human would treat them completely differently. The agent cannot tell them apart, and decides both with the same flat confidence.</p>
-
             <figure>
                 <span class="pair-banner">Identical to the agent &middot; opposite right answers</span>
                 <div class="pair">
@@ -258,22 +218,15 @@
                 </div>
                 <figcaption>Common sense is mostly the ability to tell these two apart. The rule cannot. The agent will not.</figcaption>
             </figure>
-
             <p>The question that decides whether you can live with that is not about the 99 percent. It is about the one percent. <strong>Who owns it, who sees it, who answers for it</strong>, and what it costs when it fails in a way no dashboard caught. That is an accountability question, not a capability question. Capability you can buy. Accountability has to sit on a named human by design, or it sits nowhere, which in practice means it sits on your brand.</p>
-
             <h2>Where the human goes. It does not leave.</h2>
-
             <p>Here is the through-line of the whole series, stated up front so you can watch me try to break it and fail.</p>
-
             <p class="pull">You cannot delete the human from a consequential decision. You can only relocate them.</p>
-
             <div class="law">
                 <div class="lbl">The principle this series keeps proving</div>
                 <div class="b"><strong>Conservation of Judgment.</strong> In any consequential decision, the human judgment never disappears. Automation only moves it: out of the routine flow, onto the hard cases and the parameters above them.</div>
             </div>
-
             <p>Every architecture in this series, and some are genuinely good, does the same thing. It moves the human.</p>
-
             <figure>
                 <div class="relo">
                     <div class="panel">
@@ -298,17 +251,13 @@
                 </div>
                 <figcaption>Less volume, far more consequential work. The chair moved. It did not vanish.</figcaption>
             </figure>
-
             <p>Picture the senior rep who used to approve two hundred refunds a day. In the new design she approves almost none, because the system resolves the easy ones without her. Instead she owns the dozen genuine exceptions the machine flagged, she watches the drift dashboard for the day the refund rate jumps three points overnight, and she audits a random sample to catch the cases that looked normal and were not. Same person. Far fewer cases. Far more leverage. The skill in agentic CX is not removing humans. <strong>It is deciding precisely where the remaining humans should stand.</strong></p>
-
             <h2>What this series will do</h2>
-
             <p>Six parts. Each one is a single move in the argument.</p>
-
             <figure>
                 <div class="map">
                     <div class="row now"><div class="num">Intro</div><div class="rtxt"><b>Common sense will be applied</b><span>Why the sentence has no subject, and why the real question is accountability, not capability. You are reading it.</span></div></div>
-                    <div class="row"><div class="num">Part 1</div><div class="rtxt"><b>The four bands</b><span>When an agent can genuinely own a decision: high volume, low variance, reversible, rule-correct almost always, with a human owning the exceptions.</span></div></div>
+                    <div class="row"><div class="num">Part 1</div><div class="rtxt"><b>The human was the integration layer</b><span>An agent's first job is the plumbing your best people do by hand, plus applying the rule you already wrote. The only real decision is the one to break the rule, and that stays human.</span></div></div>
                     <div class="row"><div class="num">Part 2</div><div class="rtxt"><b>Stop if unclear, and the supervisor trap</b><span>Why "the agent will escalate when confused" fails. Models are confidently wrong, so they stop on the easy cases and sail through the dangerous ones.</span></div></div>
                     <div class="row"><div class="num">Part 3</div><div class="rtxt"><b>The human who stopped reading</b><span>How to keep a human in the loop without breeding a rubber stamp. The counterintuitive fix: send humans fewer cases, not more.</span></div></div>
                     <div class="row"><div class="num">Part 4</div><div class="rtxt"><b>Two managers who disagree on purpose</b><span>Money against experience, as two supervisors pulling opposite ways. Route on their disagreement instead of forcing them to agree.</span></div></div>
@@ -316,13 +265,9 @@
                 </div>
                 <figcaption>The argument, end to end. Each part is one move.</figcaption>
             </figure>
-
             <h2>The number nobody writes down</h2>
-
             <p>Here is where we end, so you know what you are signing up for.</p>
-
             <p>Every design move in this series will try to engineer away the discomfort of letting an agent decide. Each one fails in the same elegant way: it takes the hard question and gives it a nicer name.</p>
-
             <figure>
                 <div class="converge">
                     <div class="disguises">
@@ -339,20 +284,13 @@
                 </div>
                 <figcaption>Four mechanisms. One decision underneath, wearing four costumes.</figcaption>
             </figure>
-
             <p>And here is the quiet truth. You have already set that number. Your refund policy encodes it: a thirty-day limit that declines a loyal customer on day thirty-one is a statement that their goodwill is worth less than the refund. Your escalation rules encode it. Your staffing encodes it. The price of an unhappy customer is already priced into a dozen decisions across your business. You simply have never had to say it in one sentence.</p>
-
             <p>Agentic AI changes that. The most uncomfortable feature of handing decisions to an agent is that <strong>it forces you to write the number down</strong>, because an agent cannot act on a figure that lives only in a manager's gut. It needs the threshold, the budget, the rule. Implicit judgment has to become explicit instruction.</p>
-
             <p>Most organizations will not write it down. It is politically ugly to put on paper. So they say "common sense will be applied" instead, ship the agent anyway, and hope the empty chair holds.</p>
-
             <p><strong>This series is about not doing that.</strong></p>
-
         </div>
-
-        <a href="../index.html#articles" class="back-link">Next &mdash; Part 1: The four bands of safe autonomy</a>
+        <a href="../index.html#articles" class="back-link">Next &mdash; Part 1: The human was the integration layer</a>
     </article>
-
     <footer>
         <div class="footer-content">
             <div class="footer-grid">
@@ -389,7 +327,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         var g = document.getElementById('grid');
         if (g) { for (var i = 0; i < 100; i++) { var d = document.createElement('span'); d.className = 'dot' + (i === 37 ? ' bad' : ''); g.appendChild(d); } }
