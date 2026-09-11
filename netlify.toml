@@ -1,5 +1,11 @@
+# Content-Type is scoped to HTML only, never "/*".
+# A "/*" rule overrides the type Netlify derives from the file extension and
+# applies text/html to images, CSS, fonts and feeds too. Browsers sniff binary
+# image bytes in <img> so JPEGs survive it, but anything that is not sniffed
+# (SVG, CSS, fonts, JSON, XML) breaks. Netlify already serves .html as
+# text/html; charset=UTF-8 by default, so this rule only makes that explicit.
 [[headers]]
-  for = "/*"
+  for = "/*.html"
   [headers.values]
     Content-Type = "text/html; charset=utf-8"
 
