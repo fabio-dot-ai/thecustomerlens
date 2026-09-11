@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop If Unclear - The Customer Lens</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root{
+            --paper:#fafafa; --ink:#2c2c2c; --soft:#6b6b6b; --mut:#999;
+            --line:#e0e0e0; --line2:#f0f0f0;
+            --gold:#C28A1E; --gold-soft:#F6EDD6; --gold-bright:#E8B23A;
+        }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--paper); color: var(--ink); line-height: 1.8; letter-spacing: 0.3px;
+        }
+        header {
+            border-bottom: 1px solid var(--line); padding: 2rem 0; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.98);
+        }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; font-family: 'Georgia', serif; }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { color: var(--soft); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; letter-spacing: 1px; text-transform: uppercase; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .nav-links a:hover { color: var(--ink); }
+        article { max-width: 800px; margin: 4rem auto; padding: 0 3rem; }
+        .article-header { margin-bottom: 3rem; }
+        .article-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: var(--mut); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
+        .subtitle { font-size: 1.35rem; font-style: italic; color: var(--soft); line-height: 1.5; }
+        .article-image { width: 100%; height: auto; margin-bottom: 3rem; display: block; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--ink); }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--ink); }
+        .article-content strong { font-weight: 600; }
+        .article-content em { font-style: italic; color: var(--soft); }
+        .pull { font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: var(--ink); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 3rem 0; }
+        .said { font-size: 1.4rem; font-style: italic; color: var(--ink); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; }
+        .lbl { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: var(--gold); }
+        figure { margin: 3rem 0; }
+        figcaption { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--mut); margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px; }
+        /* paired cases */
+        .pair-banner { font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); display:inline-block; padding:0.4rem 0.9rem; margin-bottom:0.8rem; }
+        .pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .pcard { background:#fff; border:1px solid var(--line); border-top:3px solid var(--gold); padding:1.3rem 1.4rem; }
+        .pcard.mut { border-top-color:var(--mut); }
+        .pcard .ph { font-family:-apple-system,sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+        .pcard.mut .ph { color:var(--mut); }
+        .pcard .pb { font-size:0.98rem; line-height:1.55; }
+        .pcard .verdict { margin-top:0.9rem; font-family:-apple-system,sans-serif; font-size:0.8rem; font-weight:700; color:var(--ink); border-top:1px solid var(--line2); padding-top:0.7rem; }
+        /* law */
+        .law { border:1px solid var(--line); border-top:3px solid var(--gold); background:#fff; padding:1.6rem 1.8rem; margin:2.5rem 0; }
+        .law .b { font-size:1.25rem; line-height:1.5; margin-top:0.5rem; }
+        /* scenario */
+        .scn { background:#fff; border:1px solid var(--line); padding:0.4rem 1.6rem; margin:2.5rem 0; }
+        .scn .step { display:flex; gap:1.2rem; padding:1.1rem 0; border-bottom:1px solid var(--line2); }
+        .scn .step:last-child { border-bottom:0; }
+        .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
+        .scn .v { font-size:1rem; line-height:1.6; }
+        /* diagram */
+        .diagram { background:#fff; border:1px solid var(--line); padding:1.5rem; overflow-x:auto; }
+        .diagram svg { width:100%; height:auto; min-width:520px; display:block; }
+        .back-link { display:inline-block; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .back-link:hover { text-decoration:underline; }
+        footer { background:var(--ink); color:#fff; padding:4rem 3rem 3rem; margin-top:6rem; }
+        .footer-content { max-width:1400px; margin:0 auto; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
+        .footer-section h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:1.5rem; font-weight:400; }
+        .footer-links { display:flex; flex-direction:column; gap:0.8rem; }
+        .footer-links a { color:#b0b0b0; text-decoration:none; transition:color .3s; font-size:0.9rem; }
+        .footer-links a:hover { color:#fff; }
+        .footer-bottom { border-top:1px solid #444; padding-top:2rem; text-align:center; color:#888; font-size:0.85rem; }
+        @media (max-width:768px){
+            nav { padding:0 1.5rem; flex-direction:column; gap:1rem; }
+            .logo { font-size:1.2rem; letter-spacing:1px; }
+            .nav-links { gap:1rem; font-size:0.85rem; flex-wrap:wrap; justify-content:center; }
+            article { margin:2rem auto; padding:0 1.5rem; }
+            h1 { font-size:2rem; }
+            .subtitle { font-size:1.1rem; }
+            .article-content { font-size:1rem; }
+            .article-content h2 { font-size:1.5rem; }
+            .pull { font-size:1.4rem; }
+            .pair { grid-template-columns:1fr; }
+            .scn .step { flex-direction:column; gap:0.3rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
+            footer { padding:3rem 1.5rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">The Customer Lens</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span>8 min read</span><span>&bull;</span><span>Sep 11, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 2</span>
+            </div>
+            <h1>Stop If Unclear</h1>
+            <p class="subtitle">The safety net every team reaches for is a confidence check. Models are confidently wrong, so the check stops on the harmless cases and waves the expensive ones straight through.</p>
+        </div>
+        <img src="../images/stop-if-unclear.svg" alt="A dashed gate labelled Stop If Unclear. Odd-shaped cases pile up against it while one ordinary-looking case passes straight through and becomes the costly one." class="article-image">
+        <div class="article-content">
+            <p>Part 1 ended at a line. Below it the agent computes: it moves data across the messy seams and applies the rule you already wrote. Above it a human decides. The whole architecture rests on one assumption, which I quietly skipped: that something can tell, case by case and at speed, which side of the line a case belongs on.</p>
+            <p>Ask a team how they plan to do that and you get the same answer every time. I have heard it in every design review I have sat in, usually from the calmest person in the room.</p>
+            <div class="said">"The agent will escalate when it's not sure."</div>
+            <p>The room relaxes, because this one sounds like engineering. It has a mechanism in it. There is a confidence score, there is a threshold, someone will tune it.</p>
+            <p>It is the same sentence from the intro in a technical costume. Common sense will be applied, by the model, on request. And it fails in a specific direction that makes it worse than having no filter at all.</p>
+            <h2>Confidence measures the wrong thing</h2>
+            <p>A model's confidence is a statement about text. It is high when the input looks like the millions of inputs the model has seen and the answer follows a well-worn path. It falls when the phrasing is strange, the formatting is broken, the message is in a language the model rarely handles, or the customer rambles for nine paragraphs before getting to the point.</p>
+            <p>Read that list again. None of it is about money. None of it is about trust, or precedent, or whether this action can be undone tomorrow.</p>
+            <p>A furious customer writing in fragments about a &euro;9 shipping fee reads as unclear. The agent stops, and a human spends four minutes on nine euros. A polite, well-structured message that happens to be the sixth fraudulent refund request from the same person this year reads as perfectly clear, <strong>because it is perfectly clear</strong>. It is fluent, ordinary, on-policy, and wrong. The model has no doubt to report, so it reports none.</p>
+            <p class="pull">The agent stops on the cases that are hard to read. It should stop on the cases that are expensive to get wrong. Those are different cases, and they are barely correlated.</p>
+            <p>Difficulty and danger are two separate axes. "Stop if unclear" filters on the first one, and then bills you for the second.</p>
+            <figure>
+                <div class="diagram">
+                    <svg viewBox="0 0 760 486" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two-by-two grid. Horizontal axis: how the case reads to the model. Vertical axis: what is at stake. Odd-reading cases are escalated whether stakes are low or high. Clean-reading low-stakes cases resolve correctly. Clean-reading high-stakes cases resolve automatically and are the failure.">
+                        <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+                            <text x="24" y="26" font-size="12" letter-spacing="1.4" fill="#999">WHAT IS AT STAKE</text>
+                            <text x="413" y="474" text-anchor="middle" font-size="12" letter-spacing="1.4" fill="#999">HOW THE CASE READS TO THE MODEL</text>
+                            <line x1="90" y1="40" x2="90" y2="410" stroke="#e0e0e0" stroke-width="1.5"/>
+                            <line x1="414" y1="42" x2="414" y2="404" stroke="#C28A1E" stroke-width="2" stroke-dasharray="8 7"/>
+                            <line x1="90" y1="410" x2="736" y2="410" stroke="#e0e0e0" stroke-width="1.5"/>
+                            <text x="76" y="110" text-anchor="end" font-size="12" letter-spacing="1.2" fill="#999">HIGH</text>
+                            <text x="76" y="310" text-anchor="end" font-size="12" letter-spacing="1.2" fill="#999">LOW</text>
+                            <text x="240" y="434" text-anchor="middle" font-size="12" letter-spacing="1.2" fill="#999">READS CLEAN</text>
+                            <text x="570" y="434" text-anchor="middle" font-size="12" letter-spacing="1.2" fill="#999">READS ODD</text>
+
+                            <rect x="106" y="50" width="300" height="170" fill="#fff" stroke="#C28A1E" stroke-width="2"/>
+                            <text x="126" y="80" font-size="13" font-weight="700" letter-spacing="1.1" fill="#C28A1E">AUTO-RESOLVED</text>
+                            <text x="126" y="112" font-size="16" fill="#2c2c2c">Confident. Consequential.</text>
+                            <text x="126" y="138" font-size="16" fill="#2c2c2c">Wrong without a flicker</text>
+                            <text x="126" y="162" font-size="16" fill="#2c2c2c">of doubt.</text>
+                            <text x="126" y="196" font-size="13" font-weight="700" fill="#2c2c2c">The entire problem.</text>
+
+                            <rect x="422" y="50" width="300" height="170" fill="#fff" stroke="#e0e0e0"/>
+                            <text x="442" y="80" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">ESCALATED</text>
+                            <text x="442" y="112" font-size="16" fill="#2c2c2c">Odd and expensive.</text>
+                            <text x="442" y="138" font-size="16" fill="#2c2c2c">The gate works here.</text>
+                            <text x="442" y="196" font-size="13" font-weight="700" fill="#6b6b6b">Correct, and rare.</text>
+
+                            <rect x="106" y="236" width="300" height="160" fill="#fff" stroke="#e0e0e0"/>
+                            <text x="126" y="266" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">AUTO-RESOLVED</text>
+                            <text x="126" y="298" font-size="16" fill="#2c2c2c">Ordinary, cheap, routine.</text>
+                            <text x="126" y="356" font-size="13" font-weight="700" fill="#6b6b6b">Fine. This is the point.</text>
+
+                            <rect x="422" y="236" width="300" height="160" fill="#fff" stroke="#e0e0e0"/>
+                            <text x="442" y="266" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">ESCALATED</text>
+                            <text x="442" y="298" font-size="16" fill="#2c2c2c">Messy, typo-ridden,</text>
+                            <text x="442" y="322" font-size="16" fill="#2c2c2c">nine euros at stake.</text>
+                            <text x="442" y="356" font-size="13" font-weight="700" fill="#6b6b6b">Most of your queue.</text>
+                        </g>
+                    </svg>
+                </div>
+                <figcaption>The gate cuts the grid vertically. The cost lives horizontally. That mismatch is the whole failure.</figcaption>
+            </figure>
+            <p>Both errors cost you, and they compound each other. The escalation queue fills with the bottom-right box: noise, low stakes, resolvable in seconds. The human working that queue learns, correctly, that flagged cases are usually nothing. Meanwhile the top-left box never reaches her at all. She is being trained to skim by the same mechanism that hides the cases worth reading.</p>
+            <p>Go back to the two cases from the intro, the ones that arrive looking identical. Case A is a first-time customer who genuinely forgot to cancel. Case B is the sixth forgotten trial this year across three accounts, same wording every time. A confidence gate treats them the same way, and it is not wrong to: <em>the text really is equally clear in both</em>. What separates them is not in the message. It is in the history, and nobody asked.</p>
+            <h2>The supervisor trap</h2>
+            <p>So you add a second model to check the first. Almost everyone lands here, and the appeal is obvious. It is cheap, it runs in milliseconds, it needs no headcount, and it emits a label you can put in a dashboard: <em>verified</em>.</p>
+            <p>The second model is trained on the same kind of data as the first, carries the same priors, and reads the same text. So it is not an independent check. It disagrees with the primary exactly where the primary was already hesitant, which is the noise, and it agrees with the primary exactly where the primary was confidently wrong, which is the damage. You did not add a check. <strong>You added a second vote from a voter with the same opinions.</strong></p>
+            <div class="law">
+                <div class="lbl">The arithmetic nobody runs</div>
+                <div class="b">The business case for a supervisor is multiplication. One percent error times five percent error is one in two thousand. <strong>Multiplication requires independence.</strong> Two models of the same family, reading the same case, are not independent, and almost no team measures how dependent they are on their own traffic. Until you have that overlap number, the safety improvement you are claiming is one you invented.</div>
+            </div>
+            <p>Then there is the second-order effect, which is worse and slower to show up. The <em>verified</em> label is read by every human downstream as <em>checked</em>. It lowers the attention of the only genuinely independent reviewer in the system. A supervisor that catches thirty percent of errors while cutting human scrutiny in half has made you less safe and given you a metric that says otherwise. That is not a hypothetical to argue about. It is a ratio you can measure, and you should, before the label ships.</p>
+            <p>None of this makes a model watching model output useless. It is good at a job I have written about elsewhere: catching drift, tone breaks, policy language that has quietly wandered over six weeks. That is pattern work on the agent's own output, and a model does it well because the signal genuinely is in the text. What it cannot supply is independent judgment about <em>this customer</em>, because it is blind in the same places the primary is blind.</p>
+            <h2>Escalate on the case, not on the model's mood</h2>
+            <p>The fix is to stop asking the agent how it feels and start asking the case what it is. Every useful escalation trigger I have seen is deterministic, computed from data the agent does not generate, and readable by a human in one line.</p>
+            <p><strong>Reversibility.</strong> Can this be undone in one click tomorrow, or does it move money, close an account, or send an email that cannot be recalled? <strong>Magnitude.</strong> How does the amount compare to the ordinary amount for this product, this segment, this week? <strong>Pattern.</strong> Has this customer, this device, this address, or this payment method done this before? <strong>Novelty.</strong> Does this case resemble anything already decided, or is it genuinely the first of its kind? <strong>Value at risk.</strong> What is this relationship worth, and what does the wrong answer here cost beyond the transaction?</p>
+            <p>None of those require a model. All of them are auditable, and every one of them has a threshold that a named person sets.</p>
+            <div class="scn">
+                <div class="step"><div class="k">The case</div><div class="v">A polite, well-written request to refund a &euro;180 annual charge after an auto-converted trial. On-policy wording. No red flags in the text.</div></div>
+                <div class="step"><div class="k">Confidence gate</div><div class="v">Model confidence 0.97. Nothing unclear here. The gate passes it. Refund issued, or declined, in 400 milliseconds.</div></div>
+                <div class="step"><div class="k">Stakes gate</div><div class="v">A query runs before the agent acts: three accounts, one device fingerprint, sixth trial refund in eleven months. The pattern trigger fires. The case routes to the exception owner with the history attached.</div></div>
+                <div class="step"><div class="k">The difference</div><div class="v">Nobody asked the model anything. The signal was never in the message. It was in a table the model cannot see.</div></div>
+            </div>
+            <div class="law">
+                <div class="lbl">The rule that replaces "stop if unclear"</div>
+                <div class="b">Escalation is a property of the case, not a state of the model. <strong>If your trigger cannot be computed while the model is offline, it is not a trigger. It is a hope.</strong></div>
+            </div>
+            <p>Notice who owns this. The thresholds are not a technical setting, and the engineer tuning the pipeline should not be choosing them alone. Reversibility, magnitude, value at risk: these are the parameters from Part 1, and they belong to the parameter owner. This is the line from the anatomy, written down in numbers instead of gestured at in a meeting.</p>
+            <p>It also changes what kind of quantity escalation volume is. Under a confidence gate, the number of cases reaching humans is an output: whatever the model happened to find strange this week, drifting silently every time the model is updated. Under deterministic triggers it is an input. <strong>You set it.</strong> Tighten the thresholds and more cases reach humans, cost rises, risk falls. Loosen them and the reverse. That is a budget, and a budget has a price per unit, which is the number this series ends on.</p>
+            <p>Keep the confidence score. Just take the gate away from it and give it a smaller job: sampling. Low-confidence cases make a reasonable pile to audit, because they cluster around inputs your process handles badly. As a queue for review, useful. As the thing standing between an agent and a customer's money, no.</p>
+            <h2>What this costs you</h2>
+            <p>Two things get worse before they get better, and pretending otherwise is how this advice gets ignored by month three.</p>
+            <p>First, somebody has to write the triggers down. "The agent will escalate when it's not sure" requires nobody to define anything, which is the real reason it wins design reviews. Deterministic triggers force the parameter owner to say what counts as consequential, in numbers, on paper, with their name on it. That is the discomfort from the end of the series arriving early and in a smaller size.</p>
+            <p>Second, a trigger list only catches shapes of trouble you already know. The genuinely novel case, the fraud pattern nobody has seen, passes every rule you wrote and every confidence check as well. There is no gate clever enough to fix this. The mechanism that finds it is the audit wire from Part 1: a random sample of resolved cases, read by a human, selected without reference to any score. Unconditioned sampling is the only way you learn what your rules fail to describe. It looks like waste on a dashboard. It is how the trigger list gets written.</p>
+            <h2>What comes next</h2>
+            <p>So the routing is deliberate now. Cases reach humans because of what they are, not because a model found the grammar unusual, and the humans above the line get the dozen that carry the weight.</p>
+            <p>Which creates the next problem, and it is a human one rather than a technical one. Give a person a queue of flagged cases and an approve button, and within three weeks the button is faster than reading. The human in the loop becomes a human on the loop, and then becomes a signature. Accountability on the org chart, rubber stamp in practice, and a worse outcome than having no reviewer at all, because now everyone believes the case was read.</p>
+            <p>The fix is the opposite of what volume suggests: send humans <em>fewer</em> cases, not more.</p>
+            <p><strong>That is Part 3.</strong></p>
+        </div>
+        <a href="../index.html#articles" class="back-link">Next &mdash; Part 3: The human who stopped reading</a>
+    </article>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>The Customer Lens</h4>
+                    <p style="color:#b0b0b0; line-height:1.7;">Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="../index.html#articles">Articles</a>
+                        <a href="../about.html">About</a>
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="../impressum.html">Impressum</a>
+                        <a href="../privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Customer Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
