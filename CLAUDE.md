@@ -15,9 +15,12 @@ An article published at `articles/<slug>.html` is live at
 outside this repo — a Todoist task, a calendar entry, an email, a message, a summary —
 use the `https://thecustomerlens.com/...` URL.
 
-Never hand over a GitHub blob link, a raw file path, or a `file://` path as the way to
-read an article. Those are for editing, not reading. If the article is not merged to
-`main` yet, say that it is not live yet rather than substituting a source link.
+For a live article, never hand over a GitHub link, a raw file path, or a `file://` path
+as the way to read it.
+
+If the article is not merged to `main` yet, it is not live. Say so, and link the file on
+its branch on GitHub instead:
+`https://github.com/fabio-dot-ai/thecustomerlens/blob/<branch>/articles/<slug>.html`
 
 ## Layout
 
