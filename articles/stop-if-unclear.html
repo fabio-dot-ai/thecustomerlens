@@ -58,6 +58,11 @@
         .scn .step:last-child { border-bottom:0; }
         .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
         .scn .v { font-size:1rem; line-height:1.6; }
+        /* trigger fields */
+        .scn.triggers .v { display:flex; flex-direction:column; gap:0.45rem; }
+        .scn .look, .scn .fire { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:0.84rem; line-height:1.55; color:var(--soft); }
+        .scn .fire { color:var(--ink); }
+        .scn .look b, .scn .fire b { font-size:0.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-right:0.45rem; }
         /* diagram */
         .diagram { background:#fff; border:1px solid var(--line); padding:1.5rem; overflow-x:auto; }
         .diagram svg { width:100%; height:auto; min-width:520px; display:block; }
@@ -102,28 +107,28 @@
     <article>
         <div class="article-header">
             <div class="article-meta">
-                <span>8 min read</span><span>&bull;</span><span>Sep 11, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 2</span>
+                <span>10 min read</span><span>&bull;</span><span>Sep 11, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 2</span>
             </div>
             <h1>Stop If Unclear</h1>
-            <p class="subtitle">The safety net most teams reach for is a confidence check. Models are often confidently wrong, so the check stops on the harmless cases and waves the expensive ones straight through.</p>
+            <p class="subtitle">The safety net most teams reach for is a confidence check. AI models are often confidently wrong, so the check stops on the harmless cases and waves the expensive ones straight through to the customer.</p>
         </div>
         <img src="../images/stop-if-unclear.jpg" alt="A stream of cases flows left to right, coloured cool to hot by what is at stake. A dashed gold gate pulls the odd-looking ones out of the stream before they reach it, while the hottest case passes straight through and flares on the far side." class="article-image">
         <div class="article-content">
-            <p>Part 1 ended with a line. Below it, the agent computes: it moves data across messy systems and applies the rule you already wrote. Above it, a human decides. Part 1 also ended with the question the whole design depends on. Something has to put each case on the right side of that line, one case at a time, at the speed of the queue. What does that?</p>
+            <p>Part 1 ended with a line. Below it, the AI agent computes: it moves data across messy systems and applies the rule you already wrote. Above it, a human decides. Part 1 also ended with the question the whole design depends on. Something has to put each case on the right side of that line, one case at a time, at the speed of the queue. What does that?</p>
             <p>Ask a team, and the answer usually comes fast.</p>
-            <div class="said">"The agent will escalate when it's not sure."</div>
-            <p>It sounds like engineering. There is a score, a threshold, and someone to tune it. It is also the intro's sentence again: common sense will be applied, now by the model, on request. It fails in one direction, and that direction is the expensive one.</p>
+            <div class="said">"The AI agent will escalate to a human when it's not sure."</div>
+            <p>It sounds like engineering. There is a score, a threshold, and someone to tune it. It is also the intro's sentence again: common sense will be applied, now by the AI, on request. It fails in one direction, and that direction is the expensive one.</p>
             <h2>Confidence tracks the text</h2>
-            <p>A model's confidence mostly measures how familiar the input looks. It is high when the message resembles millions of messages the model has seen and the answer follows a well-worn path. It drops when the phrasing is odd, the formatting is broken, the language is rare, or the customer takes nine paragraphs to reach the point.</p>
-            <p>None of those things is about money. None is about trust, precedent, or whether the action can be undone tomorrow. Confidence carries some signal about whether the answer is right. It carries almost none about what a wrong answer costs.</p>
-            <p>So the gate misfires in both directions. A furious customer writes in fragments about a &euro;9 shipping fee. The message reads as unclear, the agent stops, and a person spends real time on nine euros. A polite customer sends a tidy refund request, and it is their sixth fraudulent one this year. That message reads as clear, <strong>because it is clear</strong>. It is fluent, ordinary, on-policy, and wrong. The model has no doubt, so it reports none.</p>
-            <p class="pull">The agent stops on the cases that are hard to read. You need it to stop on the cases that are expensive to get wrong. Those two sets barely overlap.</p>
+            <p>An AI model's confidence mostly measures how familiar the input looks. It is high when the message resembles millions of messages the model has seen and the answer follows a well-worn path. It drops when the phrasing is odd, the formatting is broken, the language is rare, or the customer takes nine paragraphs to reach the point.</p>
+            <p>None of those things is about money. None is about trust, precedent, or whether the action can be undone tomorrow. The AI's confidence carries some signal about whether the answer is right. It carries almost none about what a wrong answer costs.</p>
+            <p>So the gate misfires in both directions. A furious customer writes in fragments about a &euro;9 shipping fee. The message reads as unclear, the AI agent stops, and a human agent spends real time on nine euros. A polite customer sends a tidy refund request, and it is their sixth fraudulent one this year. That message reads as clear, <strong>because it is clear</strong>. It is fluent, ordinary, on-policy, and wrong. The AI has no doubt, so it reports none.</p>
+            <p class="pull">The AI agent stops on the cases that are hard to read. You need it to stop on the cases that are expensive to get wrong. Those two sets barely overlap.</p>
             <figure>
                 <div class="diagram">
                     <svg viewBox="0 0 760 486" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two-by-two grid. Horizontal axis: how the case reads to the model. Vertical axis: what is at stake. Odd-reading cases are escalated whether stakes are low or high. Clean-reading low-stakes cases resolve correctly. Clean-reading high-stakes cases resolve automatically and are the failure.">
                         <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
                             <text x="24" y="26" font-size="12" letter-spacing="1.4" fill="#999">WHAT IS AT STAKE</text>
-                            <text x="413" y="474" text-anchor="middle" font-size="12" letter-spacing="1.4" fill="#999">HOW THE CASE READS TO THE MODEL</text>
+                            <text x="413" y="474" text-anchor="middle" font-size="12" letter-spacing="1.4" fill="#999">HOW THE CASE READS TO THE AI</text>
                             <line x1="90" y1="40" x2="90" y2="410" stroke="#e0e0e0" stroke-width="1.5"/>
                             <line x1="414" y1="42" x2="414" y2="404" stroke="#C28A1E" stroke-width="2" stroke-dasharray="8 7"/>
                             <line x1="90" y1="410" x2="736" y2="410" stroke="#e0e0e0" stroke-width="1.5"/>
@@ -133,25 +138,25 @@
                             <text x="570" y="434" text-anchor="middle" font-size="12" letter-spacing="1.2" fill="#999">READS ODD</text>
 
                             <rect x="106" y="50" width="300" height="170" fill="#fff" stroke="#C28A1E" stroke-width="2"/>
-                            <text x="126" y="80" font-size="13" font-weight="700" letter-spacing="1.1" fill="#C28A1E">AUTO-RESOLVED</text>
+                            <text x="126" y="80" font-size="13" font-weight="700" letter-spacing="1.1" fill="#C28A1E">RESOLVED BY THE AI</text>
                             <text x="126" y="112" font-size="16" fill="#2c2c2c">Confident. Consequential.</text>
                             <text x="126" y="138" font-size="16" fill="#2c2c2c">Wrong without a flicker</text>
                             <text x="126" y="162" font-size="16" fill="#2c2c2c">of doubt.</text>
                             <text x="126" y="196" font-size="13" font-weight="700" fill="#2c2c2c">The entire problem.</text>
 
                             <rect x="422" y="50" width="300" height="170" fill="#fff" stroke="#e0e0e0"/>
-                            <text x="442" y="80" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">ESCALATED</text>
+                            <text x="442" y="80" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">ESCALATED TO A HUMAN</text>
                             <text x="442" y="112" font-size="16" fill="#2c2c2c">Odd and expensive.</text>
                             <text x="442" y="138" font-size="16" fill="#2c2c2c">The gate works here.</text>
                             <text x="442" y="196" font-size="13" font-weight="700" fill="#6b6b6b">Correct, and rare.</text>
 
                             <rect x="106" y="236" width="300" height="160" fill="#fff" stroke="#e0e0e0"/>
-                            <text x="126" y="266" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">AUTO-RESOLVED</text>
+                            <text x="126" y="266" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">RESOLVED BY THE AI</text>
                             <text x="126" y="298" font-size="16" fill="#2c2c2c">Ordinary, cheap, routine.</text>
                             <text x="126" y="356" font-size="13" font-weight="700" fill="#6b6b6b">Fine. This is the point.</text>
 
                             <rect x="422" y="236" width="300" height="160" fill="#fff" stroke="#e0e0e0"/>
-                            <text x="442" y="266" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">ESCALATED</text>
+                            <text x="442" y="266" font-size="13" font-weight="700" letter-spacing="1.1" fill="#999">ESCALATED TO A HUMAN</text>
                             <text x="442" y="298" font-size="16" fill="#2c2c2c">Messy, typo-ridden,</text>
                             <text x="442" y="322" font-size="16" fill="#2c2c2c">nine euros at stake.</text>
                             <text x="442" y="356" font-size="13" font-weight="700" fill="#6b6b6b">Most of your queue.</text>
@@ -160,49 +165,50 @@
                 </div>
                 <figcaption>The gate splits the grid left from right. The cost sits in the top row. The top-left box goes straight through.</figcaption>
             </figure>
-            <p>Both misfires cost you, and they feed each other. The escalation queue fills with the bottom-right box: messy, cheap, done in seconds. The person working that queue learns, correctly, that a flagged case is usually nothing. The top-left box never reaches her at all. The mechanism that hides the dangerous cases is the same one teaching her to skim the cases she does see.</p>
-            <p>Go back to the two cases from the intro, the ones that arrive looking identical. Case A is a first-time customer who forgot to cancel. Case B is the sixth forgotten trial this year across three accounts, with the same wording each time. A confidence gate treats them the same way, and on the text alone that is correct: both messages are equally clear. What separates them is the history. The model never saw the history, so it never had a reason to doubt.</p>
-            <h2>The supervisor trap</h2>
-            <p>The usual next move is a second model that checks the first. The appeal is real. It is cheap, it adds milliseconds, it needs no headcount, and it produces a label for the dashboard: <em>verified</em>.</p>
-            <p>Look at what the second model receives. It gets the same message, the same policy text and, in most builds, the same missing history. It was trained on the same kind of data and shares the same priors. When two checkers read the same input and lack the same facts, their mistakes line up. The supervisor objects where the first model was already hesitant, which is the noise. It agrees where the first model was confidently wrong, which is the damage. <strong>The second vote comes from a voter with the same information and the same blind spot.</strong></p>
+            <p>Both misfires cost you, and they feed each other. The escalation queue fills with the bottom-right box: messy, cheap, done in seconds. The human agent working that queue learns, correctly, that a flagged case is usually nothing. The top-left box never reaches her at all. The mechanism that hides the dangerous cases is the same one teaching her to skim the cases she does see.</p>
+            <p>Go back to the two cases from the intro, the ones that arrive looking identical. Case A is a first-time customer who forgot to cancel. Case B is the sixth forgotten trial this year across three accounts, with the same wording each time. A confidence gate treats them the same way, and on the text alone that is correct: both messages are equally clear. What separates them is the history. The AI never saw the history, so it never had a reason to doubt.</p>
+            <h2>The AI supervisor trap</h2>
+            <p>The usual next move is a second AI model that checks the first. Teams call it a supervisor, which is confusing in customer service, where a supervisor is the human team lead. Here it is software: an AI supervisor reviewing the AI agent. The appeal is real. It is cheap, it adds milliseconds, it needs no extra headcount, and it produces a label for the dashboard: <em>verified</em>.</p>
+            <p>Look at what the AI supervisor receives. It gets the same message, the same policy text and, in most builds, the same missing history. It was trained on the same kind of data as the AI agent and shares the same priors. When two AI models read the same input and lack the same facts, their mistakes line up. The AI supervisor objects where the AI agent was already hesitant, which is the noise. It agrees where the AI agent was confidently wrong, which is the damage. <strong>The second vote comes from a voter with the same information and the same blind spot.</strong></p>
             <div class="law">
                 <div class="lbl">The arithmetic behind the pitch</div>
-                <div class="b">The case for a supervisor is multiplication. If the agent is wrong on 1% of cases and the supervisor misses 5% of those errors, 1 case in 2,000 slips through. That figure holds only if the two models fail independently. Two models that read the same input and lack the same facts do not. The real figure depends on how often they fail on the same cases, and you can measure that on your own traffic. <strong>Until you measure it, 1 in 2,000 is an assumption with a decimal point.</strong></div>
+                <div class="b">The case for an AI supervisor is multiplication. If the AI agent is wrong on 1% of cases and the AI supervisor misses 5% of those errors, 1 case in 2,000 slips through. That figure holds only if the two AI models fail independently. Two AI models that read the same input and lack the same facts do not. The real figure depends on how often they fail on the same cases, and you can measure that on your own traffic. <strong>Until you measure it, 1 in 2,000 is an assumption with a decimal point.</strong></div>
             </div>
-            <p>The second-order effect arrives later. People downstream read <em>verified</em> as <em>checked by someone</em>. The label lowers the attention of the one reviewer in the system who really is independent: the human. Suppose the supervisor catches a third of the errors, and the label halves how closely people look. You can end up with more errors reaching customers and a dashboard that shows fewer. That trade is measurable. Measure it before the label ships.</p>
-            <p>A model that watches model output still has a job. I have written about that job before: catching drift, broken tone, and policy wording that wanders over weeks. The evidence for those problems is in the text, so a model finds it well. Judgment about this particular customer needs facts that the text does not contain. A second reader of the same text cannot supply them.</p>
+            <p>The second-order effect arrives later. Humans downstream read <em>verified</em> as <em>checked by someone</em>. The label lowers the attention of the one reviewer in the system who really is independent: the human. Suppose the AI supervisor catches a third of the errors, and the label halves how closely humans look. You can end up with more errors reaching customers and a dashboard that shows fewer. That trade is measurable. Measure it before the label ships.</p>
+            <p>An AI model that watches AI output still has a job. I have written about that job before: catching drift, broken tone, and policy wording that wanders over weeks. The evidence for those problems is in the text, so an AI model finds it well. Judgment about this particular customer needs facts that the text does not contain. A second AI reading the same text cannot supply them.</p>
             <h2>Ask the case, not the model</h2>
-            <p>The fix is to stop asking the agent how sure it feels and start asking what the case is. A good escalation trigger has three properties. It is computed from data the agent did not generate. It gives the same answer every time for the same case. And a person can read it in one line and agree or disagree. Five questions cover most of the ground.</p>
-            <div class="scn">
-                <div class="step"><div class="k">Reversibility</div><div class="v">Can a person undo this tomorrow with one click? Or does it move money, close an account, or send a message that cannot be recalled?</div></div>
-                <div class="step"><div class="k">Magnitude</div><div class="v">How does the amount compare with the usual amount for this product, this segment, this week?</div></div>
-                <div class="step"><div class="k">Pattern</div><div class="v">Has this customer, device, address, or payment method done this before?</div></div>
-                <div class="step"><div class="k">Novelty</div><div class="v">Does this case resemble one already decided, or is it the first of its kind?</div></div>
-                <div class="step"><div class="k">Value at risk</div><div class="v">What is this relationship worth, and what does a wrong answer cost beyond this one transaction?</div></div>
+            <p>The fix is to stop asking the AI agent how sure it feels and start asking what the case is. A good escalation trigger has three properties. It is computed from data the AI agent did not generate. It gives the same answer every time for the same case. And a human can read it in one line and agree or disagree.</p>
+            <p>Five questions cover most of the ground. Each one reads fields you already have: statuses in the order and billing systems, KPIs in the CRM, flags your team set by hand. The thresholds below are examples. Your parameter owner sets the real ones.</p>
+            <div class="scn triggers">
+                <div class="step"><div class="k">Reversibility</div><div class="v">Can a human undo this tomorrow with one click?<span class="look"><b>Look at</b>action type (refund, credit, cancellation, account closure, data deletion), payment status (authorised or captured), order status (not shipped, shipped, delivered), whether the payment provider still allows a reversal.</span><span class="fire"><b>Fires when</b>the action moves captured money, ends a contract, or deletes data.</span></div></div>
+                <div class="step"><div class="k">Magnitude</div><div class="v">How big is this compared with normal?<span class="look"><b>Look at</b>amount against the average order value for this product, amount against this customer's own average, refunds and credits already issued to this account this month, goodwill budget left for the team this week.</span><span class="fire"><b>Fires when</b>the amount is more than 3&times; the average order value, or above a fixed ceiling such as &euro;250.</span></div></div>
+                <div class="step"><div class="k">Pattern</div><div class="v">Has this customer, or someone linked to them, done this before?<span class="look"><b>Look at</b>refunds and complaints in the last 12 months, chargebacks, contacts this week, other accounts sharing the same device, card, address, or email domain.</span><span class="fire"><b>Fires when</b>this is the second refund within 90 days, any chargeback exists, or two or more accounts share a device or card.</span></div></div>
+                <div class="step"><div class="k">Novelty</div><div class="v">Has a case like this been decided before?<span class="look"><b>Look at</b>reason code against the SOP, product launch date, date of the last policy change, country and channel against where the process already runs.</span><span class="fire"><b>Fires when</b>no SOP entry exists for the reason code, or the product or policy changed in the last 30 days.</span></div></div>
+                <div class="step"><div class="k">Value at risk</div><div class="v">What does a wrong answer cost beyond this one transaction?<span class="look"><b>Look at</b>customer lifetime value, tenure, plan tier, renewal date, latest NPS or CSAT score, open formal complaints, a VIP or partner flag.</span><span class="fire"><b>Fires when</b>the customer is in the top 5% by lifetime value, renews within 60 days, gave an NPS of 0 to 6 in the last 90 days, or has an open formal complaint.</span></div></div>
             </div>
-            <p>None of these questions needs a model to answer it. Every answer leaves an audit trail. Each one has a threshold, and a named person sets it.</p>
+            <p>None of these questions needs an AI model to answer it. Every field above lives in a system you already run, every answer leaves an audit trail, and each threshold has a named human who set it.</p>
             <p>Here is Case B again, run through both gates.</p>
             <div class="scn">
                 <div class="step"><div class="k">The case</div><div class="v">A polite, well-written request to refund a &euro;180 annual charge after an auto-converted trial. The wording follows the policy. The text contains no warning signs.</div></div>
-                <div class="step"><div class="k">Confidence gate</div><div class="v">Confidence 0.97. The gate passes it, and the agent acts in under a second.</div></div>
-                <div class="step"><div class="k">Stakes gate</div><div class="v">Before the agent acts, a query runs: three accounts, one device, the sixth trial refund in eleven months. The pattern trigger fires. The case goes to the exception owner with the history attached.</div></div>
-                <div class="step"><div class="k">The difference</div><div class="v">The warning sign was never in the message. It was in a table the model could not see, and the stakes gate read that table.</div></div>
+                <div class="step"><div class="k">Confidence gate</div><div class="v">The AI's confidence is 0.97. The gate passes it, and the AI agent issues the refund in under a second. No human sees the case.</div></div>
+                <div class="step"><div class="k">Stakes gate</div><div class="v">Before the AI agent acts, the Pattern check runs: sixth trial refund in eleven months, three accounts on one device. It fires on both thresholds. The case goes to the human exception owner with the history attached.</div></div>
+                <div class="step"><div class="k">The difference</div><div class="v">The warning sign was never in the message. It was in the refund history and the device links, two tables the AI never read, and the stakes gate read both.</div></div>
             </div>
             <div class="law">
                 <div class="lbl">The rule that replaces "stop if unclear"</div>
-                <div class="b">Escalation is a property of the case. <strong>If your trigger cannot run while the model is switched off, it is not a trigger. It is a hope.</strong></div>
+                <div class="b">Escalation is a property of the case. <strong>If your trigger cannot run while the AI is switched off, it is not a trigger. It is a hope.</strong></div>
             </div>
-            <p>Notice who owns the thresholds. They are not a technical setting, and the engineer tuning the pipeline should not choose them alone. Reversibility, magnitude, and value at risk are the parameters from Part 1, and they belong to the parameter owner. This is the line from Part 1's anatomy, written down in numbers.</p>
-            <p>The switch also changes what escalation volume is. Under a confidence gate, the number of cases that reach people is an output. It is whatever the model found strange this week, and it moves every time the vendor updates the model. Under stakes triggers, it is an input, and you set it. Tighten the thresholds and more cases reach people: cost goes up and risk goes down. Loosen them and the reverse happens. That makes escalation volume a budget. A budget has a price per unit, and that price is the number this series ends on.</p>
-            <p>Keep the confidence score, and give it a smaller job. Low-confidence cases cluster around inputs your process handles badly, so they make a useful pile for review and for fixing the process. They make a poor gate between an agent and a customer's money.</p>
+            <p>Notice who owns the thresholds. They are not a technical setting, and the engineer tuning the pipeline should not choose them alone. Reversibility, magnitude, and value at risk are the parameters from Part 1, and they belong to the parameter owner, a human with a name. This is the line from Part 1's anatomy, written down in numbers.</p>
+            <p>The switch also changes what escalation volume is. Under a confidence gate, the number of cases that reach humans is an output. It is whatever the AI found strange this week, and it moves every time the vendor updates the model. Under stakes triggers, it is an input, and you set it. Tighten the thresholds and more cases reach humans: cost goes up and risk goes down. Loosen them and the reverse happens. That makes escalation volume a budget. A budget has a price per unit, and that price is the number this series ends on.</p>
+            <p>Keep the AI's confidence score, and give it a smaller job. Low-confidence cases cluster around inputs your process handles badly, so they make a useful pile for human review and for fixing the process. They make a poor gate between an AI agent and a customer's money.</p>
             <h2>What this costs you</h2>
             <p>Two things get harder before they get easier.</p>
-            <p>First, someone has to write the triggers down. "The agent will escalate when it's not sure" requires no one to define anything, and that is a large part of why it survives design reviews. Stakes triggers make the parameter owner state what counts as consequential, in numbers, on paper, under their own name. That is the discomfort this series ends on, arriving early and in a smaller dose.</p>
-            <p>Second, a trigger list catches only the kinds of trouble you already know. A new fraud pattern passes every rule you wrote, and it passes every confidence check too. No gate fixes this. What finds it is the audit wire from Part 1: a random sample of resolved cases, read by a person, picked without looking at any score. That sample shows you what your rules do not describe yet. On a dashboard it looks like waste. In practice it is where next quarter's triggers come from.</p>
+            <p>First, someone has to write the triggers down. "The AI agent will escalate when it's not sure" requires no one to define anything, and that is a large part of why it survives design reviews. Stakes triggers make the parameter owner state what counts as consequential, in numbers, on paper, under their own name. That is the discomfort this series ends on, arriving early and in a smaller dose.</p>
+            <p>Second, a trigger list catches only the kinds of trouble you already know. A new fraud pattern passes every rule you wrote, and it passes every confidence check too. No gate fixes this. What finds it is the audit wire from Part 1: a random sample of cases the AI agent resolved, read by a human, picked without looking at any score. That sample shows you what your rules do not describe yet. On a dashboard it looks like waste. In practice it is where next quarter's triggers come from.</p>
             <h2>What comes next</h2>
-            <p>Now the routing is deliberate. Cases reach people because of what they are, and the people above the line get the dozen cases that carry the weight.</p>
-            <p>That creates the next problem, and it is a human one. Give a person a queue of flagged cases and an approve button. Sooner or later, clicking approve becomes faster than reading. The human in the loop turns into a signature on the loop. The org chart shows accountability, and the practice is a rubber stamp. That is more dangerous than an empty chair, because everyone downstream believes the case was read.</p>
-            <p>The fix runs against intuition: send people fewer cases, not more.</p>
+            <p>Now the routing is deliberate. Cases reach humans because of what they are, and the humans above the line get the dozen cases that carry the weight.</p>
+            <p>That creates the next problem, and it is a human one. Give a human agent a queue of flagged cases and an approve button. Sooner or later, clicking approve becomes faster than reading. The human in the loop turns into a signature on the loop. The org chart shows accountability, and the practice is a rubber stamp. That is more dangerous than an empty chair, because everyone downstream believes the case was read.</p>
+            <p>The fix runs against intuition: send humans fewer cases, not more.</p>
             <p><strong>That is Part 3.</strong></p>
         </div>
         <a href="../index.html#articles" class="back-link">Next &mdash; Part 3: The human who stopped reading</a>

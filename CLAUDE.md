@@ -36,6 +36,10 @@ its branch on GitHub instead:
 - A series article carries `Agentic AI — Part N` in `.article-meta` and ends with a
   `.back-link` pointing at the next part.
 - When a new part ships, update the previous part's `.back-link` to point at it.
+- Name the actor every time. In customer service "agent" and "supervisor" are human job
+  titles, so an AI is always "AI agent", "AI supervisor", "AI model" or "the AI", and a
+  human is "human", "human agent" or a named role such as "human exception owner".
+  Never a bare "agent" or "supervisor".
 
 ## Netlify
 
