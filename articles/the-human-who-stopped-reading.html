@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Human Who Stopped Reading - The Customer Lens</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root{
+            --paper:#fafafa; --ink:#2c2c2c; --soft:#6b6b6b; --mut:#999;
+            --line:#e0e0e0; --line2:#f0f0f0;
+            --gold:#C28A1E; --gold-soft:#F6EDD6; --gold-bright:#E8B23A;
+        }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--paper); color: var(--ink); line-height: 1.8; letter-spacing: 0.3px;
+        }
+        header {
+            border-bottom: 1px solid var(--line); padding: 2rem 0; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.98);
+        }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; font-family: 'Georgia', serif; }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { color: var(--soft); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; letter-spacing: 1px; text-transform: uppercase; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .nav-links a:hover { color: var(--ink); }
+        article { max-width: 800px; margin: 4rem auto; padding: 0 3rem; }
+        .article-header { margin-bottom: 3rem; }
+        .article-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: var(--mut); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
+        .subtitle { font-size: 1.35rem; font-style: italic; color: var(--soft); line-height: 1.5; }
+        .article-image { width: 100%; height: auto; margin-bottom: 3rem; display: block; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--ink); }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--ink); }
+        .article-content strong { font-weight: 600; }
+        .article-content em { font-style: italic; color: var(--soft); }
+        .pull { font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: var(--ink); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 3rem 0; }
+        .said { font-size: 1.4rem; font-style: italic; color: var(--ink); background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: 1.4rem 1.6rem; margin-bottom: 1.5rem; }
+        .lbl { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: var(--gold); }
+        figure { margin: 3rem 0; }
+        figcaption { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--mut); margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px; }
+        /* paired cases */
+        .pair-banner { font-family:-apple-system,sans-serif; text-transform:uppercase; letter-spacing:1.5px; font-size:0.7rem; color:var(--gold); background:var(--gold-soft); display:inline-block; padding:0.4rem 0.9rem; margin-bottom:0.8rem; }
+        .pair { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .pcard { background:#fff; border:1px solid var(--line); border-top:3px solid var(--gold); padding:1.3rem 1.4rem; }
+        .pcard.mut { border-top-color:var(--mut); }
+        .pcard .ph { font-family:-apple-system,sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
+        .pcard.mut .ph { color:var(--mut); }
+        .pcard .pb { font-size:0.98rem; line-height:1.55; }
+        .pcard .verdict { margin-top:0.9rem; font-family:-apple-system,sans-serif; font-size:0.8rem; font-weight:700; color:var(--ink); border-top:1px solid var(--line2); padding-top:0.7rem; }
+        /* law */
+        .law { border:1px solid var(--line); border-top:3px solid var(--gold); background:#fff; padding:1.6rem 1.8rem; margin:2.5rem 0; }
+        .law .b { font-size:1.25rem; line-height:1.5; margin-top:0.5rem; }
+        /* scenario */
+        .scn { background:#fff; border:1px solid var(--line); padding:0.4rem 1.6rem; margin:2.5rem 0; }
+        .scn .step { display:flex; gap:1.2rem; padding:1.1rem 0; border-bottom:1px solid var(--line2); }
+        .scn .step:last-child { border-bottom:0; }
+        .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
+        .scn .v { font-size:1rem; line-height:1.6; }
+        /* trigger fields */
+        .scn.triggers .v { display:flex; flex-direction:column; gap:0.45rem; }
+        .scn .look, .scn .fire { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:0.84rem; line-height:1.55; color:var(--soft); }
+        .scn .fire { color:var(--ink); }
+        .scn .look b, .scn .fire b { font-size:0.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-right:0.45rem; }
+        /* diagram */
+        .diagram { background:#fff; border:1px solid var(--line); padding:1.5rem; overflow-x:auto; }
+        .diagram svg { width:100%; height:auto; min-width:520px; display:block; }
+        .back-link { display:inline-block; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .back-link:hover { text-decoration:underline; }
+        footer { background:var(--ink); color:#fff; padding:4rem 3rem 3rem; margin-top:6rem; }
+        .footer-content { max-width:1400px; margin:0 auto; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
+        .footer-section h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:1.5rem; font-weight:400; }
+        .footer-links { display:flex; flex-direction:column; gap:0.8rem; }
+        .footer-links a { color:#b0b0b0; text-decoration:none; transition:color .3s; font-size:0.9rem; }
+        .footer-links a:hover { color:#fff; }
+        .footer-bottom { border-top:1px solid #444; padding-top:2rem; text-align:center; color:#888; font-size:0.85rem; }
+        @media (max-width:768px){
+            nav { padding:0 1.5rem; flex-direction:column; gap:1rem; }
+            .logo { font-size:1.2rem; letter-spacing:1px; }
+            .nav-links { gap:1rem; font-size:0.85rem; flex-wrap:wrap; justify-content:center; }
+            article { margin:2rem auto; padding:0 1.5rem; }
+            h1 { font-size:2rem; }
+            .subtitle { font-size:1.1rem; }
+            .article-content { font-size:1rem; }
+            .article-content h2 { font-size:1.5rem; }
+            .pull { font-size:1.4rem; }
+            .pair { grid-template-columns:1fr; }
+            .scn .step { flex-direction:column; gap:0.3rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
+            footer { padding:3rem 1.5rem 2rem; }
+        }
+        /* rate bars */
+        .rate-rows { display:flex; flex-direction:column; gap:0.7rem; margin-top:0.9rem; }
+        .rate-row { display:grid; grid-template-columns:1.6fr 2fr 0.8fr; gap:0.9rem; align-items:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:0.82rem; }
+        .rate-row .rk { color:var(--soft); }
+        .rate-row .rbar { background:var(--line2); height:10px; }
+        .rate-row .rbar span { display:block; height:10px; background:var(--gold); }
+        .rate-row .rv { font-weight:700; color:var(--ink); text-align:right; }
+        /* dot grids */
+        .dots { display:flex; flex-wrap:wrap; gap:4px; margin:0.4rem 0 0.9rem; }
+        .dots span { width:10px; height:10px; background:var(--line); display:block; }
+        .dots span.g { background:var(--gold); }
+        @media (max-width:768px){ .rate-row { grid-template-columns:1fr; gap:0.3rem; } .rate-row .rv { text-align:left; } }
+        /* kpi table */
+        .kpi { display:grid; grid-template-columns:1.1fr 1.4fr 1.1fr; gap:0; margin-top:0.9rem; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:0.84rem; line-height:1.5; }
+        .kpi > div { padding:0.7rem 0.8rem 0.7rem 0; border-top:1px solid var(--line2); }
+        .kpi .kh { font-size:0.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--mut); border-top:0; padding-top:0; }
+        .kpi .kn { font-weight:700; color:var(--ink); }
+        .kpi .kn span { display:block; font-weight:400; color:var(--soft); font-size:0.78rem; }
+        .kpi .kd { color:var(--soft); }
+        .kpi .ka { color:var(--ink); }
+        @media (max-width:768px){ .kpi { grid-template-columns:1fr; } .kpi .kh { display:none; } .kpi .kd, .kpi .ka { border-top:0; padding-top:0; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">The Customer Lens</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span>10 min read</span><span>&bull;</span><span>Oct 16, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 3</span>
+            </div>
+            <h1>The Human Who Stopped Reading</h1>
+            <p class="subtitle">Give a human a queue of flagged cases and an approve button, and within weeks the button is faster than reading. More review makes this worse. The fix is to send humans fewer cases, each one more likely to need them, on a screen built for reading, with KPIs that show whether anyone read.</p>
+        </div>
+        <img src="../images/the-human-who-stopped-reading.jpg" alt="A single file of cases enters from the left under a warm gold light, each one framed as it is inspected, and the one risky case is caught. Further right the stream widens into a dense queue, the light fades, and the pink risky cases pass through unframed." class="article-image">
+        <div class="article-content">
+            <p>Part 2 fixed the routing. Cases now reach the human exception owner because of what they are: reversible or not, large or small, first refund or sixth. The AI agent's confidence no longer decides who sees what. Now watch what happens to the person at the end of that queue.</p>
+            <p>Week one. A human exception owner handles the refund exceptions. Forty cases reach her each day. She reads the trigger, opens the order history, checks the device links, and decides. A case takes her about four minutes. She changes the AI agent's proposed answer on roughly one case in fifteen.</p>
+            <p>Then a fraud ring gets through on refunds just under the magnitude threshold. Finance escalates. Someone lowers the threshold from &euro;250 to &euro;80 to be safe. Her queue goes from forty cases a day to a hundred and fifty.</p>
+            <p>Week three. She opens a case, sees the AI agent's proposed answer at the top, glances at the trigger line, and clicks approve. A case takes her twenty seconds. She has not changed an answer in nine days. Her team lead praises the drop in handle time in the Monday meeting.</p>
+            <p>Nothing in this story is laziness. Of the last few hundred cases she opened, the AI agent was right on almost all of them. Approving without reading was the correct answer for nearly every click. She is doing the job the queue taught her.</p>
+
+            <h2>The button is faster than reading</h2>
+            <p>Human-factors research has studied this for decades, mostly where a miss costs a life.</p>
+            <p>The first is the prevalence effect. In 2005, Jeremy Wolfe, Todd Horowitz and Naomi Kenner had people search mock baggage X-rays for weapons (<a href="https://www.nature.com/articles/435439a" target="_blank" rel="noopener">Nature, 2005</a>). When a target was in half the bags, searchers missed about 7% of targets. When a target was in 1% of bags, they missed about 30%. The searchers learned that the answer is usually "nothing" and quit looking sooner.</p>
+            <p>Experience does not protect you. In 2013, Karla Evans, Robyn Birdwell and Wolfe tested radiologists who read mammograms for a living (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3667799/" target="_blank" rel="noopener">PLoS ONE, 2013</a>). Under normal screening conditions, where cancer is rare, they missed 30% of the cancers. Shown the same cancers in a session where half the cases were positive, they missed 12%. The doctors and the images were the same. Only the rate changed.</p>
+            <p>The second finding is alert fatigue. A 2006 review by Heleen van der Sijs and colleagues found that physicians override 49% to 96% of drug safety alerts (<a href="https://www.textbookofdigitalhealth.com/references/h2006overriding.html" target="_blank" rel="noopener">JAMIA, 2006</a>). The volume taught them to click through.</p>
+            <p>The third is that training does not fix it. Raja Parasuraman and Dietrich Manzey reviewed the research on automation bias, the habit of following a machine's suggestion instead of checking it (<a href="https://journals.sagepub.com/doi/10.1177/0018720810376055" target="_blank" rel="noopener">Human Factors, 2010</a>). They found it in novices and experts alike, and found that training and instructions did not prevent it.</p>
+            <figure>
+                <div class="law">
+                    <div class="lbl">Same reviewers, different rate</div>
+                    <div class="rate-rows">
+                        <div class="rate-row"><div class="rk">Baggage X-ray, target in 50% of bags</div><div class="rbar"><span style="width:23%"></span></div><div class="rv">~7% missed</div></div>
+                        <div class="rate-row"><div class="rk">Baggage X-ray, target in 1% of bags</div><div class="rbar"><span style="width:100%"></span></div><div class="rv">~30% missed</div></div>
+                        <div class="rate-row"><div class="rk">Radiologists, half the cases positive</div><div class="rbar"><span style="width:40%"></span></div><div class="rv">12% missed</div></div>
+                        <div class="rate-row"><div class="rk">Radiologists, normal screening</div><div class="rbar"><span style="width:100%"></span></div><div class="rv">30% missed</div></div>
+                    </div>
+                </div>
+                <figcaption>Wolfe, Horowitz &amp; Kenner (2005); Evans, Birdwell &amp; Wolfe (2013). When the thing you look for is rare, you stop looking for it.</figcaption>
+            </figure>
+            <p>Put the three together and week three stops looking like a discipline problem. A reminder to "please read every case" is an instruction, and instructions do not prevent automation bias. The queue's rate of real problems is doing the teaching.</p>
+            <p class="pull">The share of cases that need a human decides whether the human reads. Every case you add that does not need her lowers that share.</p>
+
+            <h2>In the loop, on the loop, a signature</h2>
+            <p>The decline has three stages. None of them shows up on an operations dashboard, because every metric on it improves.</p>
+            <div class="scn">
+                <div class="step"><div class="k">In the loop</div><div class="v">The human reads the history, forms her own answer, then compares it with the AI agent's proposal. About four minutes a case. She changes some answers. <span class="look"><b>Dashboard</b>handle time high, backlog growing.</span></div></div>
+                <div class="step"><div class="k">On the loop</div><div class="v">The human reads the AI agent's proposal first and scans for reasons to disagree. About a minute a case. She changes an answer only when something jumps out. <span class="look"><b>Dashboard</b>handle time falling, backlog cleared.</span></div></div>
+                <div class="step"><div class="k">A signature</div><div class="v">The human clicks approve on the proposal. Twenty seconds a case. She changes nothing. Her name goes on every decision. <span class="look"><b>Dashboard</b>best handle time in the team.</span></div></div>
+            </div>
+            <p>The third stage is worse than having no reviewer. With no reviewer, everyone knows the AI agent decided alone, and finance and the parameter owner watch it with suspicion. With a signature, every case carries a human name and the audit trail says <em>reviewed</em>. When a customer complains, the answer is "a human approved it", and the investigation stops there. The signature takes the blame and adds no judgment.</p>
+            <p>Regulators have already named this risk. Article 14 of the <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-14" target="_blank" rel="noopener">EU AI Act</a> requires that the people who oversee a high-risk AI system stay aware of "automation bias", the tendency to over-rely on the system's output. Most refund and billing AI agents will not count as high-risk under that law. Still, a log full of approve clicks is weak evidence that a human was aware of anything.</p>
+
+            <h2>Send fewer cases</h2>
+            <p>The instinct after an incident is to widen the queue. Lower a threshold, add a trigger, route more to humans. It feels like adding safety. It adds volume, and volume lowers the share of cases where the human should change the answer. That share decides whether anyone reads.</p>
+            <p>I call that share the <strong>yield</strong> of the queue: the percentage of flagged cases where the human exception owner should change the AI agent's answer. Her wide queue and a narrow queue look like this.</p>
+            <figure>
+                <div class="pair">
+                    <div class="pcard mut">
+                        <div class="ph">Wide queue &middot; threshold &euro;80</div>
+                        <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                        <div class="pb">150 cases a day. 6 need a different answer. <strong>Yield 4%.</strong></div>
+                        <div class="verdict">Contains every risky case. Read like week three.</div>
+                    </div>
+                    <div class="pcard">
+                        <div class="ph">Narrow queue &middot; tighter triggers</div>
+                        <div class="dots"><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span><span class="g"></span><span></span><span></span></div>
+                        <div class="pb">30 cases a day. 5 of the same 6 need a different answer. <strong>Yield 17%.</strong></div>
+                        <div class="verdict">Misses one risky case. Read like week one.</div>
+                    </div>
+                </div>
+                <figcaption>Illustrative numbers. Each square is a case, gold squares need a human to change the answer. The narrow queue gives up one case to keep the other five visible.</figcaption>
+            </figure>
+            <p>On paper the wide queue is safer, because it contains all six risky cases. In practice it is read like week three, and the research above suggests a reviewer at 4% yield misses far more than one case in six. The narrow queue gives up one risky case on purpose so that the human actually sees the other five.</p>
+            <p>The case the narrow queue gives up goes to what Part 2 already built: the random audit sample, read after the fact by someone who is not working a queue.</p>
+            <div class="law">
+                <div class="lbl">The yield rule</div>
+                <div class="b">Set a floor for how often humans change the AI agent's answer. <strong>When the change rate falls below the floor, narrow the queue before you add headcount.</strong> A queue where humans never change anything has a signature on it and no review behind it.</div>
+            </div>
+            <p>Where the floor sits is a judgment call, and it belongs to the parameter owner. I would start at 10% and adjust it from what the audit sample shows. A change rate near zero has two causes: the queue is too wide, or the human stopped reading. The change rate alone cannot tell you which.</p>
+
+            <h2>Make reading the fast path</h2>
+            <p>A narrow queue makes reading worth it. On its own it does not make reading happen. The review screen decides whether reading is also the easy option, and the KPIs decide whether anyone can tell. Four changes help.</p>
+            <div class="scn">
+                <div class="step"><div class="k">Trigger first</div><div class="v">The screen opens on why the case is here: "Pattern: sixth trial refund in 11 months, three accounts on one device." The AI agent's proposed answer appears only after the human records her own. If the proposal comes first, the review turns into agreement.</div></div>
+                <div class="step"><div class="k">No pre-filled approve</div><div class="v">Replace the approve button with the decision itself: refund, partial refund, or decline, plus one reason chosen from the trigger data. A single button with the AI's answer already filled in is the rubber stamp's user interface. Because the human decides before she sees the proposal, every case now produces two independent answers.</div></div>
+                <div class="step"><div class="k">Seeded cases</div><div class="v">Airport screening has done this for decades. <a href="https://www.route-fifty.com/digital-government/2000/06/is-that-a-gun-or-just-a-security-test/276230/" target="_blank" rel="noopener">Threat image projection</a> inserts fictional weapons into real X-ray images, tells the screener when one was missed, and records each screener's catch rate. Do the same: add a few cases a week, built from real past fraud, where the right answer is known.</div></div>
+                <div class="step"><div class="k">Measure reading</div><div class="v">Drop handle time as a target for this queue. Replace it with the four KPIs below. A cluster of decisions under five seconds on cases with a history attached means nobody opened the history.</div></div>
+            </div>
+            <p>The blind decision gives you the most useful comparison in the queue. Each case now carries two answers: one from the AI agent, and one from a human who did not see it. Measure the overlap and the deviation between them. The deviation is the change rate from the yield rule, measured cleanly, because the human answer is no longer a copy of the proposal. Break it down by trigger and by direction. If humans decline where the AI agent refunds on Pattern cases, the AI agent is missing what the history shows. If humans refund where the AI agent declines on Value-at-risk cases, the AI agent is pricing your best customers' goodwill too low. Each split is a specific instruction to the parameter owner. When the two answers differ, the seeded cases and the audit sample tell you which side was right.</p>
+            <p>Seeded cases do two jobs. They turn "was this case read?" into a number per person and week, which separates a wide queue from a reviewer who stopped reading. They also raise the yield the reviewer experiences, which is the prevalence fix the screening research points to. A human who finds something every day keeps looking.</p>
+            <figure>
+                <div class="law">
+                    <div class="lbl">The four KPIs for this queue</div>
+                    <div class="kpi">
+                        <div class="kh">KPI</div><div class="kh">What it tells you</div><div class="kh">Act when</div>
+                        <div class="kn">Change rate<span>AI versus human deviation, by trigger and direction</span></div><div class="kd">Whether the queue earns a human, and where the AI agent or a threshold is off.</div><div class="ka">It falls below the floor. Narrow the queue.</div>
+                        <div class="kn">Seeded-case catch rate<span>per team, per week</span></div><div class="kd">Whether reading happens at all.</div><div class="ka">It drops while the change rate holds steady.</div>
+                        <div class="kn">Time-to-decision spread<span>distribution, not average</span></div><div class="kd">Whether the history was opened.</div><div class="ka">Decisions cluster under five seconds.</div>
+                        <div class="kn">Cases per human per day<span>after every threshold change</span></div><div class="kd">Whether volume is diluting the yield.</div><div class="ka">Volume rises and nobody re-checks the change rate.</div>
+                    </div>
+                </div>
+                <figcaption>Handle time is not on the list. On this queue, a falling handle time is the first sign of the rubber stamp.</figcaption>
+            </figure>
+
+            <h2>What this costs you</h2>
+            <p>First, you will auto-resolve cases a human used to see, and some of them will be wrong. The yield rule trades a visible review that nobody reads for a risk you measure through the audit sample. That trade needs the parameter owner's name on it, in writing, before the next incident.</p>
+            <p>Second, each case gets heavier. Thirty cases at 17% yield are harder work than a hundred and fifty at 4%. This queue needs your most experienced people, and a job grade that says so.</p>
+
+            <h2>What comes next</h2>
+            <p>The queue is now small, and someone reads it. One problem is left inside the cases themselves.</p>
+            <p>The triggers from Part 2 protect different things. Magnitude and pattern protect money. Value at risk protects the relationship. When both fire on the same case, they point in opposite directions: decline to protect the margin, or refund to keep a customer worth ten times the charge. Today the human exception owner resolves that conflict in her head. The colleague on the next shift resolves it differently. Nobody sees the trade, and nobody owns it.</p>
+            <p>Part 4 makes that trade visible. It gives money and experience to two managers who are built to disagree, and sends a case to a human only when they do. It is also the cleanest way to keep the queue small.</p>
+            <p><strong>That is Part 4.</strong></p>
+        </div>
+        <a href="../index.html#articles" class="back-link">Next &mdash; Part 4: Two managers who disagree on purpose</a>
+    </article>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>The Customer Lens</h4>
+                    <p style="color:#b0b0b0; line-height:1.7;">Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="../index.html#articles">Articles</a>
+                        <a href="../about.html">About</a>
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="../impressum.html">Impressum</a>
+                        <a href="../privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Customer Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
