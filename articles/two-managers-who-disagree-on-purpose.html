@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Give money and experience each their own AI manager, and send a refund case to a human only when the two disagree. The rest is a lookup.">
+    <title>Two Managers Who Disagree on Purpose - The Customer Lens</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root{
+            --paper:#fafafa; --ink:#2c2c2c; --soft:#6b6b6b; --mut:#999;
+            --line:#e0e0e0; --line2:#f0f0f0;
+            --gold:#C28A1E; --gold-soft:#F6EDD6; --gold-bright:#E8B23A;
+        }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--paper); color: var(--ink); line-height: 1.8; letter-spacing: 0.3px;
+        }
+        header {
+            border-bottom: 1px solid var(--line); padding: 2rem 0; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.98);
+        }
+        nav { max-width: 1400px; margin: 0 auto; padding: 0 3rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; font-family: 'Georgia', serif; }
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
+        .nav-links a { color: var(--soft); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; letter-spacing: 1px; text-transform: uppercase; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .nav-links a:hover { color: var(--ink); }
+        article { max-width: 800px; margin: 4rem auto; padding: 0 3rem; }
+        .article-header { margin-bottom: 3rem; }
+        .article-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.75rem; color: var(--mut); text-transform: uppercase; letter-spacing: 1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        h1 { font-size: 3rem; font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
+        .subtitle { font-size: 1.35rem; font-style: italic; color: var(--soft); line-height: 1.5; }
+        .article-image { width: 100%; height: auto; margin-bottom: 3rem; display: block; }
+        .article-content { font-size: 1.1rem; line-height: 1.9; color: var(--ink); }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content h2 { font-size: 1.8rem; font-weight: 400; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--ink); }
+        .article-content strong { font-weight: 600; }
+        .article-content em { font-style: italic; color: var(--soft); }
+        .pull { font-size: 1.9rem; line-height: 1.35; font-weight: 400; color: var(--ink); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 3rem 0; }
+        .lbl { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.7rem; color: var(--gold); }
+        figure { margin: 3rem 0; }
+        figcaption { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.78rem; color: var(--mut); margin-top: 0.9rem; text-align: center; letter-spacing: 0.3px; }
+        .law { border:1px solid var(--line); border-top:3px solid var(--gold); background:#fff; padding:1.6rem 1.8rem; margin:2.5rem 0; }
+        .law .b { font-size:1.25rem; line-height:1.5; margin-top:0.5rem; }
+        .scn { background:#fff; border:1px solid var(--line); padding:0.4rem 1.6rem; margin:2.5rem 0; }
+        .scn .step { display:flex; gap:1.2rem; padding:1.1rem 0; border-bottom:1px solid var(--line2); }
+        .scn .step:last-child { border-bottom:0; }
+        .scn .k { min-width:110px; font-family:-apple-system,sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); padding-top:4px; }
+        .scn .v { font-size:1rem; line-height:1.6; }
+        .back-link { display:inline-block; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .back-link:hover { text-decoration:underline; }
+        footer { background:var(--ink); color:#fff; padding:4rem 3rem 3rem; margin-top:6rem; }
+        .footer-content { max-width:1400px; margin:0 auto; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
+        .footer-section h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:1.5rem; font-weight:400; }
+        .footer-links { display:flex; flex-direction:column; gap:0.8rem; }
+        .footer-links a { color:#b0b0b0; text-decoration:none; transition:color .3s; font-size:0.9rem; }
+        .footer-links a:hover { color:#fff; }
+        .footer-bottom { border-top:1px solid #444; padding-top:2rem; text-align:center; color:#888; font-size:0.85rem; }
+        @media (max-width:768px){
+            nav { padding:0 1.5rem; flex-direction:column; gap:1rem; }
+            .logo { font-size:1.2rem; letter-spacing:1px; }
+            .nav-links { gap:1rem; font-size:0.85rem; flex-wrap:wrap; justify-content:center; }
+            article { margin:2rem auto; padding:0 1.5rem; }
+            h1 { font-size:2rem; }
+            .subtitle { font-size:1.1rem; }
+            .article-content { font-size:1rem; }
+            .article-content h2 { font-size:1.5rem; }
+            .pull { font-size:1.4rem; }
+            .scn .step { flex-direction:column; gap:0.3rem; }
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
+            footer { padding:3rem 1.5rem 2rem; }
+        }
+        .kpi { display:grid; grid-template-columns:1.1fr 1.4fr 1.1fr; gap:0; margin-top:0.9rem; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:0.84rem; line-height:1.5; }
+        .kpi > div { padding:0.7rem 0.8rem 0.7rem 0; border-top:1px solid var(--line2); }
+        .kpi .kh { font-size:0.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--mut); border-top:0; padding-top:0; }
+        .kpi .kn { font-weight:700; color:var(--ink); }
+        .kpi .kn span { display:block; font-weight:400; color:var(--soft); font-size:0.78rem; }
+        .kpi .kd { color:var(--soft); }
+        .kpi .ka { color:var(--ink); }
+        @media (max-width:768px){ .kpi { grid-template-columns:1fr; } .kpi .kh { display:none; } .kpi .kd, .kpi .ka { border-top:0; padding-top:0; } }
+        .tsplit { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+        .tcol { background:#fff; border:1px solid var(--line); border-top:3px solid var(--gold); padding:1.1rem 1.2rem; }
+        .tcol.mut { border-top-color:var(--mut); }
+        .tcol .th { font-family:-apple-system,sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem; }
+        .tcol.mut .th { color:var(--mut); }
+        .tcol .tp { font-family:-apple-system,sans-serif; font-size:0.78rem; color:var(--soft); margin-bottom:0.8rem; }
+        .tcol .tt { font-size:1rem; line-height:1.5; padding:0.45rem 0; border-top:1px solid var(--line2); }
+        .route { display:grid; grid-template-columns:0.9fr 1.5fr 1.5fr; gap:6px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .route > div { padding:0.9rem 1rem; font-size:0.84rem; line-height:1.5; }
+        .route .rh { font-size:0.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--mut); padding:0.3rem 1rem; align-self:end; }
+        .route .rl { font-size:0.66rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--mut); align-self:center; }
+        .route .cell { background:#fff; border:1px solid var(--line); color:var(--ink); }
+        .route .cell b { display:block; font-size:0.72rem; letter-spacing:1px; text-transform:uppercase; color:var(--soft); margin-bottom:0.3rem; }
+        .route .cell.hot { background:var(--gold-soft); border-color:var(--gold); }
+        .route .cell.hot b { color:var(--gold); }
+        .route .cell em { display:block; font-style:normal; color:var(--soft); font-size:0.78rem; margin-top:0.4rem; }
+        .screen { background:#fff; border:1px solid var(--line); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+        .screen .bar { background:var(--ink); color:#fff; font-size:0.72rem; letter-spacing:1px; text-transform:uppercase; padding:0.6rem 1rem; }
+        .screen .why { padding:0.9rem 1rem; font-size:0.88rem; border-bottom:1px solid var(--line2); }
+        .screen .sides { display:grid; grid-template-columns:1fr 1fr; }
+        .screen .side { padding:0.9rem 1rem; font-size:0.82rem; line-height:1.55; color:var(--soft); }
+        .screen .side + .side { border-left:1px solid var(--line2); }
+        .screen .side .sn { font-size:0.68rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold); margin-bottom:0.3rem; }
+        .screen .side .sv { color:var(--ink); font-weight:700; font-size:0.9rem; margin-bottom:0.4rem; }
+        .screen .act { border-top:1px solid var(--line2); padding:0.9rem 1rem; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; font-size:0.8rem; }
+        .screen .btn { border:1px solid var(--ink); padding:0.35rem 0.8rem; color:var(--ink); }
+        .screen .req { flex-basis:100%; color:var(--soft); font-size:0.78rem; margin-top:0.3rem; }
+        @media (max-width:768px){ .tsplit { grid-template-columns:1fr; } .route { grid-template-columns:1fr; } .route .rh, .route .rl { display:none; } .screen .sides { grid-template-columns:1fr; } .screen .side + .side { border-left:0; border-top:1px solid var(--line2); } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">The Customer Lens</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#articles">Articles</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div class="article-header">
+            <div class="article-meta">
+                <span>11 min read</span><span>&bull;</span><span>Nov 22, 2026</span><span>&bull;</span><span>Agentic AI &mdash; Part 4</span>
+            </div>
+            <h1>Two Managers Who Disagree on Purpose</h1>
+            <p class="subtitle">Every hard refund trades money against the relationship. Today one human makes that trade in her head, and the next shift makes it differently. Give each side its own AI manager, with its own data and its own owner, and send a case to a human only when the two disagree.</p>
+        </div>
+        <img src="../images/two-managers-who-disagree-on-purpose.jpg" alt="A brass case-file plate under a dashed gold line, two rubber stamps hovering above it from opposite sides, cool ledger lines on the left and warm case streaks on the right. Neither stamp has landed." class="article-image">
+        <div class="article-content">
+            <p>Part 3 ended on the trade still sitting in the remaining cases. Magnitude and Pattern protect the money. Value at risk protects the relationship. When they fire together, they point in opposite directions. Here is a case of that shape.</p>
+            <div class="scn">
+                <div class="step"><div class="k">Case C</div><div class="v">A customer of eight years on a &euro;1,200 annual business plan. A data migration failed last month. The customer asks for a refund of the &euro;420 migration add-on.</div></div>
+                <div class="step"><div class="k">Money</div><div class="v">Magnitude fires: &euro;420 is 3.5&times; the average add-on order. Pattern fires: this is the third credit request on the account in 90 days.</div></div>
+                <div class="step"><div class="k">Relationship</div><div class="v">Value at risk fires: top 3% by lifetime value, renewal in 40 days, an NPS of 4 last month.</div></div>
+                <div class="step"><div class="k">The trade</div><div class="v">A decline protects &euro;420. A refund protects a &euro;1,200 renewal. Both answers are defensible.</div></div>
+            </div>
+            <p>Today the human exception owner weighs the two sides and picks one. On the morning shift she refunds. On the afternoon shift a colleague declines a case that looks the same. Nobody records which side won, or at what price.</p>
+            <p>Expert judgment drifts this way everywhere it has been measured. In <em>Noise</em> (2021), Daniel Kahneman, Olivier Sibony and Cass Sunstein describe an audit at an insurer: underwriters priced the same policies, and the median gap between two underwriters was 55%. Asked how much variation they expected, 828 senior executives gave a median answer of 10% (<a href="https://strategy-business.com/article/How-noisy-is-your-company" target="_blank" rel="noopener">strategy+business</a>). In the refund queue, the trade between margin and goodwill has no written rule at all.</p>
+            <p>Imagine the Monday review. The finance lead opens last week's goodwill credits and asks why so many were paid. The CX lead opens last week's detractors and asks why so many were refused. They are looking at the same queue, and neither has a record of the trade the exception owners actually made. That argument is the work. It is happening too late, and without the cases in front of them.</p>
+            <p>The human should keep this call. She needs a design that shows her the trade, records her answer, and keeps every other case away from her.</p>
+
+            <h2>Split the triggers by what they protect</h2>
+            <p>Part 2's five triggers fed one queue. Sort them by what each one protects and they fall into three groups.</p>
+            <figure>
+                <div class="tsplit">
+                    <div class="tcol">
+                        <div class="th">Protects money</div>
+                        <div class="tp">Goes to the AI money manager</div>
+                        <div class="tt">Magnitude</div>
+                        <div class="tt">Pattern</div>
+                    </div>
+                    <div class="tcol">
+                        <div class="th">Protects the relationship</div>
+                        <div class="tp">Goes to the AI experience manager</div>
+                        <div class="tt">Value at risk</div>
+                    </div>
+                    <div class="tcol mut">
+                        <div class="th">Protects neither side</div>
+                        <div class="tp">Stays a hard stop to a human</div>
+                        <div class="tt">Reversibility</div>
+                        <div class="tt">Novelty</div>
+                    </div>
+                </div>
+                <figcaption>Reversibility and Novelty ask whether any rule should decide the case at all. When either fires, the case bypasses both managers.</figcaption>
+            </figure>
+
+            <h2>Two AI managers, built to disagree</h2>
+            <p>The <strong>AI money manager</strong> and the <strong>AI experience manager</strong> are AI models, but narrow ones. Each is a scoring model that reads tables, and neither reads the customer's message. Version one of each can be a set of rules on the Part 2 fields. What the design needs from them is separation.</p>
+            <p>The AI money manager reads order, billing and payment data: amounts, credits issued, chargebacks, device and card links, goodwill budget left. Its only goal is to lose less money to refunds, credits and abuse. It returns an objection or none, and the euros at stake if the company refunds.</p>
+            <p>The AI experience manager reads CRM and survey data: tenure, lifetime value, renewal date, recent NPS, open complaints. Its only goal is to lose fewer customers and create fewer detractors. It returns an objection or none, and the revenue at risk if the company declines.</p>
+            <p>Each has a human owner. Part 1's parameter owner splits in two. A <strong>finance owner</strong> sets the AI money manager's thresholds. A <strong>CX owner</strong> sets the AI experience manager's thresholds. Neither can change the other's.</p>
+            <p>The AI agent from Parts 1 to 3 still reads the message, does the plumbing, and applies the SOP when both managers are silent. It does not settle the money-versus-relationship trade.</p>
+            <figure>
+                <div class="law">
+                    <div class="lbl">Route on the disagreement</div>
+                    <div class="route" style="margin-top:0.9rem;">
+                        <div class="rh"></div><div class="rh">AI experience manager: no objection</div><div class="rh">AI experience manager: objects (refund)</div>
+                        <div class="rl">AI money manager: no objection</div>
+                        <div class="cell"><b>AI agent applies the SOP</b>Two independent checks found nothing.<em>If the SOP would decline a Case A, only the audit will see it.</em></div>
+                        <div class="cell"><b>AI agent refunds</b>Only the relationship has a stake. Paid from the CX goodwill budget.</div>
+                        <div class="rl">AI money manager: objects (decline)</div>
+                        <div class="cell"><b>AI agent declines</b>Only money has a stake. The reply names a route to a human.<em>Case B: sixth trial refund, linked accounts.</em></div>
+                        <div class="cell hot"><b>Human exception owner</b>The managers disagree. A real trade, both prices shown.<em>Case C.</em></div>
+                    </div>
+                </div>
+                <figcaption>Reversibility and Novelty still route straight to a human from any cell. Only one cell of the four needs a human by design.</figcaption>
+            </figure>
+            <p>Case B changes most. In Part 2 the Pattern trigger sent it to the human exception owner. Now nothing on the relationship side argues for the refund, so the decline is a lookup.</p>
+            <p>That lookup is the risk, and it is not limited to Case B. A decline leaves the money where it is, so a payment can still be reversed if the customer contests. Many refused customers do not contest. They leave. The reversibility of the cash is not the reversibility of the relationship. Case A from Part 2 can land in the same quiet cell: a first forgotten trial, no Pattern, no Value at risk, and an SOP that says the annual plan is non-refundable. Correct by policy, and gone from the queue. Part 2's audit sample has to watch the auto-declines, not only the refunds &mdash; a random sample of declined cases, read by a human, and whether those customers renew or churn. A decline the audit would have reversed is a trigger you do not have yet.</p>
+            <p class="pull">A case needs a human when two legitimate goals point in opposite directions. When only one goal has a stake, the answer is a lookup.</p>
+            <p>This is also the cleanest way to apply Part 3's yield rule. Cases flagged by one side with nothing on the other no longer reach the human. The queue holds only cases where a careful human could go either way.</p>
+            <p>You can measure the cut before you make it. Take a sample of cases that today reach the human exception owner, and tag each one: money trigger only, relationship trigger only, both, or a hard stop. The share that is both, plus the hard stops, is the queue this design would leave you. If that share is small, the human's time is already being spent on lookups. If it is large, the trade was already the job, and it was invisible.</p>
+
+            <h2>Why these two do not share the AI supervisor's blind spot</h2>
+            <p>Part 2 rejected the AI supervisor because it read the same message and lacked the same history as the AI agent, so their errors lined up. The evidence for that has grown. Elliot Kim, Avi Garg, Kenny Peng and Nikhil Garg compared more than 350 language models on two public leaderboards (<a href="https://arxiv.org/abs/2506.07962" target="_blank" rel="noopener">ICML 2025</a>). On one leaderboard dataset, when two models both got a question wrong, they gave the same wrong answer 60% of the time. Shared providers and architectures raised the overlap, and so did larger, more accurate models, even across providers. A stronger AI supervisor does not escape the problem.</p>
+            <p>The two AI managers differ from that AI supervisor in three ways. First, they read different data. The AI money manager never sees lifetime value or NPS, and the AI experience manager never sees chargebacks. A missing fact in one set of tables does not repeat in the other. Second, they want opposite outcomes. One looks for reasons to decline, the other for reasons to refund. A check that wants the same result as the thing it checks will tend to confirm it. Third, neither one judges the other. The design asks only where they split, and sends the split to a human.</p>
+            <p>That changes what agreement means. When the manager hunting for reasons to decline finds none, and the one hunting for reasons to refund finds none, the case is ordinary for two separate reasons.</p>
+
+            <h2>When they would share it</h2>
+            <p>Independence is a property of the build. Four shortcuts destroy it, and each one is tempting.</p>
+            <div class="scn">
+                <div class="step"><div class="k">Both read the message</div><div class="v">"I have been loyal for ten years" then moves both managers the same way. Only the AI agent reads the text.</div></div>
+                <div class="step"><div class="k">One model, two prompts</div><div class="v">Two instructions on the same language model bring back the correlation Kim and colleagues measured. You get one opinion twice.</div></div>
+                <div class="step"><div class="k">Shared fields</div><div class="v">If lifetime value is computed net of refunds, a refund-heavy customer looks less valuable to the AI experience manager for the same reason the AI money manager objects. One reason, counted twice. Give every field to one manager only.</div></div>
+                <div class="step"><div class="k">Facts neither holds</div><div class="v">An attacker takes over an old, valuable account. The AI money manager sees eight clean years. The AI experience manager sees a top customer. Both say refund, to the attacker. Reversibility, as Part 2 defined it, will not catch this: it asks whether the action can be undone, not who receives it. A Pattern check on a payment method added this week, or a Novelty hard stop, will &mdash; if you write that trigger down.</div></div>
+            </div>
+            <div class="law">
+                <div class="lbl">The independence test</div>
+                <div class="b">Two checks are independent only if they read different data and want different outcomes. <strong>Test both before you trust their agreement,</strong> and keep auditing the cases where they agree.</div>
+            </div>
+            <p>Part 2's random audit sample now has a sharper target. Disagreements already reach a human. Shared blind spots show up only where the managers agree &mdash; the auto-refunds and, especially, the auto-declines.</p>
+
+            <h2>The screen and the numbers</h2>
+            <figure>
+                <div class="screen">
+                    <div class="bar">Disagreement &middot; Refund request &euro;420 &middot; Case C</div>
+                    <div class="why">The two AI managers disagree. The AI agent's proposal is hidden for this queue.</div>
+                    <div class="sides">
+                        <div class="side"><div class="sn">AI money manager &middot; decline</div><div class="sv">&euro;420 at stake if refunded</div>Third credit request in 90 days. Amount 3.5&times; the average add-on order. Goodwill budget left this week: &euro;1,900.</div>
+                        <div class="side"><div class="sn">AI experience manager &middot; refund</div><div class="sv">&euro;1,200 renewal at risk if declined</div>Top 3% by lifetime value. Renews in 40 days. NPS 4 last month. Failed migration logged as a company-side incident.</div>
+                    </div>
+                    <div class="act"><span class="btn">Refund</span><span class="btn">Partial refund</span><span class="btn">Credit on renewal</span><span class="btn">Decline</span><span class="req">Required: which side decided it, and the one fact that tipped it, picked from the two columns.</span></div>
+                </div>
+                <figcaption>Both prices, side by side, with no default. Every answer records which manager won and why.</figcaption>
+            </figure>
+            <p>Both prices appear in euros, so the trade is explicit. No button is pre-filled, because a default side is a vote. Every answer becomes a data point: this human, on this case, gave up this much margin to protect this much revenue.</p>
+            <p>The finance owner and the CX owner read that log together every week. When finance wants a tighter threshold after a loss, the log shows how many disagreements the change adds.</p>
+            <figure>
+                <div class="law">
+                    <div class="lbl">Five KPIs for disagreement routing</div>
+                    <div class="kpi">
+                        <div class="kh">KPI</div><div class="kh">What it tells you</div><div class="kh">Act when</div>
+                        <div class="kn">Disagreement rate<span>share of cases where both managers object</span></div><div class="kd">Queue size. A low rate is a clue, not proof of a shared blind spot.</div><div class="ka">It leaves the band. Too low: check shared fields, loose thresholds, and a quieter case mix. Too high: a threshold may have drifted, or more dual-stake cases arrived.</div>
+                        <div class="kn">Agreement error rate<span>from the audit sample, by direction</span></div><div class="kd">How often both managers waved through a wrong answer.</div><div class="ka">Errors cluster in one direction, such as joint refunds to new payment methods.</div>
+                        <div class="kn">Side taken<span>per human exception owner, per shift</span></div><div class="kd">Noise between humans on comparable cases.</div><div class="ka">Two owners resolve similar cases in opposite directions.</div>
+                        <div class="kn">90-day outcome by side<span>renewal, churn, chargeback</span></div><div class="kd">Which manager's thresholds are miscalibrated.</div><div class="ka">Declined customers churn above base rate, or refunded ones keep asking.</div>
+                        <div class="kn">Implied price<span>margin given up per renewal protected</span></div><div class="kd">The exchange rate humans actually use.</div><div class="ka">It moves while nobody decided to move it.</div>
+                    </div>
+                </div>
+                <figcaption>A pair of managers that never disagree is one manager.</figcaption>
+            </figure>
+            <p>A low disagreement rate is a prompt to investigate, not a verdict. Shared fields can suppress it, and so can two loose thresholds, or a week with fewer customers who are both expensive and valuable.</p>
+
+            <h2>What this costs you</h2>
+            <p>First, you get two owners who will argue, every week. That argument used to happen silently in one human's head. Now it happens in a meeting, with cases and prices, where someone can check it.</p>
+            <p>Second, the data split is real work. Lifetime value often includes refund history, and fraud scores often include tenure. Untangling them is a data project before it is an AI project.</p>
+            <p>Third, finance usually outranks CX. If the finance owner can tighten after every loss and the CX owner needs a business case to loosen, the AI money manager slowly becomes a veto with a human signature on it. Give both owners the same rule: no threshold change without the disagreement-rate effect on the table.</p>
+
+            <h2>What comes next</h2>
+            <p>Every time a human exception owner refunds &euro;420 to protect a &euro;1,200 renewal, she puts a price on that customer's goodwill. Another owner on another shift puts a different price on it. After a quarter, the log will hold those prices. Whether they settle into a rate you can trust is another matter. Disagreement cases are few, and they are not all the same trade. A handful of mixed cases is a start, not an exchange rate.</p>
+            <p>The thresholds were a price all along. The finance owner says a refund is worth an objection above some amount. The CX owner says a decline is worth an objection above some revenue at risk. The ratio between the two thresholds is an exchange rate between euros and the relationship. Change either one and you reprice your customers.</p>
+            <p>Write that rate down, and lopsided disagreements can start to resolve themselves. A quarter of mixed cases may not be enough to set it. Gathering that number, and being honest about when you do not have it yet, is the work this series has been circling since the intro: how many euros one unhappy customer is worth.</p>
+            <p><strong>That is Part 5.</strong></p>
+        </div>
+        <a href="../index.html#articles" class="back-link">Next &mdash; Part 5: The one number you cannot escape</a>
+    </article>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>The Customer Lens</h4>
+                    <p style="color:#b0b0b0; line-height:1.7;">Where CX strategy, operational excellence, and AI converge to create experiences that scale and endure.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigate</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="../index.html#articles">Articles</a>
+                        <a href="../about.html">About</a>
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="../impressum.html">Impressum</a>
+                        <a href="../privacy.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/fabiogarzotto/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://medium.com/@fabio.garzotto" target="_blank" rel="noopener">Medium</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Customer Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
